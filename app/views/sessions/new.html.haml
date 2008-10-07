@@ -1,0 +1,19 @@
+<%= title "Login", :h2 %>
+<% form_tag session_path do %>
+%fieldset
+  %legend
+    Your Details
+  %ol
+    %li
+      <%= label_tag 'login', 'Username' %>
+      <%= text_field_tag 'login', @login %>
+    %li
+      <%= label_tag 'password' %>
+      <%= password_field_tag 'password', nil %>
+    %li
+      <%= label_tag 'remember_me', 'Remember me' %>
+      <%= check_box_tag 'remember_me', '1', @remember_me %>
+.buttons
+  <%= submit_tag 'Login' %>
+  <%= link_to 'Forgotten Password', forgot_password_path %>
+<% end -%>
