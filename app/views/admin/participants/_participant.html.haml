@@ -1,0 +1,12 @@
+.info
+  = participant
+  .email
+    = participant
+    @example.edu
+  .team
+    Team: GGF
+  .grade
+    Year: 2011
+.toolbar
+  = link_to 'send login email', "email_button", :class => 'email button', :onclick => "alert('Email was sent'); return false;"
+  = link_to 'disable account', "disable_button", :class => 'disable button', :onclick => "alert('Account was disabled'); return false;"
