@@ -1,0 +1,41 @@
+- form_for @participant do |f|
+  %p
+    = f.label :first_name
+    = f.text_field :first_name
+  %p
+    = f.label :last_name
+    = f.text_field :last_name
+  %p
+    = f.label :email
+    = f.text_field :email
+  %p
+    = f.label :team
+    = f.select :team_id, team_options
+  %p
+    = f.label :car_type, "What kind of car do you drive?"
+    = f.select :car_type, car_type_options
+  %p
+    = f.label :distance_to_destination, "How far away are you from your school in miles?"
+    = f.text_field :distance_to_destination 
+
+  .pledge 
+    I pledge to 
+    %p
+      %table
+        %tr
+          %td
+            = f.label :walk_bike, "Walking/Biking"
+          %td
+            = f.select :walk_bike, pledge_options
+        %tr
+          %td
+            = f.label :public_transit
+          %td
+            = f.select :public_transit, pledge_options
+        %tr
+          %td
+            = f.label :carpool
+          %td
+            = f.select :carpool, pledge_options
+
+  = f.submit 'make pledge', :onclick => "alert('pledge will be created'); return false;"
