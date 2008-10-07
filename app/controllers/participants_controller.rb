@@ -3,7 +3,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new
   end
 
-  def show
+  def create
     render :action => 'thank_you'
   end
 end

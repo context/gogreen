@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :teams
 
   # Home Page
-  map.root :controller => 'sessions', :action => 'new'
+  map.root :controller => 'participants', :action => 'new'
 
   map.namespace :admin do |admin|
     admin.resources :participants
