@@ -1,0 +1,39 @@
+!!!  
+%head
+  %title
+    = controller.action_name.titleize
+    &mdash;
+    = controller.controller_name.titleize
+  = stylesheet_link_tag 'blueprint/print', :media => 'print'
+  = stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection'
+  <!--[if IE]>
+  = stylesheet_link_tag 'blueprint/ie'
+  <![endif]-->
+  = stylesheet_link_tag 'rockwood'
+  =# stylesheet_link_tag 'application'
+
+%body
+  #outer-container
+    #header.container
+    #main.container
+      =# render 'layouts/navigation'
+      #content.span-15
+        .content-padding 
+          - unless flash[:notice].blank?
+            .flash-notice
+              = flash[:notice]
+          - unless flash[:error].blank?
+            .flash-error
+              = flash[:error]
+          = yield
+    #footer.container
+
+  = javascript_include_tag 'jquery/jquery-1.2.6.min.js'
+  =# javascript_include_tag 'application'
+  - javascript_tag do
+    $( function() {
+    $('.js-hide').addClass('js-hidden').hide();
+    $('.js-only').removeClass('js-only');
+    = yield :dom_ready
+    } );
+
