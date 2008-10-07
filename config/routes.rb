@@ -31,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :participants
+  map.resources :mails
+  map.resources :reports
 
   # Home Page
   map.root :controller => 'sessions', :action => 'new'

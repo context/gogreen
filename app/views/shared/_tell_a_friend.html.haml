@@ -1,0 +1,19 @@
+%h2 Tell Your Friends
+Tell a friend about this program and get them to make a pledge.
+- form_tag '/mail' do
+  %p
+    = label_tag 'from_name'
+    = text_field_tag :from_name
+  %p
+    = label_tag 'from_email'
+    = text_field_tag :from_email
+  %p
+    = label_tag 'to_email'
+    = text_field_tag :to_email
+  %p
+    = label_tag 'subject'
+    = text_field_tag :subject
+  %p
+    = label_tag 'body'
+    = text_area_tag :body
+  = submit_tag 'Send'
