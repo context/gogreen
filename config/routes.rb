@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :reminder_email
 
   # Home Page
-  map.root :controller => 'participants', :action => 'new'
+  map.root :new_participant
 
   map.namespace :admin do |admin|
     admin.resources :participants
