@@ -1,0 +1,21 @@
+= "Contact #{@company.name} to let them know how you feel about their environmental record:"
+- form_tag '/mail' do
+  %p
+    = label_tag 'from_name' 
+    = text_field_tag :from_name
+  %p
+    = label_tag 'from_email'
+    = text_field_tag :from_email
+  %p
+    %strong
+      To 
+    = @company.name
+    ,
+    = @company.email
+  %p
+    = label_tag 'subject'
+    = text_field_tag :subject
+  %p
+    = label_tag 'body'
+    = text_area_tag :body
+  = submit_tag 'Send'

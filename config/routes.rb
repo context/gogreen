@@ -34,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :mails
   map.resources :reports
   map.resources :teams
+  map.resources :companies
   map.resource :reminder_email
 
   # Home Page
