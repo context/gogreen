@@ -1,6 +1,10 @@
 module ParticipantsHelper
   def team_options
     [["Mcallister Academy", 0], ["Red Team", 1]]
+    [["Mcallister Academy 2008", 0], 
+     ["Mcallister Academy 2009", 0], 
+     ["Mcallister Academy 2010", 0], 
+     ["Mcallister Academy 2011", 0]]
   end
   def car_type_options 
     [ ['Not sure', ''], ["Small", 'small'], ["Truck/SUV", 'truck' ]]

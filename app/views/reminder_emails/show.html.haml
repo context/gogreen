@@ -1,7 +1,9 @@
 %p
   Dear Blake,
 %p
-  Be sure to add your report to the score at the Go Green Foundation. 
+  Hey, your team at Go Green wants to know how you got to school last week.  Did you meet your pledge? 
   There are just 4 weeks to go!
 %p
-  = link_to 'Report this weeks scores', new_report_path
+  = link_to 'your week\'s commute', new_report_path
+%p
+  = link_to "Stop sending me email", "stop", :onclick => 'alert( "User is prevented from receiving further email" );'

@@ -1,5 +1,5 @@
 %p
-  How did you reduce your carbon impact this week?
+  How did you get to school this week?
 
 - form_for @report do |f|
   %table
@@ -11,7 +11,19 @@
       %th Thursday
       %th Friday
     %tr
-      %td Nuthin
+      %td None of these ( holiday, sick day, etc )
+      %td 
+        = f.radio_button 'monday', 'absent'
+      %td 
+        = f.radio_button 'tuesday', 'absent'
+      %td 
+        = f.radio_button 'wednesday', 'absent'
+      %td 
+        = f.radio_button 'thursday', 'absent'
+      %td 
+        = f.radio_button 'friday', 'absent'
+    %tr
+      %td I drove/was driven
       %td 
         = f.radio_button 'monday', 'nothing'
       %td 

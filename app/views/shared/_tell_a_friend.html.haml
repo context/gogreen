@@ -2,9 +2,11 @@
 Tell a friend about this program and get them to make a pledge.
 - form_tag '/mail' do
   %p
+    From: Student Name student@example.edu
+  -#%p
     = label_tag 'from_name'
     = text_field_tag :from_name
-  %p
+  -#%p
     = label_tag 'from_email'
     = text_field_tag :from_email
   %p

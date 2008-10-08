@@ -9,15 +9,21 @@
     = f.label :email
     = f.text_field :email
   %p
+    = f.label :password
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  %p
     = f.label :team
     = f.select :team_id, team_options
   %p
     = f.label :car_type, "What kind of car do you drive?"
     = f.select :car_type, car_type_options
-  %p
-    = f.label :car_year, "How old is your car?"
+  -#%p
+    = f.label :car_year, "What year is your car?"
     = f.select :car_year, car_year_options
-  %p
+  -#%p
     = f.label :graduation_year, "When will you graduate from high school?"
     = f.select :graduation_year, graduation_year_options 
   %p
@@ -43,5 +49,8 @@
             = f.label :carpool
           %td
             = f.select :carpool, pledge_options
+  %p
+    = f.label :carpool_participants, "How many people are usually in your carpool?"
+    = f.select :carpool_participants, (0...6).to_a
 
   = f.submit 'make pledge', :onclick => "alert('pledge will be created'); return false;"
