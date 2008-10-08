@@ -1,0 +1,9 @@
+%ul
+  - for company in @companies do 
+    %li
+      %h3
+        = company.name
+      %p
+        = company.description
+      %p
+        = link_to "Contact #{company.name}", company_path(company)

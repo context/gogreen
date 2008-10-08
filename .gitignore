@@ -7,3 +7,4 @@ doc/app
 coverage
 db/*.sqlite3
 *.swp
+public/stylesheets/*.css

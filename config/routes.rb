@@ -36,6 +36,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :teams
   map.resource :reminder_email
 
+  map.resources :companies
+  map.resources :industries
   # Home Page
   map.root :new_participant
 
