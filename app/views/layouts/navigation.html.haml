@@ -1,18 +1,23 @@
 .navigation
-  = link_to 'signup', new_participant_path
-  |
-  = link_to 'signup thank you', participants_path, :method => :post
-  |
-  = link_to 'scoreboard', teams_path
-  |
-  = link_to 'reminder email', reminder_email_path
-  |
-  = link_to 'report', new_report_path
-  |
-  = link_to 'report thank you', reports_path, :method => :post
-  |
-  = link_to 'login', new_session_path
-  |
-  = link_to 'admin dashboard', admin_participants_path
-  %p
+  .pledges_tool
+    = link_to 'signup', new_participant_path
+    |
+    = link_to 'signup thank you', participants_path, :method => :post
+    |
+    = link_to 'scoreboard', teams_path
+    |
+    = link_to 'reminder email', reminder_email_path
+    |
+    = link_to 'report', new_report_path
+    |
+    = link_to 'report thank you', reports_path, :method => :post
+    |
+    = link_to 'login', new_session_path
+    |
+    = link_to 'admin dashboard', admin_participants_path
+  .climate_counts_tool
     = link_to 'companies dashboard', companies_path
+    |
+    = link_to 'company detail', company_path(1)
+    |
+    = link_to 'industry list', industries_path
