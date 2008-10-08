@@ -34,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :mails
   map.resources :reports
   map.resources :teams
+  map.resource :reminder_email
 
   # Home Page
   map.root :controller => 'participants', :action => 'new'

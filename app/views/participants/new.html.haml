@@ -15,6 +15,12 @@
     = f.label :car_type, "What kind of car do you drive?"
     = f.select :car_type, car_type_options
   %p
+    = f.label :car_year, "How old is your car?"
+    = f.select :car_year, car_year_options
+  %p
+    = f.label :graduation_year, "When will you graduate from high school?"
+    = f.select :graduation_year, graduation_year_options 
+  %p
     = f.label :distance_to_destination, "How far away are you from your school in miles?"
     = f.text_field :distance_to_destination 
 
@@ -24,12 +30,12 @@
       %table
         %tr
           %td
-            = f.label :walk_bike, "Walking/Biking"
+            = f.label :walk_bike, "Walk/Bike"
           %td
             = f.select :walk_bike, pledge_options
         %tr
           %td
-            = f.label :public_transit
+            = f.label :public_transit, "Take the bus or train"
           %td
             = f.select :public_transit, pledge_options
         %tr
