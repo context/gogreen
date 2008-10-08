@@ -18,4 +18,4 @@
   %p
     = label_tag 'body'
     = text_area_tag :body
-  = submit_tag 'Send'
+  = submit_tag 'Send', :onclick => "alert('Email would be sent'); return false;"
