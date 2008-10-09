@@ -31,26 +31,65 @@
     = f.text_field :distance_to_destination 
 
   .pledge 
-    I pledge to 
+    Every week I pledge to:
     %p
       %table
         %tr
           %td
             = f.label :walk_bike, "Walk/Bike"
-          %td
-            = f.select :walk_bike, pledge_options
+          %td.mode_of_transport
+            - 0.upto(5) do |day|
+              %span.pledge_size_container
+                = f.radio_button 'walk_bike', day, :class => 'pledge_size'
+                = "#{day} days"
         %tr
           %td
             = f.label :public_transit, "Take the bus or train"
-          %td
-            = f.select :public_transit, pledge_options
+          %td.mode_of_transport
+            - 0.upto(5) do |day|
+              %span.pledge_size_container
+                = f.radio_button 'public_transit', day, :class => 'pledge_size'
+                = "#{day} days"
         %tr
           %td
             = f.label :carpool
-          %td
-            = f.select :carpool, pledge_options
+          %td.mode_of_transport
+            - 0.upto(5) do |day|
+              %span.pledge_size_container
+                = f.radio_button 'carpool', day, :class => 'pledge_size'
+                = "#{day} days"
   %p
     = f.label :carpool_participants, "How many people are usually in your carpool?"
     = f.select :carpool_participants, (0...6).to_a
 
   = f.submit 'make pledge', :onclick => "alert('pledge will be created'); return false;"
+
+- content_for :dom_ready do
+  :plain
+    $('.mode_of_transport .pledge_size').click(function() {
+      var total = 0;
+      var total_days = 5;
+
+      $('.mode_of_transport .pledge_size:checked').each(function() {
+        if( new Number( $(this).val() ) >  0 ) { total = total + new Number($(this).val()); }
+      });
+      $('.mode_of_transport').each( function() {
+        var row_value = $('.pledge_size:checked', this ).val() || 0;    
+        var limit = new Number( row_value ) + ( total_days - total );
+
+        $('.pledge_size', this).each( function() { 
+          if( new Number( $(this).val() ) > limit ) {
+            $(this).attr('disabled', true );
+            $(this).parent('.pledge_size_container').addClass('disabled');
+          } else {
+            $(this).attr('disabled', 0 );
+            $(this).parent('.pledge_size_container').removeClass('disabled');
+          }
+        });
+      });
+
+
+  });
+
+  
+  
