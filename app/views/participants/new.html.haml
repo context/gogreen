@@ -67,15 +67,14 @@
 - content_for :dom_ready do
   :plain
     $('.mode_of_transport .pledge_size').click(function() {
-      var total = 0;
-      var total_days = 5;
+      var total = 5;
 
       $('.mode_of_transport .pledge_size:checked').each(function() {
-        if( new Number( $(this).val() ) >  0 ) { total = total + new Number($(this).val()); }
+        if( new Number( $(this).val() ) >  0 ) { total = total - new Number($(this).val()); }
       });
       $('.mode_of_transport').each( function() {
         var row_value = $('.pledge_size:checked', this ).val() || 0;    
-        var limit = new Number( row_value ) + ( total_days - total );
+        var limit = new Number( row_value ) + ( total );
 
         $('.pledge_size', this).each( function() { 
           if( new Number( $(this).val() ) > limit ) {
