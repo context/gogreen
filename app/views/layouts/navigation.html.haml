@@ -1,8 +1,8 @@
 .navigation
   .pledges_tool
-    = link_to 'signup', new_participant_path
+    = link_to 'signup', new_pledge_path
     |
-    = link_to 'signup thank you', participants_path, :method => :post
+    = link_to 'signup thank you', pledges_path, :method => :post
     |
     = link_to 'scoreboard', teams_path
     |
@@ -14,7 +14,7 @@
     |
     = link_to 'login', new_session_path
     |
-    = link_to 'admin dashboard', admin_participants_path
+    = link_to 'admin dashboard', admin_pledges_path
   .climate_counts_tool
     = link_to 'companies dashboard', companies_path
     |

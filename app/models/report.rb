@@ -1,6 +1,3 @@
-class Report
+class Report < ActiveRecord::Base
   attr_accessor :monday, :tuesday, :wednesday, :thursday, :friday
-  def new_record?
-    true
-  end
 end

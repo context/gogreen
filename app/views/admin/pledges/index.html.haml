@@ -1,7 +1,7 @@
-%h2 Participants
+%h2 Pledges
 %ul
-  - for participant in @participants
+  - for pledge in @pledges
     %li
-      = render :partial => 'participant', :object => participant
+      = render :partial => 'pledge', :object => pledge
 
 = link_to "export list", "export", :class => 'export button', :onclick => "alert('Export in CSV format'); return false;"

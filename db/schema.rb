@@ -9,6 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20081009014627) do
+
+  create_table "contests", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "pledges", :force => true do |t|
+    t.integer "user_id",                 :limit => 11
+    t.integer "team_id",                 :limit => 11
+    t.integer "carpool_participants",    :limit => 11
+    t.integer "distance_to_destination", :limit => 11
+    t.integer "walk_bike",               :limit => 11
+    t.integer "public_transit",          :limit => 11
+    t.integer "carpool",                 :limit => 11
+    t.string  "car_type"
+  end
+
+  create_table "reports", :force => true do |t|
+    t.integer  "pledge_id",         :limit => 11
+    t.datetime "action_date"
+    t.string   "mode_of_transport", :limit => 20
+    t.integer  "score",             :limit => 11
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string  "name"
+    t.integer "contest_id", :limit => 11
+  end
 
 end
