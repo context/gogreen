@@ -25,13 +25,14 @@ describe User do
   #
   # Validations
   #
-
+=begin
   it 'requires login' do
     lambda do
       u = create_user(:login => nil)
       u.errors.on(:login).should_not be_nil
     end.should_not change(User, :count)
   end
+
 
   describe 'allows legitimate logins:' do
     ['123', '1234567890_234567890_234567890_234567890',
@@ -56,6 +57,7 @@ describe User do
       end
     end
   end
+=end
 
   it 'requires password' do
     lambda do
@@ -87,6 +89,7 @@ describe User do
       it "'#{email_str}'" do
         lambda do
           u = create_user(:email => email_str)
+          puts u.errors.on(:email).inspect unless u.errors.on(:email).nil?
           u.errors.on(:email).should     be_nil
         end.should change(User, :count).by(1)
       end
@@ -135,12 +138,12 @@ describe User do
 
   it 'resets password' do
     users(:quentin).update_attributes(:password => 'new password', :password_confirmation => 'new password')
-    User.authenticate('quentin', 'new password').should == users(:quentin)
+    User.authenticate('quentin@example.com', 'new password').should == users(:quentin)
   end
 
   it 'does not rehash password' do
-    users(:quentin).update_attributes(:login => 'quentin2')
-    User.authenticate('quentin2', 'monkey').should == users(:quentin)
+    users(:quentin).update_attributes(:login => 'quentin2@example.com')
+    User.authenticate('quentin2@example.com', 'monkey').should == users(:quentin)
   end
 
   #
@@ -148,11 +151,11 @@ describe User do
   #
 
   it 'authenticates user' do
-    User.authenticate('quentin', 'monkey').should == users(:quentin)
+    User.authenticate('quentin@example.com', 'monkey').should == users(:quentin)
   end
 
   it "doesn't authenticate user with bad password" do
-    User.authenticate('quentin', 'invalid_password').should be_nil
+    User.authenticate('quentin@example.com', 'invalid_password').should be_nil
   end
 
  if REST_AUTH_SITE_KEY.blank?
@@ -220,7 +223,7 @@ describe User do
 
 protected
   def create_user(options = {})
-    record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
+    record = User.new({ :login => 'quire@example.com', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
     record.save
     record
   end

@@ -19,8 +19,8 @@ describe UsersController do
 
   it 'requires login on signup' do
     lambda do
-      create_user(:login => nil)
-      assigns[:user].errors.on(:login).should_not be_nil
+      create_user(:login => nil, :email => nil )
+      assigns[:user].errors.on(:email).should_not be_nil
       response.should be_success
     end.should_not change(User, :count)
   end

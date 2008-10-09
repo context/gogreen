@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   validates_presence_of     :login
-  validates_length_of       :login,    :within => 3..40
-  validates_uniqueness_of   :login
-  validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+  #validates_length_of       :login,    :within => 3..40
+  #validates_uniqueness_of   :login
+  #validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
   validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :name,     :maximum => 100
@@ -43,16 +43,23 @@ class User < ActiveRecord::Base
   def login
     email
   end
-=end
 
   def login=(value)
-    #self.email = value
-    write_attribute :login, (value ? value.downcase : nil)
+    self.email = value
+    #write_attribute :login, (value ? value.downcase : nil)
   end
+=end
 
+  def email
+    read_attribute :email
+  end
   def email=(value)
+    write_attribute :login, (value ? value.downcase : nil)
     write_attribute :email, (value ? value.downcase : nil)
   end
+  alias :login  :email
+  alias :login= :email=
+
 
   protected
     

@@ -1,7 +1,7 @@
 
 quentin:
   id:                        1
-  login:                     quentin
+  login:                     quentin@example.com
   email:                     quentin@example.com
   salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
   crypted_password:          dce801eabeff27f96964160ef62fa1885835d9b5 # 'monkey'
@@ -11,7 +11,7 @@ quentin:
       
 aaron:
   id:                        2
-  login:                     aaron
+  login:                     aaron@example.com
   email:                     aaron@example.com
   salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
   crypted_password:          02be9066d9832928bb4fd2a9294b2d321f613b99 # 'monkey'
