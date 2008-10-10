@@ -2,13 +2,8 @@
 Tell a friend about this program and get them to make a pledge.
 - form_tag '/mail' do
   %p
-    From: Student Name student@example.edu
-  -#%p
-    = label_tag 'from_name'
-    = text_field_tag :from_name
-  -#%p
-    = label_tag 'from_email'
-    = text_field_tag :from_email
+    From: 
+    = "#{current_user.first_name} #{current_user.last_name} #{current_user.email}"
   %p
     = label_tag 'to_email'
     = text_field_tag :to_email

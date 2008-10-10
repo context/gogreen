@@ -1,19 +1,20 @@
 - form_for @pledge do |f|
-  %p
-    = f.label :first_name
-    = f.text_field :first_name
-  %p
-    = f.label :last_name
-    = f.text_field :last_name
-  %p
-    = f.label :email
-    = f.text_field :email
-  %p
-    = f.label :password
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+  - f.fields_for :user_attributes do |user|
+    %p
+      = user.label :first_name
+      = user.text_field :first_name
+    %p
+      = user.label :last_name
+      = user.text_field :last_name
+    %p
+      = user.label :email
+      = user.text_field :email
+    %p
+      = user.label :password
+      = user.password_field :password
+    %p
+      = user.label :password_confirmation
+      = user.password_field :password_confirmation
   %p
     = f.label :team
     = f.select :team_id, team_options
@@ -62,7 +63,7 @@
     = f.label :carpool_participants, "How many people are usually in your carpool?"
     = f.select :carpool_participants, (0...6).to_a
 
-  = f.submit 'make pledge', :onclick => "alert('pledge will be created'); return false;"
+  = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
 
 - content_for :dom_ready do
   :plain
