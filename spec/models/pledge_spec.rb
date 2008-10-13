@@ -8,4 +8,34 @@ describe Pledge do
       pledge.user.should_not be_new_record
     end
   end
+
+  describe "when valid" do
+    describe "number of days" do
+      it "is no more than 5 for walk/bike" do
+        pledge = new_pledge(:walk_bike => 6)
+        pledge.should_not be_valid
+      end
+      it "is no more than 5 for public transit" do
+        pledge = new_pledge(:public_transit => 6)
+        pledge.should_not be_valid
+      end
+      it "is no more than 5 for carpool" do
+        pledge = new_pledge(:carpool => 6)
+        pledge.should_not be_valid
+      end
+      it "can be 5" do
+        pledge = new_pledge(:carpool => 5)
+        pledge.should be_valid
+      end
+      it "is no more than 5 for all modes" do
+        pledge = new_pledge(:carpool => 4, :public_transit => 2)
+        pledge.should_not be_valid
+      end
+      it "is no more than 5 for all modes" do
+        pledge = new_pledge(:carpool => 4, :public_transit => 2)
+        pledge.valid?
+        pledge.should have(1).errors_on(:base)
+      end
+    end
+  end
 end

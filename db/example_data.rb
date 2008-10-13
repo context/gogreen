@@ -9,7 +9,9 @@ module FixtureReplacement
 
   attributes_for :pledge do |a|
     a.user = default_user
-    
+    a.walk_bike = 0
+    a.public_transit = 0
+    a.carpool = 0
 	end
 
   attributes_for :report do |a|
