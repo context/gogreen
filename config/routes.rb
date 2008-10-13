@@ -30,7 +30,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :passwords
   map.resource :session
 
-  map.resources :pledges
+  map.resources :contests do |contest|
+    contest.resources :pledges
+  end
+#  map.resources :pledges
   map.resources :mails
   map.resources :reports
   map.resources :teams
@@ -39,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :companies
   map.resources :industries
   # Home Page
-  map.root :new_pledge
+  map.root :new_contest_pledge
 
   map.namespace :admin do |admin|
     admin.resources :pledges

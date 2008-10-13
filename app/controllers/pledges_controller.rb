@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
   def new
+    @contest ||= Contest.find(:first)
     @pledge = Pledge.new
   end
 

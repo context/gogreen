@@ -9,10 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081010202156) do
+ActiveRecord::Schema.define(:version => 20081010205747) do
 
   create_table "contests", :force => true do |t|
-    t.string "name"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "distance_question_text"
+    t.text     "email_text"
+    t.text     "intro_text"
+    t.text     "tell_a_friend_default"
   end
 
   create_table "pledges", :force => true do |t|

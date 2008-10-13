@@ -1,4 +1,4 @@
-- form_for @pledge do |f|
+- form_for [@contest, @pledge] do |f|
   - f.fields_for :user_attributes do |user|
     %p
       = user.label :first_name
