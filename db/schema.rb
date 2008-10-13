@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081010205747) do
+ActiveRecord::Schema.define(:version => 20081013182248) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20081010205747) do
     t.integer "team_id",                 :limit => 11
     t.integer "carpool_participants",    :limit => 11
     t.integer "distance_to_destination", :limit => 11
-    t.integer "walk_bike",               :limit => 11
-    t.integer "public_transit",          :limit => 11
-    t.integer "carpool",                 :limit => 11
+    t.integer "walk_bike",               :limit => 11, :default => 0
+    t.integer "public_transit",          :limit => 11, :default => 0
+    t.integer "carpool",                 :limit => 11, :default => 0
     t.string  "car_type"
   end
 

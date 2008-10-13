@@ -1,6 +1,7 @@
 = error_messages_for :pledge
 - form_for [@contest, @pledge] do |f|
   - f.fields_for :user_attributes do |user|
+    = error_messages_for :user, :object => @pledge.user
     %p
       = user.label :first_name
       = user.text_field :first_name

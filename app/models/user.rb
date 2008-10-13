@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  validates_presence_of     :login
+  #validates_presence_of     :login
   #validates_length_of       :login,    :within => 3..40
   #validates_uniqueness_of   :login
   #validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message

@@ -8,6 +8,7 @@ class Pledge < ActiveRecord::Base
   validates_inclusion_of :walk_bike, :in => 0..5
   validates_inclusion_of :public_transit, :in => 0..5
   validates_inclusion_of :carpool, :in => 0..5
+  validates_associated :user
   validate :validate_mode_total
 
   def validate_mode_total
