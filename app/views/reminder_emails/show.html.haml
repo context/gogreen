@@ -1,9 +1,14 @@
 %p
-  Dear Blake,
+  Dear
+  = @pledge.user.first_name
+  ,
 %p
-  Hey, your team at Go Green wants to know how you got to school last week.  Did you meet your pledge? 
-  There are just 4 weeks to go!
+  = @pledge.contest.email_text
+  There are just
+  = (( @pledge.contest.end - Time.now ) / 1.week ).to_i
+  weeks to go!
 %p
-  = link_to 'your week\'s commute', new_report_path
+  = link_to "Report this week\'s action", new_pledge_report_path( @pledge, :start => Time.now.at_beginning_of_the_week  )
+
 %p
   = link_to "Stop sending me email", "stop", :onclick => 'alert( "User is prevented from receiving further email" );'
