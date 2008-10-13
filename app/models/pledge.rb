@@ -10,6 +10,7 @@ class Pledge < ActiveRecord::Base
   validates_inclusion_of :carpool, :in => 0..5
   validates_associated :user
   validate :validate_mode_total
+  validates_uniqueness_of :user_id, :scope => :team_id
 
   def validate_mode_total
     if (walk_bike + public_transit + carpool > 5)
