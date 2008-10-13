@@ -19,7 +19,7 @@
       = user.password_field :password_confirmation
   %p
     = f.label :team
-    = f.select :team_id, team_options
+    = f.select :team_id, team_options(@contest)
   %p
     = f.label :car_type, "What kind of car do you drive?"
     = f.select :car_type, car_type_options
