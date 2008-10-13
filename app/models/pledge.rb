@@ -11,6 +11,9 @@ class Pledge < ActiveRecord::Base
   validates_associated :user
   validate :validate_mode_total
   validates_uniqueness_of :user_id, :scope => :team_id
+  validates_presence_of :distance_to_destination
+  validates_numericality_of :distance_to_destination
+  validates_presence_of :team_id
 
   def validate_mode_total
     if (walk_bike + public_transit + carpool > 5)

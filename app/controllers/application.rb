@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+
+  before_filter :set_contest
+  protected
+
+  def set_contest
+    @contest = Contest.find(params[:contest_id]) if params[:contest_id]
+    @contest ||= Contest.find(:first)
+  end
 end

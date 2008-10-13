@@ -1,0 +1,14 @@
+%h1 
+  Tell a friend email demo (would redirect to 
+  = link_to 'team summary', teams_path
+  )
+
+%h2
+  To: 
+  = params[:recipients]
+
+%h2
+  Body:
+  - @text = params[:body]
+  - @host = request.host
+  = render :file => 'recruitment_mailer/tell_a_friend'

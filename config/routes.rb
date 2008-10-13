@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reports
   map.resources :teams
   map.resource :reminder_email
+  map.tell_a_friend 'tell_a_friend', :controller => 'tell_a_friend', :action => 'create'
 
   map.resources :companies
   map.resources :industries
