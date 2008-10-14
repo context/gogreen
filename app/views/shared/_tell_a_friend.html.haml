@@ -3,12 +3,9 @@ Tell a friend about this program and get them to make a pledge.
 - form_tag tell_a_friend_path do
   = hidden_field_tag 'contest_id', @contest.id
   %p
-    From: 
-    = "#{current_user.first_name} #{current_user.last_name} #{current_user.email}"
-  %p
     = label_tag 'Recipients'
     = text_field_tag :recipients
   %p
     = label_tag 'body'
     = text_area_tag :body, @contest.tell_a_friend_default
-  = submit_tag 'Send' #, :onclick => "alert('Email would be sent.'); return false;"
+  = submit_tag 'Send'
