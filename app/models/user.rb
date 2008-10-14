@@ -18,7 +18,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  before_create :create_opt_out_code
+  def create_opt_out_code
+    self.opt_out_code = ( ("%04x"*2 ) % ([nil]*2).map { rand(2**16) }).upcase 
+  end
   
+  has_many :pledges
+  has_many :teams, :through => :pledges
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation

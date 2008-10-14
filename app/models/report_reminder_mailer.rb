@@ -8,7 +8,7 @@ class ReportReminderMailer < ActionMailer::Base
     @body[:message]   = pledge.contest.email_text
     @body[:weeks_remaining]   = (( pledge.contest.end - Time.now ) / 1.week ).to_i
     @body[:report_url] = new_pledge_report_url( pledge )
-    @body[:opt_out_url] = opt_out_url
+    @body[:opt_out_url] = opt_out_url(pledge.user.opt_out_code)
   end
 
   protected
