@@ -17,4 +17,12 @@ module PledgesHelper
   def pledge_options
     (0...5).to_a
   end
+  def action_options
+    [ [ "None of these ( holiday, sick day, etc )", 'none' ],
+      [ "I drove/was driven", 'driving' ],
+      [ "Walking/Biking", 'walk_bike' ],
+      [ "Public Transit", 'transit' ],
+      [ "Carpooling", 'carpool' ]
+    ]
+  end
 end

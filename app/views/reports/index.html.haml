@@ -1,0 +1,5 @@
+%ul
+  - @weekly_reports.each do |report|
+    %li
+      = link_to "week of #{report.action_date.strftime("%B %d")}", edit_report_path( report )
+  

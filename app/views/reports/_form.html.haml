@@ -1,0 +1,26 @@
+= error_messages_for :report
+#weekly_data.container
+  .actions.span-6
+    .header
+      &nbsp;
+    .clear
+    - action_options.each do |( action_text, action_key )|
+      .action_option
+        = action_text
+  - 0.upto 4 do |i|
+    .report_day.span-2
+      - f.fields_for :weekly_data, :index => i do |ff|
+        .hidden
+          = ff.text_field :action_date, :value => report_start + i.days
+
+      .header
+        = ( report_start + i.days ).strftime("%A")
+        .date
+          = ( report_start + i.days ).strftime("%b %d")
+      .clear
+
+        - action_options.each do |( action_text, action_key )|
+          .action_option
+            = radio_button_tag "report[weekly_data][#{i}][mode_of_transport]", action_key
+
+

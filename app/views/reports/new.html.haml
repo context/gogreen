@@ -1,74 +1,10 @@
 %p
+  = "Hi #{@pledge.user.first_name},"
+
+%p
   How did you get to school this week?
 
-- form_for @report do |f|
-  %table
-    %tr
-      %td
-      %th Monday
-      %th Tuesday
-      %th Wednesday
-      %th Thursday
-      %th Friday
-    %tr
-      %td None of these ( holiday, sick day, etc )
-      %td 
-        = f.radio_button 'monday', 'absent'
-      %td 
-        = f.radio_button 'tuesday', 'absent'
-      %td 
-        = f.radio_button 'wednesday', 'absent'
-      %td 
-        = f.radio_button 'thursday', 'absent'
-      %td 
-        = f.radio_button 'friday', 'absent'
-    %tr
-      %td I drove/was driven
-      %td 
-        = f.radio_button 'monday', 'nothing'
-      %td 
-        = f.radio_button 'tuesday', 'nothing'
-      %td 
-        = f.radio_button 'wednesday', 'nothing'
-      %td 
-        = f.radio_button 'thursday', 'nothing'
-      %td 
-        = f.radio_button 'friday', 'nothing'
-    %tr
-      %td Walking/Biking
-      %td 
-        = f.radio_button 'monday', 'walk_bike'
-      %td 
-        = f.radio_button 'tuesday', 'walk_bike'
-      %td 
-        = f.radio_button 'wednesday', 'walk_bike'
-      %td 
-        = f.radio_button 'thursday', 'walk_bike'
-      %td 
-        = f.radio_button 'friday', 'walk_bike'
-    %tr
-      %td Public Transit
-      %td 
-        = f.radio_button 'monday', 'public_transit'
-      %td 
-        = f.radio_button 'tuesday', 'public_transit'
-      %td 
-        = f.radio_button 'wednesday', 'public_transit'
-      %td 
-        = f.radio_button 'thursday', 'public_transit'
-      %td 
-        = f.radio_button 'friday', 'public_transit'
-    %tr
-      %td Carpooling
-      %td 
-        = f.radio_button 'monday', 'carpool'
-      %td 
-        = f.radio_button 'tuesday', 'carpool'
-      %td 
-        = f.radio_button 'wednesday', 'carpool'
-      %td 
-        = f.radio_button 'thursday', 'carpool'
-      %td 
-        = f.radio_button 'friday', 'carpool'
-
-  = f.submit 'make report'
+- form_for @report, :url => reports_path( :report_code => @report.pledge.report_code ) do |f|
+  = render :partial => 'form', :locals => { :f => f, :report_start => Time.now.beginning_of_week }
+  %p.submit
+    = f.submit 'make report'

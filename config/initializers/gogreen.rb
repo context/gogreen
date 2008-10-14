@@ -1,6 +1,6 @@
 module GoGreen 
   class Config
-    cattr_accessor :email_sender
+    cattr_accessor :email_sender, :reporting_period
   end
 end
 
