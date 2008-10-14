@@ -66,4 +66,4 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-ActionMailer::Base.register_template_handler('haml')
+ActionMailer::Base.register_template_extension('haml')

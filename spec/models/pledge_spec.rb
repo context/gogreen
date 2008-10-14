@@ -39,8 +39,9 @@ describe Pledge do
       end
       it "is the only pledge for the user for the team" do
         user = create_user
-        first_pledge = create_pledge(:user => user, :team => nil, :team_id => 1)
-        second_pledge = new_pledge(:user => user, :team => nil, :team_id => 1)
+        team = create_team
+        first_pledge = create_pledge(:user => user, :team => team)
+        second_pledge = new_pledge(:user => user, :team => team)
         second_pledge.should_not be_valid
       end
     end

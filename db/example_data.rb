@@ -1,10 +1,12 @@
 module FixtureReplacement
   attributes_for :contest do |a|
-    
+    a.email_text = 'email text here'
+    a.start = 1.week.from_now
+    a.end = 6.weeks.from_now
 	end
 
   attributes_for :team do |a|
-    
+    a.contest = default_contest
 	end
 
   attributes_for :pledge do |a|

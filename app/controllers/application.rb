@@ -16,12 +16,16 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  before_filter :set_contest
+  before_filter :set_contest, :set_mailer_base_url
   protected
 
   def set_contest
     @contest = Contest.find_by_id(params[:contest_id]) if params[:contest_id]
     @contest ||= Contest.find(:first)
+  end
+
+  def set_mailer_base_url
+    ActionMailer::Base.default_url_options[:host] = request.host
   end
 
   def admin_required
