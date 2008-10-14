@@ -1,19 +1,19 @@
 class Report < ActiveRecord::Base
-  #attr_accessor :monday, :tuesday, :wednesday, :thursday, :friday
   belongs_to :pledge
-  validate :within_reporting_period
-  validates_presence_of :action_date
-  validates_uniqueness_of :action_date, :scope => :pledge_id
-
-  def self.create_from_weekly_data( weekly_data, pledge )
-    weekly_data.map do |day_index, day_data|
-      pledge.reports.create day_data
+  has_many :report_actions
+  validates_uniqueness_of :start, :scope => :pledge_id
+  
+  def actions_data=(values)
+    values.map do |day_index, action_data|
+      if action = report_actions.find_by_action_date( action_data[:action_date] )
+        action.attributes = action_data
+        action
+      else
+        report_actions.build action_data
+      end
     end
   end
-  
-  def within_reporting_period
-    if action_date < ( Time.now - GoGreen::Config.reporting_period.days )
-      self.errors.add :action_date, "is past the reporting deadline" if self.new_record? or self.changed?
-    end
+  def actions_data
+    report_actions.all :order => 'action_date ASC'
   end
 end

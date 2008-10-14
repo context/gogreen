@@ -22,6 +22,10 @@ module FixtureReplacement
     
 	end
 
+  attributes_for :report_action do |a|
+      
+  end
+
   attributes_for :user do |a|
     a.password = 'password'
     a.password_confirmation = 'password'
