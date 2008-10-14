@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
     @contest = Contest.find(params[:contest_id]) if params[:contest_id]
     @contest ||= Contest.find(:first)
   end
+
+  def admin_required
+    #current_user.superuser?
+    true
+  end
 end

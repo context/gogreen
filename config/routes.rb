@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :contests do |contest|
     contest.resources :pledges
   end
-#  map.resources :pledges
+  map.resources :pledges, :has_many => :reports
   map.resources :mails
   map.resources :reports
   map.resources :teams
@@ -46,6 +46,6 @@ ActionController::Routing::Routes.draw do |map|
   map.root :new_contest_pledge
 
   map.namespace :admin do |admin|
-    admin.resources :pledges
+    admin.resources :pledges, :has_many => :report_reminders
   end
 end

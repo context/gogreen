@@ -1,12 +1,12 @@
 .info
-  = pledge
+  = pledge.user.name
   .email
-    = pledge
-    @example.edu
-  .team
-    Team: GGF
-  .grade
-    Year: 2011
+    = pledge.user.email
+  - unless pledge.team.nil?
+    .team
+      Team: 
+      = pledge.team.name
 .toolbar
-  = link_to 'send login email', "email_button", :class => 'email button', :onclick => "alert('Email was sent'); return false;"
+  - form_for 'send_reminder', :url => admin_pledge_report_reminders_path( pledge) do |f|
+    = f.submit "Send Login", :class => 'email button'
   = link_to 'disable account', "disable_button", :class => 'disable button', :onclick => "alert('Account was disabled'); return false;"

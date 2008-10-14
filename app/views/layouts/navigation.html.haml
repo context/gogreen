@@ -8,9 +8,9 @@
     |
     = link_to 'reminder email', reminder_email_path
     |
-    = link_to 'report', new_report_path
+    -#= link_to 'report', new_pledge_report_path( :pledge => Pledge.first, :start => @contest.start )
     |
-    = link_to 'report thank you', reports_path, :method => :post
+    -#= link_to 'report thank you', pledge_reports_path( :pledge => { :car_type => 'suv', :user_id => User.find_by_first_name('Test').to_param, :contest_id => @contest }), :method => :post
     |
     = link_to 'login', new_session_path
     |

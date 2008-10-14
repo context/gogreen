@@ -1,10 +1,12 @@
-module ParticipantsHelper
+module PledgesHelper
   def team_options(contest)
     contest.teams.map {|team| [team.name, team.id]}
   end
+
   def car_type_options 
     [ ['Not sure', ''], ["Small", 'small'], ["Truck/SUV", 'truck' ]]
   end
+
   def car_year_options 
     [ [ 'Not sure', '' ], *(1970...Time.now.year).to_a  ]
   end

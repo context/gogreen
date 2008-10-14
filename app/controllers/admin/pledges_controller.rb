@@ -1,5 +1,5 @@
 class Admin::PledgesController < ApplicationController
-  def index
-    @pledges = [ 'Martin', 'Catalina', 'Trevor' ]
+  make_resourceful do
+    actions :index
   end
 end

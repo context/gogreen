@@ -7,4 +7,7 @@ Contest.seed(:name) do |c|
   c.tell_a_friend_default = <<-BODY
 Join me in reducing your carbon footprint by pledging to bike, walk, carpool, or ride public transportation to school.
 BODY
+  c.email_text = <<EMAIL
+Hey, your team at Go Green wants to know how you got to school last week.  Did you meet your pledge?
+EMAIL
 end

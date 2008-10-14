@@ -1,0 +1,14 @@
+%p
+  Dear
+  = @recipient
+  ,
+%p
+  = @message
+  There are just
+  = @weeks_remaining
+  weeks to go!
+%p
+  = link_to "Report this week\'s action", @report_url
+
+%p
+  = link_to "Stop sending me email", "stop", :onclick => 'alert( "User is prevented from receiving further email" );'

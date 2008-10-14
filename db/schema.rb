@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081013182248) do
+ActiveRecord::Schema.define(:version => 20081013200430) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20081013182248) do
     t.integer "public_transit",          :default => 0
     t.integer "carpool",                 :default => 0
     t.string  "car_type"
+    t.string  "report_code"
   end
 
   create_table "reports", :force => true do |t|
