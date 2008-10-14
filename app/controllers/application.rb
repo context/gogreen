@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_contest
-    @contest = Contest.find(params[:contest_id]) if params[:contest_id]
+    @contest = Contest.find_by_id(params[:contest_id]) if params[:contest_id]
     @contest ||= Contest.find(:first)
   end
 
