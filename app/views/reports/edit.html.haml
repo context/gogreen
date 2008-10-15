@@ -2,7 +2,7 @@
   = "Hi #{@pledge.user.first_name},"
 
 %p
-  = "How did you get to school on the week #{@report.start.strftime('%A')}?"
+  == How did you get to school on the week beginning #{@report.start.strftime("%b %d")}?
 
 - form_for @report, :url => pledge_report_path( @pledge, @report ) do |f|
   = render :partial => 'form', :locals => { :f => f }
