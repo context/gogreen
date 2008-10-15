@@ -31,8 +31,6 @@
     |
     = link_to 'report', new_pledge_report_path( Pledge.first )
     |
-    = link_to 'report edit', edit_pledge_report_path( Pledge.first, Pledge.first.reports.first )
-    |
     -#= link_to 'report thank you', pledge_reports_path( :pledge => { :car_type => 'suv', :user_id => User.find_by_first_name('Test').to_param, :contest_id => @contest }), :method => :post
     |
     = link_to 'login', new_session_path

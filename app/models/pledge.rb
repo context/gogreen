@@ -45,6 +45,10 @@ class Pledge < ActiveRecord::Base
     @current ||= reports.find_by_start(Time.now.beginning_of_week)
   end
 
+  def previous_report
+    @previous ||= reports.find_by_start(Time.now.beginning_of_week - 1.week)
+  end
+
   def contest
     team && team.contest || Contest.first
   end

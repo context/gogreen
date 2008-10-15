@@ -1,0 +1,3 @@
+= link_to_unless_current 'last weeks report', @pledge.previous_report ? edit_pledge_report_path(@pledge, @pledge.previous_report) : new_pledge_report_path(@pledge, :week => 'previous')
+|
+= link_to_unless_current 'this weeks report', @pledge.current_report ? edit_pledge_report_path(@pledge, @pledge.current_report) : new_pledge_report_path(@pledge)
