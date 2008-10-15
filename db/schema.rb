@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081014182223) do
+ActiveRecord::Schema.define(:version => 20081014221452) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(:version => 20081014182223) do
     t.datetime "action_date"
     t.string   "mode_of_transport", :limit => 20
     t.integer  "score",             :limit => 11
-    t.integer  "report_id"
+    t.integer  "report_id",         :limit => 11
+    t.integer  "position",          :limit => 11
   end
 
   create_table "reports", :force => true do |t|
     t.datetime "start"
-    t.integer  "pledge_id",         :limit => 11
+    t.integer  "pledge_id",   :limit => 11
     t.string   "report_code"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20081014182223) do
     t.datetime "remember_token_expires_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.boolean  "receive_email"
+    t.string   "opt_out_code"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

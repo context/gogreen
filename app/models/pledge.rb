@@ -35,4 +35,7 @@ class Pledge < ActiveRecord::Base
     team && team.contest || Contest.first
   end
 
+  def to_param
+    report_code
+  end
 end

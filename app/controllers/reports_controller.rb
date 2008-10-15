@@ -1,35 +1,33 @@
 class ReportsController < ApplicationController
   make_resourceful do
     belongs_to :pledge
-    actions :new, :create, :index
+    actions :new, :create, :index, :edit, :update
+    before :all do
+      self.current_user = @pledge.user
+    end
     before :new do
-      @pledge = parent_objects.first
-      @report = @pledge.reports.build
+      @report.start = Time.now.beginning_of_week
+    end
+    before :edit do
+      @pledge ||= @report.pledge
+    end
+    response_for :create do
+      flash[:notice] = "Thanks for pitching in"
+      redirect_to team_path( @pledge.team )
+    end
+    response_for :update do
+      flash[:notice] = "Your report was updated"
+      redirect_to team_path( @pledge.team )
+    end
+    response_for :update_failed do
+      @report.report_actions.each do |report_action|
+        report_action.errors.each { | attr, msg | @report.errors.add_to_base( msg ) }
+      end
+      render :action => 'edit'
     end
   end
 
   def parent_object
-    Pledge.find_by_report_code params[:report_code]
+    Pledge.find_by_report_code params[:pledge_id]
   end
-
-  def parent_name
-    @parent_name = :pledge if params[:report_code] && !params[:report_code].blank?
-    super
-  end
-
-
-  def create
-    load_parent_object
-    reports =  Report.create_from_weekly_data params[:report][:weekly_data], @pledge
-    if reports.all?(&:valid?)
-      flash[:notice] = "Thanks for pitching in"
-      redirect_to team_path( @pledge.team )
-    else
-      reports.each do |rep|
-        rep.errors.each { | attr, msg | @report.errors.add( attr, msg ) }
-      end
-      render :action => 'new'
-    end
-  end
-  
 end

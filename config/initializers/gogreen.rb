@@ -10,4 +10,5 @@ if File.exist? "#{RAILS_ROOT}/config/gogreen.yml"
   end 
 else
   GoGreen::Config.email_sender = "default@example.com"  
+  GoGreen::Config.reporting_period = 7
 end

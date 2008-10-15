@@ -20,7 +20,7 @@ describe ReportReminderMailer do
       @html.body.should match(/#{@pledge.contest.email_text}/)
     end
     it "should render the report url" do
-      @html.body.should match(/#{new_report_url(:report_code => @pledge.report_code)}/)
+      @html.body.should match(/#{new_pledge_report_url(@pledge)}/)
     end
     it "should render the report url with absolute path" do
       @html.body.should match(/gogreen.host/)

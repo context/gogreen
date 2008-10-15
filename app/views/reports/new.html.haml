@@ -4,7 +4,7 @@
 %p
   How did you get to school this week?
 
-- form_for @report, :url => reports_path( :report_code => @report.pledge.report_code ) do |f|
-  = render :partial => 'form', :locals => { :f => f, :report_start => Time.now.beginning_of_week }
+- form_for @report, :url => pledge_reports_path( @pledge ) do |f|
+  = render :partial => 'form', :locals => { :f => f }
   %p.submit
     = f.submit 'make report'

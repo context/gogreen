@@ -16,6 +16,7 @@ module FixtureReplacement
     a.public_transit = 0
     a.carpool = 0
     a.distance_to_destination = 50
+    a.report_code = '1234ABCD'
 	end
 
   attributes_for :report do |a|

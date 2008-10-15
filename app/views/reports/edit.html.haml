@@ -1,0 +1,10 @@
+%p
+  = "Hi #{@pledge.user.first_name},"
+
+%p
+  = "How did you get to school on the week #{@report.start.strftime('%A')}?"
+
+- form_for @report, :url => pledge_report_path( @pledge, @report ) do |f|
+  = render :partial => 'form', :locals => { :f => f }
+  %p.submit
+    = f.submit 'make report'
