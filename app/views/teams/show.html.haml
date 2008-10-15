@@ -1,1 +1,25 @@
-placeholder
+- if logged_in? && pledge = @team.pledges.find_by_user_id( current_user.id )
+  %h2
+    Your pledge:
+    - pledge.commitments.each do |commitment, days|
+      %p 
+        = Pledge::COMMITMENTS.rassoc( commitment ).first
+        = days 
+        days a week
+
+  %h2
+    Your carbon reduction to date:
+  %p
+    = pledge.total_impact
+    lbs of CO2
+    [ Graphic ]
+
+%h2
+  Carbon reduction to date for
+  = @team.name
+%p
+  = @team.score
+  lbs of CO2
+  [ Graphic ]
+
+= render :partial => 'shared/tell_a_friend'

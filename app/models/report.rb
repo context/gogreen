@@ -12,9 +12,11 @@ class Report < ActiveRecord::Base
       end
     end
   end
+
   def actions_data
     report_actions
   end
+
   before_validation :set_action_date
   def set_action_date
     report_actions.each {|r| r.action_date = start + r.position.days}

@@ -6,4 +6,8 @@ class Contest < ActiveRecord::Base
   has_many :pledges, :through => :teams
 
   named_scope :active, :conditions => ["start < :now AND end > :now", {:now => Time.now}]
+
+  def total_impact
+    teams.inject(0) { |total, team| total += team.score }
+  end
 end

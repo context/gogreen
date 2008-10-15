@@ -5,6 +5,7 @@ class Pledge < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
   has_many :reports
+  has_many :report_actions, :through => :reports
   validates_inclusion_of :walk_bike, :in => 0..5
   validates_inclusion_of :public_transit, :in => 0..5
   validates_inclusion_of :carpool, :in => 0..5
@@ -16,6 +17,13 @@ class Pledge < ActiveRecord::Base
   validates_presence_of :team_id
 
   before_create :generate_report_code
+
+  BASELINE_IMPACT_PER_MILE = 20.0
+  COMMITMENTS = [
+      [ "Walking/Biking", 'walk_bike' ],
+      [ "Public Transit", 'public_transit' ],
+      [ "Carpooling", 'carpool' ]
+    ]
 
   def validate_mode_total
     if (walk_bike + public_transit + carpool > 5)
@@ -41,5 +49,22 @@ class Pledge < ActiveRecord::Base
 
   def to_param
     report_code
+  end
+
+  def commitments
+    Hash[ *COMMITMENTS.map { |(text, attr)| [ attr, send( attr ) ] if send( attr ) > 0 }.compact.flatten ]
+  end
+
+
+  def total_impact
+    action_totals = report_actions.count :group => 'mode_of_transport'
+    action_totals.inject( 0.0 ) do | total, ( mode_of_transport, qty )|
+      if mode_of_transport && mode_of_transport == 'carpool'
+        total += (( BASELINE_IMPACT_PER_MILE - ( ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] / ( ( carpool_participants > 0 && carpool_participants ) || 1 ) ) ) * distance_to_destination ) * qty
+      elsif mode_of_transport && ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ]
+        total += (( BASELINE_IMPACT_PER_MILE - ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] ) * distance_to_destination ) * qty
+      end
+      total
+    end
   end
 end

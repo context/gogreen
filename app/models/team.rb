@@ -4,6 +4,8 @@ class Team < ActiveRecord::Base
   has_many :reports, :through => :pledges
 
   def score
-    reports.sum :score
+    pledges.inject(0) do |score, pledge|
+      score += pledge.total_impact
+    end
   end
 end

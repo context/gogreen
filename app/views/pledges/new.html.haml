@@ -63,7 +63,7 @@
                 = "#{day} days"
   %p
     = f.label :carpool_participants, "How many people are usually in your carpool?"
-    = f.select :carpool_participants, (0...6).to_a
+    = f.select :carpool_participants, (1...6).to_a
 
   = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
 

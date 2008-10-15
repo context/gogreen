@@ -1,16 +1,21 @@
-%h1 This contest
-1700 lbs of carbon reduced!
-%img{:src => 'http://www.storyofstuff.com/images/fr-logo.gif', :height => '50px', :style => "border: 2px solid; background-color: yellow; padding: 10px;"}
-%h1 Participating Teams
+%h1 
+  = @contest.name
+%h4
+  = @contest.start.strftime( "%b %d -")
+  = @contest.end.strftime( "%b %d, %Y")
+= @contest.total_impact
+lbs of CO2 reduced!
+.freerange_marker
+  Display total impact for the contest to date
+
+%h2 Participating Teams
 %ul
   - for team in @teams do
     %li
-      Team 
-      = team.name
-      \-- Score
+      %h3
+        = team.name
+      Impact:
       = team.score
       pounds of CO2
-      %img{:src => 'http://www.storyofstuff.com/images/fr-logo.gif', :height => '50px', :style => "border: 2px solid; background-color: yellow; padding: 10px;"}
-    
-    
-  
+      .freerange_marker
+        Display total impact for the team
