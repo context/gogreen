@@ -5,21 +5,25 @@
       %p 
         = Pledge::COMMITMENTS.rassoc( commitment ).first
         = days 
-        days a week
+        days a week, saving
+        = pledge.weekly_commitment_impact
+        lbs of CO2
 
   %h2
     Your carbon reduction to date:
   %p
     = pledge.total_impact
     lbs of CO2
-    [ Graphic ]
+    .freerange_marker
+      = render :partial => 'shared/impact', :locals => { :source => pledge }
 
 %h2
   Carbon reduction to date for
   = @team.name
 %p
-  = @team.score
+  = @team.total_impact
   lbs of CO2
-  [ Graphic ]
+  .freerange_marker
+    = render :partial => 'shared/impact', :locals => { :source => @team }
 
 = render :partial => 'shared/tell_a_friend'

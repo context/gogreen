@@ -1,3 +1,5 @@
+@import settings
+
 .navigation
   :margin 20px
 
@@ -14,8 +16,24 @@
 .freerange_marker
   :background-image url(http://www.storyofstuff.com/images/fr-logo.gif) 
   :background-repeat no-repeat
-  :height 50px
+  :min-height 50px
   :border 2px solid
   :background-color yellow
   :padding 10px
   :opacity .5
+
+.bar_chart 
+  li
+    :list-style none
+  .axis_label
+    :float left
+    :width = !span_4
+  .bar
+    :float left
+    :background-image url(/images/green_bar.gif)
+    :background-position -512px 0px
+    :background-repeat no-repeat
+  .pledge-data
+    :background-image url(/images/red_line.gif)
+    :background-position -5px 0px
+    :background-repeat no-repeat

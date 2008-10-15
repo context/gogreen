@@ -1,0 +1,24 @@
+%h1 
+  = @contest.name
+%h4
+  = @contest.start.strftime( "%b %d -")
+  = @contest.end.strftime( "%b %d, %Y")
+= @contest.total_impact
+lbs of CO2 reduced!
+.freerange_marker
+  Display total impact for the contest to date
+  = render :partial => 'shared/impact', :locals => { :source => @contest }
+
+%h2 Participating Teams
+%ul
+  - for team in @contest.teams do
+    %li
+      %h3
+        = link_to team.name, team_path( team )
+      Impact:
+      = team.total_impact
+      pounds of CO2
+      .freerange_marker
+        Display total impact for the team
+        = render :partial => 'shared/impact', :locals => { :source => team }
+

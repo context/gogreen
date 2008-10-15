@@ -57,7 +57,14 @@ class Pledge < ActiveRecord::Base
 
 
   def total_impact
-    action_totals = report_actions.count :group => 'mode_of_transport'
+    impact_from_actions report_actions
+  end
+
+  def impact_from_actions(report_scope)
+    calculate_impact report_scope.count( :group => 'mode_of_transport' )
+  end
+
+  def calculate_impact( action_totals )
     action_totals.inject( 0.0 ) do | total, ( mode_of_transport, qty )|
       if mode_of_transport && mode_of_transport == 'carpool'
         total += (( BASELINE_IMPACT_PER_MILE - ( ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] / ( ( carpool_participants > 0 && carpool_participants ) || 1 ) ) ) * distance_to_destination ) * qty
@@ -67,4 +74,13 @@ class Pledge < ActiveRecord::Base
       total
     end
   end
+
+  def impact_for_week_starting( week_start )
+    impact_from_actions report_actions.week_starting( week_start )
+  end
+
+  def weekly_commitment_impact
+    calculate_impact commitments
+  end
+
 end

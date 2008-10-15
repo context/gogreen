@@ -3,6 +3,9 @@ class ReportAction < ActiveRecord::Base
   belongs_to :report
   validate :within_reporting_period
   validates_presence_of :action_date
+  named_scope :week_starting, lambda { |start_date|
+    { :conditions => [ 'action_date >= ? AND action_date < ?', start_date, start_date + 5.days ] }
+  }
 
   CO2_IMPACT = {
     :walk_bike => 0,
