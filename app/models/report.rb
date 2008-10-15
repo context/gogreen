@@ -1,7 +1,12 @@
 class Report < ActiveRecord::Base
   belongs_to :pledge
   has_many :report_actions, :order => 'position ASC'
-  validates_uniqueness_of :start, :scope => :pledge_id, :message => " date has already been reported"
+  validates_uniqueness_of :start, :scope => :pledge_id
+
+  before_validation :normalize_start
+  def normalize_start
+    self.start = start.utc.beginning_of_week
+  end
   
   def actions_data=(values)
     values.map do |day_index, action_data|
