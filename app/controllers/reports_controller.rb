@@ -7,8 +7,8 @@ class ReportsController < ApplicationController
     end
     before :new do
       @report.start = Time.now.beginning_of_week
-      if existing_report = @pledge.reports.find_by_start(@report.start)
-        redirect_to edit_pledge_report_path(@pledge, existing_report)
+      if @pledge.current_report
+        redirect_to edit_pledge_report_path(@pledge, @pledge.current_report)
       end
     end
     before :edit do

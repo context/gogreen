@@ -31,6 +31,10 @@ class Pledge < ActiveRecord::Base
     self.report_code = ( ("%04x"*2 ) % ([nil]*2).map { rand(2**16) }).upcase 
   end
 
+  def current_report
+    @current ||= reports.find_by_start(Time.now.beginning_of_week)
+  end
+
   def contest
     team && team.contest || Contest.first
   end
