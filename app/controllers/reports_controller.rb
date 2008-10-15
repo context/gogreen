@@ -16,11 +16,11 @@ class ReportsController < ApplicationController
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
-      redirect_to team_path( @pledge.team )
+      redirect_to edit_pledge_report_path( @pledge, @report )
     end
     response_for :update do
       flash[:notice] = "Your report was updated"
-      redirect_to team_path( @pledge.team )
+      redirect_to edit_pledge_report_path( @pledge, @report )
     end
     response_for :update_failed do
       @report.report_actions.each do |report_action|

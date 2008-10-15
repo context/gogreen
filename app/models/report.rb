@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
   belongs_to :pledge
   has_many :report_actions, :order => 'position ASC'
-  validates_uniqueness_of :start, :scope => :pledge_id
+  validates_uniqueness_of :start, :scope => :pledge_id, :message => " date has already been reported"
   
   def actions_data=(values)
     values.map do |day_index, action_data|
