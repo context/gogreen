@@ -4,7 +4,7 @@ describe Report do
   describe "unsaved" do
     describe "with action data" do
       before do
-        @start_date = Time.now.at_beginning_of_week
+        @start_date = Time.now.utc.at_beginning_of_week
         @report = Report.new :start => @start_date, :actions_data => {'0' => {'mode_of_transport' => 'walk_bike'}, '1' => {'mode_of_transport' => 'walk_bike'}, '2' => {'mode_of_transport' => 'walk_bike'}, '3' => {'mode_of_transport' => 'walk_bike'}, '4' => {'mode_of_transport' => 'walk_bike'}}
       end
       it "should have 5 report actions" do

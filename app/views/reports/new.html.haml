@@ -1,5 +1,6 @@
-%p
-  = render :partial => 'week_nav'
+- unless @pledge.previous_report
+  %p
+    = link_to 'enter a report for last week', new_pledge_report_path(@pledge, :week => 'previous')
 %p
   = "Hi #{@pledge.user.first_name},"
 
