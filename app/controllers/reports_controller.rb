@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
     before :new do
       if (previous_week? && @pledge.previous_report) || @pledge.current_report
         flash[:notice] = 'You already reported for that week'
-        redirect_to pledge_path(@pledge)
+        redirect_to pledge_path(@pledge) unless params[:demo]
       end
       @report.start = previous_week? ? 1.week.ago.utc.beginning_of_week : Time.now.utc.beginning_of_week
     end
