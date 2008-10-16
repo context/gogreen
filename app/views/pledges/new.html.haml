@@ -1,97 +1,91 @@
 = error_messages_for :pledge
+= error_messages_for :user, :object => @pledge.user
 - form_for [@contest, @pledge] do |f|
-  - f.fields_for :user_attributes, @pledge.user do |user|
-    = error_messages_for :user, :object => @pledge.user
-    %p
-      = user.label :first_name
-      = user.text_field :first_name
-    %p
-      = user.label :last_name
-      = user.text_field :last_name
-    %p
-      = user.label :email
-      = user.text_field :email
-    %p
-      = user.label :password
-      = user.password_field :password
-    %p
-      = user.label :password_confirmation
-      = user.password_field :password_confirmation
-  %p
-    = f.label :team
-    = f.select :team_id, team_options(@contest)
-  %p
-    = f.label :car_type, "What kind of car do you drive?"
-    = f.select :car_type, car_type_options
-  -#%p
-    = f.label :car_year, "What year is your car?"
-    = f.select :car_year, car_year_options
-  -#%p
-    = f.label :graduation_year, "When will you graduate from high school?"
-    = f.select :graduation_year, graduation_year_options 
-  %p
-    = f.label :distance_to_destination, "How far away are you from your school in miles?"
-    = f.text_field :distance_to_destination 
 
-  .pledge 
-    Every week I pledge to:
+  %fieldset
+    %legend Contact Info 
+    %p.required
+      = f.label :team
+      = f.select :team_id, team_options(@contest), :include_blank => true
+
+    - f.fields_for :user_attributes, @pledge.user do |user|
+      %p
+        = user.label :first_name
+        = user.text_field :first_name
+      %p
+        = user.label :last_name
+        = user.text_field :last_name
+      %p
+        .info
+          If you are less than 13 years of age please use your parent's email address in this space.
+          For more information on how Go Green Foundation will use your contact info, see our
+          = link_to 'privacy policy', '/privacy.html'
+        = user.label :email
+        = user.text_field :email
+      %p
+        = user.label :password
+        = user.password_field :password
+      %p
+        = user.label :password_confirmation
+        = user.password_field :password_confirmation
+
+  %fieldset
+    %legend Your Car
     %p
-      %table
-        %tr
-          %td
-            = f.label :walk_bike, "Walk/Bike"
-          %td.mode_of_transport
-            - 0.upto(5) do |day|
-              %span.pledge_size_container
-                = f.radio_button 'walk_bike', day, :class => 'pledge_size'
-                = "#{day} days"
-        %tr
-          %td
-            = f.label :public_transit, "Take the bus or train"
-          %td.mode_of_transport
-            - 0.upto(5) do |day|
-              %span.pledge_size_container
-                = f.radio_button 'public_transit', day, :class => 'pledge_size'
-                = "#{day} days"
-        %tr
-          %td
-            = f.label :carpool
-          %td.mode_of_transport
-            - 0.upto(5) do |day|
-              %span.pledge_size_container
-                = f.radio_button 'carpool', day, :class => 'pledge_size'
-                = "#{day} days"
-  %p
-    = f.label :carpool_participants, "How many people are usually in your carpool?"
-    = f.select :carpool_participants, (1...6).to_a
+      = f.label :car_type, "What kind of car do you drive?"
+      = f.select :car_type, car_type_options
+    %p
+      = f.label :distance_to_destination, "How far away are you from your school in miles?"
+      = f.text_field :distance_to_destination 
+
+  %fieldset
+    %legend Your Pledge
+    .pledge 
+      Every week I pledge to:
+      %p
+        %table
+          %tr
+            %td
+              = f.label :walk_bike, "Walk/Bike"
+            %td.mode_of_transport
+              - 0.upto(5) do |day|
+                %span.pledge_size_container
+                  = f.radio_button 'walk_bike', day, :class => 'pledge_size', :'data-points' => (day*20)
+                  %label{ :for => "pledge_walk_bike_#{day}"}
+                    = "#{day} days"
+          %tr
+            %td
+              = f.label :public_transit, "Take the bus or train"
+            %td.mode_of_transport
+              - 0.upto(5) do |day|
+                %span.pledge_size_container
+                  = f.radio_button 'public_transit', day, :class => 'pledge_size', :'data-points' => (day*10)
+                  %label{ :for => "pledge_public_transit_#{day}"}
+                    = "#{day} days"
+          %tr
+            %td
+              = f.label :carpool
+            %td.mode_of_transport
+              - 0.upto(5) do |day|
+                %span.pledge_size_container
+                  = f.radio_button 'carpool', day, :class => 'pledge_size', :'data-points' => (day*5)
+                  %label{ :for => "pledge_carpool_#{day}"}
+                    = "#{day} days"
+        %div.awesomeness
+          .score-good.score{:'data-threshold' => 10}
+            Good
+          .score-better.score{:'data-threshold' => 40}
+            Better
+          .score-amazing.score{:'data-threshold' => 60}
+            Amazing
+          .score-greentastic.score{:'data-threshold' => 90}
+            Green-tastic!
+    %p
+      = f.label :carpool_participants, "How many people are usually in your carpool?"
+      = f.select :carpool_participants, (1...6).to_a
 
   = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
 
 - content_for :dom_ready do
   :plain
-    $('.mode_of_transport .pledge_size').click(function() {
-      var total = 5;
-
-      $('.mode_of_transport .pledge_size:checked').each(function() {
-        if( new Number( $(this).val() ) >  0 ) { total = total - new Number($(this).val()); }
-      });
-      $('.mode_of_transport').each( function() {
-        var row_value = $('.pledge_size:checked', this ).val() || 0;    
-        var limit = new Number( row_value ) + ( total );
-
-        $('.pledge_size', this).each( function() { 
-          if( new Number( $(this).val() ) > limit ) {
-            $(this).attr('disabled', true );
-            $(this).parent('.pledge_size_container').addClass('disabled');
-          } else {
-            $(this).attr('disabled', 0 );
-            $(this).parent('.pledge_size_container').removeClass('disabled');
-          }
-        });
-      });
-
-
-  });
-
-  
-  
+    $('.mode_of_transport .pledge_size').click( pledge_scoring );

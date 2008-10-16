@@ -24,7 +24,7 @@
       #header.container
       #main.container
         = render 'layouts/navigation'
-        #content.span-15
+        #content.span-16
           .content-padding 
             - unless flash[:notice].blank?
               .flash-notice
@@ -36,7 +36,7 @@
       #footer.container
 
     = javascript_include_tag 'jquery/jquery-1.2.6.min.js'
-    =# javascript_include_tag 'application'
+    = javascript_include_tag 'application'
     - javascript_tag do
       $( function() {
       $('.js-hide').addClass('js-hidden').hide();
