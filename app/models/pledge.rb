@@ -16,6 +16,8 @@ class Pledge < ActiveRecord::Base
   validates_numericality_of :distance_to_destination
   validates_presence_of :team_id
 
+  named_scope :active, :joins => :team, :conditions => ["contest_id IN (?)", Contest.active.map {|c| c.id}]
+
   before_create :generate_report_code
 
   BASELINE_IMPACT_PER_MILE = 20.0

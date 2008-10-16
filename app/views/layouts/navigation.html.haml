@@ -1,5 +1,26 @@
-.navigation
-  .pledges_tool
+%ul.navigation
+  - Contest.all.each do |contest|
+    %li
+      = link_to contest.name, contest_path( contest )
+      %ul
+        - contest.teams.each do |team|
+          %li
+            = link_to team.name, team_path( team )
+            = link_to 'pledge', new_team_pledge_path( team )
+
+  - unless logged_in?
+    = link_to 'login', login_path
+  - if logged_in?
+    - current_user.pledges.active.each do |pledge|
+      Your
+      = pledge.contest.name
+      pledge
+      = link_to "report action", new_pledge_report_path( pledge )
+
+  %li.raise
+    = link_to 'Raise Your Voice', industries_path
+
+  -#.pledges_tool
     = link_to 'signup', new_contest_pledge_path(@contest)
     |
     = link_to 'signup thank you', contest_pledges_path(@contest), :method => :post
@@ -17,7 +38,7 @@
     = link_to 'login', new_session_path
     |
     = link_to 'admin dashboard', admin_pledges_path
-  .climate_counts_tool
+  -#.climate_counts_tool
     = link_to 'companies dashboard', companies_path
     |
     = link_to 'company detail', company_path(1)

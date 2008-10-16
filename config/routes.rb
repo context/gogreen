@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pledges, :has_many => :reports
   map.resources :mails
   map.resources :reports
-  map.resources :teams
+  map.resources :teams, :has_many => :pledges
   map.resource :reminder_email
   map.tell_a_friend 'tell_a_friend', :controller => 'tell_a_friend', :action => 'create'
   map.opt_out 'opt_out/:code', :controller => 'opt_out', :action => 'create'

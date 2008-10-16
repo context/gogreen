@@ -6,5 +6,6 @@ class PledgesController < ApplicationController
       flash[:notice] = "Thanks for pledging"
       redirect_to team_path( @pledge.team )
     end
+    belongs_to :team
   end
 end
