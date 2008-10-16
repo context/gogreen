@@ -1,15 +1,10 @@
 class PledgesController < ApplicationController
-  def new
-    @pledge = Pledge.new
-  end
-
-  def create
-    @pledge = Pledge.create(params[:pledge])
-    if @pledge.valid?
+  make_resourceful do
+    actions :new, :create
+    response_for :create do 
       self.current_user = @pledge.user
-    else
-      render :action => 'new'
+      flash[:notice] = "Thanks for pledging"
+      redirect_to team_path( @pledge.team )
     end
   end
-
 end
