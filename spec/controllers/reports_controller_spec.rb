@@ -14,7 +14,7 @@ describe ReportsController do
       end
       it "redirects to report follow-up page" do
         act!
-        response.should redirect_to(pledge_path(@pledge))
+        response.should redirect_to(team_path(@pledge.team))
       end
       it "sets a message in the flash that report has already been created" do
         act!
@@ -81,10 +81,7 @@ describe ReportsController do
       it "should not create a report" do
         lambda { act! }.should_not change(Report, :count)
       end
-      it "should redirect to summary page" do
-        act!
-        response.should redirect_to(pledge_path(@pledge))
-      end
+      it_should_behave_like "redirects to summary page"
     end
     it "should not create a report if we are outside the allowed reporting period"
   end

@@ -20,10 +20,12 @@ module FixtureReplacement
 	end
 
   attributes_for :report do |a|
+    a.start = Time.mktime(2008, 11, 1)
     
 	end
 
   attributes_for :report_action do |a|
+    a.action_date = Time.now.utc.beginning_of_day
       
   end
 

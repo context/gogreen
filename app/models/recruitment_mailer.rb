@@ -3,7 +3,6 @@ class RecruitmentMailer < ActionMailer::Base
     subject       "Your friend wants you to Go Green!"
     recipients    options[:recipients]
     body          :text => options[:body],
-                    :contest => options[:contest],
-                    :host => options[:host]
+                    :contest => options[:contest]
   end
 end

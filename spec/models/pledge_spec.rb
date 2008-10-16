@@ -46,4 +46,15 @@ describe Pledge do
       end
     end
   end
+
+  describe "when calculating a score" do
+    before do
+      @pledge = create_pledge
+    end
+    it "total impact is correct" do
+      @pledge.reports << create_report
+      @pledge.reports.first.report_actions << new_report_action(:mode_of_transport => 'walk_bike')
+      @pledge.total_impact.should > 0.0
+    end
+  end
 end
