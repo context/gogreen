@@ -1,6 +1,6 @@
 Contest.seed(:name) do |c|
-  c.name = 'Spare The Air'
-  c.permalink = 'spare-the-air'
+  c.name = 'Spare Our Planet'
+  c.permalink = 'spare-our-planet'
   #c.start = Time.mktime(2008, 11, 1)
   #c.end = Time.mktime(2008, 12, 15)
   c.start = Time.mktime(2008, 10, 1)
