@@ -3,22 +3,27 @@
 %h4
   = @contest.start.strftime( "%b %d -")
   = @contest.end.strftime( "%b %d, %Y")
-= @contest.total_impact
-lbs of CO2 reduced!
+%h2 
+  Total Impact:
+  = @contest.total_impact
+  lbs of CO2 reduced!
 .freerange_marker
   Display total impact for the contest to date
   = render :partial => 'shared/impact', :locals => { :source => @contest }
 
-%h2 Participating Teams
-%ul
-  - for team in @contest.teams do
-    %li
-      %h3
-        = link_to team.name, team_path( team )
-      Impact:
-      = team.total_impact
-      pounds of CO2
-      .freerange_marker
-        Display total impact for the team
-        = render :partial => 'shared/impact', :locals => { :source => team }
+%h2 Top Teams
+.freerange_marker
+  %ul.bar_chart.plain
+    - for team in @contest.teams do
+      %li.team_impact
+        .axis_label
+          = link_to team.name, team_path( team )
+        - team_impact = team.total_impact
+
+        .bar{ :style => "background-position: #{ -512 + (team_impact.to_i/3)}px 0;" }
+          .pledge-data
+            = team_impact
+            pounds of CO2
+
+        .clear
 

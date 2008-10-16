@@ -1,3 +1,6 @@
+%h1
+  = @team.name
+
 - if logged_in? && pledge = @team.pledges.find_by_user_id( current_user.id )
   %h2
     Your pledge:
@@ -10,7 +13,7 @@
         lbs of CO2
 
   %h2
-    Your carbon reduction to date:
+    Your impact:
   %p
     = pledge.total_impact
     lbs of CO2
@@ -18,8 +21,7 @@
       = render :partial => 'shared/impact', :locals => { :source => pledge }
 
 %h2
-  Carbon reduction to date for
-  = @team.name
+  Team impact
 %p
   = @team.total_impact
   lbs of CO2
