@@ -5,6 +5,7 @@ describe ReportsController do
   describe "new" do
     before do
       @pledge = create_pledge
+      controller.stub!(:current_user).and_return( @pledge.user )
     end
 
     describe "redirects to summary page", :shared => true do
@@ -18,7 +19,7 @@ describe ReportsController do
       end
       it "sets a message in the flash that report has already been created" do
         act!
-        flash[:notice].should_not be_empty
+        flash[:notice].should_not be_blank
       end
     end
 
@@ -70,6 +71,7 @@ describe ReportsController do
   describe "create" do
     before do
       @pledge = create_pledge
+      controller.stub!(:current_user).and_return( @pledge.user )
     end
     def act!
       post :create, :pledge_id => @pledge.to_param, :report => {:start => Time.now.utc.beginning_of_week}
