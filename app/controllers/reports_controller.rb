@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
-      redirect_to team_path( @pledge.team )
+      redirect_to contest_team_path( @pledge.team.contest, @pledge.team )
     end
   end
 
