@@ -1,3 +1,5 @@
+%p
+  = @contest && @contest.intro_text
 = error_messages_for :pledge
 = error_messages_for :user, :object => @pledge.user
 - form_for [@contest, @pledge] do |f|
@@ -35,7 +37,7 @@
       = f.label :car_type, "What kind of car do you drive?"
       = f.select :car_type, car_type_options
     %p
-      = f.label :distance_to_destination, "How far away are you from your school in miles?"
+      = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
       = f.text_field :distance_to_destination 
 
   %fieldset

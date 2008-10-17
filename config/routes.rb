@@ -32,11 +32,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :contests do |contest|
     contest.resources :pledges
+    contest.resources :teams, :has_many => :pledges
   end
   map.resources :pledges, :has_many => :reports
   map.resources :mails
   map.resources :reports
-  map.resources :teams, :has_many => :pledges
+  map.resources :teams
   map.resource :reminder_email
   map.tell_a_friend 'tell_a_friend', :controller => 'tell_a_friend', :action => 'create'
   map.opt_out 'opt_out/:code', :controller => 'opt_out', :action => 'create'
@@ -49,6 +50,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :pledges, :has_many => :report_reminders
     admin.resources :users
+    admin.resources :contests, :has_many => [ :pledges, :teams ]
+    admin.resources :teams
   end
 
   map.connect '/admin', :controller => 'admin/pledges'

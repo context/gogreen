@@ -1,17 +1,15 @@
-.navigation
-  %ul.contests
-    - Contest.all.each do |contest|
+#navigation.span-7
+  - if current_user.superuser?
+    %ul.admin_menu
+      %h4 Administration
       %li
-        = link_to contest.name, contest_path( contest )
-        %ul
-          - contest.teams.each do |team|
-            %li
-              = link_to team.name, team_path( team )
-              = link_to 'pledge', new_team_pledge_path( team )
-    %li.raise
-      = link_to 'Raise Your Voice', industries_path
-
-
+        = link_to "pledges", admin_pledges_path
+      %li
+        = link_to "contests", admin_contests_path
+        = link_to "new", new_admin_contest_path, :class => 'new button'
+      -#
+        %li
+          = link_to "teams", admin_teams_path 
 
   %ul.current_user
     - unless logged_in?
@@ -35,16 +33,22 @@
       %li
         = link_to 'logout', logout_path
 
-  - if current_user.superuser?
-    %ul.admin_menu
-      %h4 Administration
+  %ul.contests
+    %h4 Contests
+    - Contest.all.each do |contest|
       %li
-        = link_to "pledges", admin_pledges_path
-      -#  
-        %li
-          = link_to "contests", admin_contests_path
-        %li
-          = link_to "teams", admin_teams_path 
+        = link_to contest.name, contest_path( contest )
+        %ul
+          - contest.teams.each do |team|
+            %li
+              = link_to team.name, team_path( team )
+              = link_to 'pledge', new_contest_team_pledge_path( contest, team )
+    %li.raise
+      = link_to 'Raise Your Voice', industries_path
+
+
+
+
 
   -#.climate_counts_tool
     = link_to 'companies dashboard', companies_path

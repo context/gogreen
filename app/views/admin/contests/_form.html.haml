@@ -1,0 +1,18 @@
+%p
+  = f.label :start, "Start Date"
+  = f.date_select :start
+%p
+  = f.label :end, "End Date"
+  = f.date_select :end
+%p
+  = f.label :distance_question_text
+  = f.text_area :distance_question_text, :class => 'minor'
+%p
+  = f.label :email_text, "Report Reminder Message"
+  = f.text_area :email_text
+%p
+  = f.label :intro_text, "Pledge Page Introduction"
+  = f.text_area :intro_text
+%p
+  = f.label :tell_a_friend_default, "Tell A Friend default message"
+  = f.text_area :tell_a_friend_default

@@ -23,7 +23,6 @@
     #outer-container
       #header.container
       #main.container
-        = render 'layouts/navigation'
         #content.span-16
           .content-padding 
             - unless flash[:notice].blank?
@@ -33,6 +32,7 @@
               .flash-error
                 = flash[:error]
             = yield
+        = render 'layouts/navigation'
       #footer.container
 
     = javascript_include_tag 'jquery/jquery-1.2.6.min.js'
