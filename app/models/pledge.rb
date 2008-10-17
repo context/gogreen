@@ -73,7 +73,7 @@ class Pledge < ActiveRecord::Base
   def calculate_impact( action_totals )
     action_totals.inject( 0.0 ) do | total, ( mode_of_transport, qty )|
       if mode_of_transport && mode_of_transport == 'carpool'
-        total += (( BASELINE_IMPACT_PER_MILE - ( ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] / ( ( carpool_participants > 0 && carpool_participants ) || 1 ) ) ) * distance_to_destination ) * qty
+        total += (( BASELINE_IMPACT_PER_MILE - ( ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] / ( ( carpool_participants || 1 ) + 1 ) ) ) * distance_to_destination ) * qty
       elsif mode_of_transport && ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ]
         total += (( BASELINE_IMPACT_PER_MILE - ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] ) * distance_to_destination ) * qty
       end
@@ -103,4 +103,7 @@ class Pledge < ActiveRecord::Base
     carpool_participants, car_type, distance_to_destination ]
   end
 
+  def contest
+    team.contest
+  end
 end

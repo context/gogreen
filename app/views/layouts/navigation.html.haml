@@ -20,7 +20,7 @@
           = pledge.contest.name
           %br
           Your team:
-          = link_to pledge.team.name, contest_team_path( pledge.team.contest, pledge.team )
+          = link_to pledge.team.name, team_path( pledge.team )
           %br
           = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
           %br
@@ -36,11 +36,11 @@
     - Contest.all.each do |contest|
       %li
         = link_to contest.name, contest_path( contest )
+        = link_to 'pledge', new_contest_pledge_path( contest ) unless logged_in? && contest.pledges.find_by_user_id(current_user.id)
         %ul
           - contest.teams.each do |team|
             %li
-              = link_to team.name, contest_team_path( contest, team )
-              = link_to 'pledge', new_contest_team_pledge_path( contest, team )
+              = link_to team.name, team_path( team )
     %li.raise
       = link_to 'Raise Your Voice', industries_path
 

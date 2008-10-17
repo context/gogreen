@@ -3,16 +3,15 @@
   %fieldset
     %legend
       Your Details
-    %ol
-      %li
-        = label_tag 'login', 'Email'
-        = text_field_tag 'login', @login
-      %li
-        = label_tag 'password'
-        = password_field_tag 'password', nil
-      %li
-        = label_tag 'remember_me', 'Remember me'
-        = check_box_tag 'remember_me', '1', @remember_me
+    %p
+      = label_tag 'login', 'Email'
+      = text_field_tag 'login', @login
+    %p
+      = label_tag 'password'
+      = password_field_tag 'password', nil
+    %p.checkbox
+      = check_box_tag 'remember_me', '1', @remember_me
+      = label_tag 'remember_me', 'Remember me'
   .buttons
     = submit_tag 'Login'
     = link_to 'Forgotten Password', forgot_password_path

@@ -3,13 +3,10 @@ class ReportsController < ApplicationController
   make_resourceful do
     belongs_to :pledge
     actions :new, :create, :index
-    before :all do
-      self.current_user = @pledge.user
-    end
     before :new do
       if (previous_week? && @pledge.previous_report) || (!previous_week? && @pledge.current_report)
         flash[:notice] = 'You already reported for that week'
-        redirect_to contest_team_path(@pledge.team.contest, @pledge.team )
+        redirect_to team_path( @pledge.team )
       end
       @report.start = previous_week? ? 1.week.ago.utc.beginning_of_week : Time.now.utc.beginning_of_week
     end
@@ -23,7 +20,7 @@ class ReportsController < ApplicationController
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
-      redirect_to contest_team_path( @pledge.team.contest, @pledge.team )
+      redirect_to team_path( @pledge.team )
     end
   end
 
@@ -33,6 +30,11 @@ class ReportsController < ApplicationController
 
   def previous_week?
     params[:week] == "previous"
+  end
+
+  def login_required
+    self.current_user = @pledge.user if @pledge = parent_object
+    super
   end
 
   def parent_object
