@@ -16,7 +16,7 @@ class Pledge < ActiveRecord::Base
   validates_numericality_of :distance_to_destination
   validates_presence_of :team_id
 
-  named_scope :active, :joins => :team, :conditions => ["contest_id IN (?)", Contest.active.map {|c| c.id}]
+  named_scope :active, :include => :team, :conditions => ["teams.contest_id IN (?)", Contest.active.map {|c| c.id}]
 
   before_create :generate_report_code
 
@@ -42,11 +42,11 @@ class Pledge < ActiveRecord::Base
   end
 
   def current_report
-    @current ||= reports.find_by_start(Time.now.beginning_of_week)
+    @current ||= reports.find_by_start(Time.now.utc.beginning_of_week)
   end
 
   def previous_report
-    @previous ||= reports.find_by_start(Time.now.beginning_of_week - 1.week)
+    @previous ||= reports.find_by_start(Time.now.utc.beginning_of_week - 1.week)
   end
 
   def contest

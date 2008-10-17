@@ -1,41 +1,51 @@
-%ul.navigation
-  - Contest.all.each do |contest|
-    %li
-      = link_to contest.name, contest_path( contest )
-      %ul
-        - contest.teams.each do |team|
-          %li
-            = link_to team.name, team_path( team )
-            = link_to 'pledge', new_team_pledge_path( team )
+.navigation
+  %ul.contests
+    - Contest.all.each do |contest|
+      %li
+        = link_to contest.name, contest_path( contest )
+        %ul
+          - contest.teams.each do |team|
+            %li
+              = link_to team.name, team_path( team )
+              = link_to 'pledge', new_team_pledge_path( team )
+    %li.raise
+      = link_to 'Raise Your Voice', industries_path
 
-  - unless logged_in?
-    = link_to 'login', login_path
-  - if logged_in?
-    - current_user.pledges.active.each do |pledge|
-      Your
-      = pledge.contest.name
-      pledge
-      = link_to "report action", new_pledge_report_path( pledge )
 
-  %li.raise
-    = link_to 'Raise Your Voice', industries_path
 
-  -#.pledges_tool
-    = link_to 'signup', new_contest_pledge_path(@contest)
-    |
-    = link_to 'signup thank you', contest_pledges_path(@contest), :method => :post
-    |
-    = link_to 'leader board', contest_path(@contest)
-    |
-    = link_to 'reminder email', reminder_email_path
-    |
-    = link_to 'report', new_pledge_report_path( Pledge.first )
-    |
-    -#= link_to 'report thank you', pledge_reports_path( :pledge => { :car_type => 'suv', :user_id => User.find_by_first_name('Test').to_param, :contest_id => @contest }), :method => :post
-    |
-    = link_to 'login', new_session_path
-    |
-    = link_to 'admin dashboard', admin_pledges_path
+  %ul.current_user
+    - unless logged_in?
+      = link_to 'login', login_path
+
+    - if logged_in? && !current_user.pledges.active.empty?
+      %h4 Your pledges
+      - current_user.pledges.active.each do |pledge|
+        %li
+          = pledge.contest.name
+          %br
+          Your team:
+          = link_to pledge.team.name, team_path( pledge.team )
+          %br
+          = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
+          %br
+          = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
+
+
+    - if logged_in?
+      %li
+        = link_to 'logout', logout_path
+
+  - if current_user.superuser?
+    %ul.admin_menu
+      %h4 Administration
+      %li
+        = link_to "pledges", admin_pledges_path
+      -#  
+        %li
+          = link_to "contests", admin_contests_path
+        %li
+          = link_to "teams", admin_teams_path 
+
   -#.climate_counts_tool
     = link_to 'companies dashboard', companies_path
     |

@@ -1,4 +1,4 @@
-- unless @pledge.previous_report
+- unless @pledge.previous_report || previous_week?
   %p
     = link_to 'enter a report for last week', new_pledge_report_path(@pledge, :week => 'previous')
 %p

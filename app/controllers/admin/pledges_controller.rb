@@ -1,4 +1,4 @@
-class Admin::PledgesController < ApplicationController
+class Admin::PledgesController < AdminController
   make_resourceful do
     actions :index
   end

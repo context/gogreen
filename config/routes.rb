@@ -44,9 +44,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :companies
   map.resources :industries
   # Home Page
-  map.root :new_contest_pledge
+  map.root :contests
 
   map.namespace :admin do |admin|
     admin.resources :pledges, :has_many => :report_reminders
   end
+
+  map.connect '/admin', :controller => 'admin/pledges'
+
+  #map.admin '/odmin', :pledges, :namespace => 'admin'
 end

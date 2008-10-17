@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
       self.current_user = @pledge.user
     end
     before :new do
-      if (previous_week? && @pledge.previous_report) || @pledge.current_report
+      if (previous_week? && @pledge.previous_report) || (!previous_week? && @pledge.current_report)
         flash[:notice] = 'You already reported for that week'
         redirect_to team_path(@pledge.team )
       end
@@ -15,8 +15,10 @@ class ReportsController < ApplicationController
     response_for :create_fails do
       if @report.errors.on(:start) # || @report.errors indicates reporting period problem
         flash[:notice] = 'You already reported for that week'
-        redirect_to team_path( @pledge.team )
+      elsif @report.report_actions.any? {|action| !action.errors.empty?}
+        flash[:notice] = 'You can only report on actions taken this or last week'
       end
+      redirect_to team_path( @pledge.team )
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
@@ -25,6 +27,8 @@ class ReportsController < ApplicationController
   end
 
   protected
+
+  helper_method :previous_week?
 
   def previous_week?
     params[:week] == "previous"

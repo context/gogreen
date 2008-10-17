@@ -27,9 +27,4 @@ class ApplicationController < ActionController::Base
   def set_mailer_base_url
     ActionMailer::Base.default_url_options[:host] = request.host
   end
-
-  def admin_required
-    #current_user.superuser?
-    true
-  end
 end
