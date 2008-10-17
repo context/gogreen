@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
       elsif @report.report_actions.any? {|action| !action.errors.empty?}
         flash[:notice] = 'You can only report on actions taken this or last week'
       end
-      redirect_to contest_team_path( @pledge.team.contest, @pledge.team )
+      redirect_to team_path( @pledge.team )
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
