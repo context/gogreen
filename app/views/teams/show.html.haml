@@ -4,13 +4,15 @@
 - if logged_in? && pledge = @team.pledges.find_by_user_id( current_user.id )
   %h2
     Your pledge:
-    - pledge.commitments.each do |commitment, days|
-      %p 
-        = Pledge::COMMITMENTS.rassoc( commitment ).first
-        = days 
-        days a week, saving
-        = pledge.weekly_commitment_impact
-        lbs of CO2
+  - pledge.commitments.each do |commitment, days|
+    %p 
+      = Pledge::COMMITMENTS.rassoc( commitment ).first
+      = days 
+      days a week
+  %p
+    Saving
+    = pledge.weekly_commitment_impact
+    lbs of CO2
 
   %h2
     Your impact:
@@ -28,4 +30,4 @@
   .freerange_marker
     = render :partial => 'shared/impact', :locals => { :source => @team }
 
-= render :partial => 'shared/tell_a_friend'
+= render :partial => 'shared/tell_a_friend', :locals => { :source => @team }

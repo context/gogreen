@@ -38,9 +38,9 @@
       = f.select :car_type, car_type_options
     %p
       = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
-      = f.text_field :distance_to_destination 
+      = f.select :distance_to_destination, (1..29).to_a + [['30+', 40]]
 
-  %fieldset
+  %fieldset.freerange_marker
     %legend Your Pledge
     .pledge 
       Every week I pledge to:
@@ -73,7 +73,7 @@
                   = f.radio_button 'carpool', day, :class => 'pledge_size', :'data-points' => (day*5)
                   %label{ :for => "pledge_carpool_#{day}"}
                     = "#{day} days"
-        %div.awesomeness
+        .awesomeness
           .score-good.score{:'data-threshold' => 10}
             Good
           .score-better.score{:'data-threshold' => 40}
@@ -82,8 +82,10 @@
             Amazing
           .score-greentastic.score{:'data-threshold' => 90}
             Green-tastic!
+        .clear-pledge.js-only
+          = link_to 'clear pledge', '', :id => 'clear_pledge_button'
     %p
-      = f.label :carpool_participants, "How many people are usually in your carpool?"
+      = f.label :carpool_participants, "How many other people are usually in your carpool?"
       = f.select :carpool_participants, (1...6).to_a
 
   = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
@@ -91,3 +93,7 @@
 - content_for :dom_ready do
   :plain
     $('.mode_of_transport .pledge_size').click( pledge_scoring );
+    $('#clear_pledge_button').click( function() { 
+      $('.mode_of_transport .pledge_size[value=0]').click();
+      return false;
+    });

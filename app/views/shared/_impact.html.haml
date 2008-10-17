@@ -8,18 +8,20 @@
         = source.weekly_commitment_impact
         lbs of CO2
   .clear
-  - @contest.weeks.each do |week_start|
-    %li.week_impact
-      .axis_label
-        Week of 
-        = week_start.strftime( "%b %d")
-        \:
-      - weekly_impact = source.impact_for_week_starting week_start
+  - contest = source.is_a?( Contest ) ? source : source.contest
+  - if contest
+    - contest.weeks.each do |week_start|
+      %li.week_impact
+        .axis_label
+          Week of 
+          = week_start.strftime( "%b %d")
+          \:
+        - weekly_impact = source.impact_for_week_starting week_start
 
-      .bar{ :style => "background-position: #{ -512 + (weekly_impact.to_i/3)}px 0;" }
-        .pledge-data{ :style => "background-position: #{ (source.weekly_commitment_impact.to_i/3)}px 0;" }
-          = weekly_impact
-          pounds of CO2
+        .bar{ :style => "background-position: #{ -512 + (weekly_impact.to_i/3)}px 0;" }
+          .pledge-data{ :style => "background-position: #{ (source.weekly_commitment_impact.to_i/3)}px 0;" }
+            = weekly_impact
+            pounds of CO2
 
-      .clear
+        .clear
 
