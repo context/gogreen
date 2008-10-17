@@ -1,0 +1,6 @@
+%h1 New Team
+- form_for @team, :url => admin_teams_path do |f|
+  = render :partial => 'form', :locals => {:f => f }
+  %p.submit
+    = f.submit "Create"
+

@@ -1,0 +1,13 @@
+%h1 Edit Team
+- form_for @team, :url => admin_team_path(@team) do |f|
+  = render :partial => 'form', :locals => {:f => f }
+  %p.submit
+    = f.submit "Update"
+
+- unless @team.pledges.empty?
+  %h4 Pledges
+  %ul
+    - for pledge in @team.pledges
+      %li
+        = render :partial => 'admin/pledges/pledge', :object => pledge
+

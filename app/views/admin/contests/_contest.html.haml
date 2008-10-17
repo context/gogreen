@@ -1,1 +1,6 @@
 = link_to contest.name, edit_admin_contest_path( contest )
+- unless contest.teams.empty?
+  %ul
+    - for team in contest.teams
+      %li
+        = render :partial => 'admin/teams/team', :object => team

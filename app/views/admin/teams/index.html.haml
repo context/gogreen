@@ -1,0 +1,5 @@
+%h1 Teams
+%ul
+  - for team in @teams
+    %li
+      = render :partial => 'team', :object => team

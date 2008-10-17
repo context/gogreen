@@ -21,4 +21,8 @@ module PledgesHelper
     [ [ "None of these ( holiday, sick day, etc )", 'none' ],
       [ "I drove/was driven", 'driving' ]]  + Pledge::COMMITMENTS
   end
+
+  def contest_options
+    Contest.all.map { |c| [ c.name, c.id ] }
+  end
 end

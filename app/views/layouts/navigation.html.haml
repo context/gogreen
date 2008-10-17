@@ -6,10 +6,8 @@
         = link_to "pledges", admin_pledges_path
       %li
         = link_to "contests", admin_contests_path
-        = link_to "new", new_admin_contest_path, :class => 'new button'
-      -#
-        %li
-          = link_to "teams", admin_teams_path 
+        = link_to "new team", new_admin_team_path, :class => 'new button'
+        = link_to "new contest", new_admin_contest_path, :class => 'new button'
 
   %ul.current_user
     - unless logged_in?
