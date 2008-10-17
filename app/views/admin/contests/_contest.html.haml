@@ -1,4 +1,6 @@
 = link_to contest.name, edit_admin_contest_path( contest )
+.pledges
+  = link_to "export pledges", formatted_admin_contest_pledges_path( :format => 'csv', :contest_id => contest )
 - unless contest.teams.empty?
   %ul
     - for team in contest.teams

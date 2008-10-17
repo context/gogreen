@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def set_contest
     @contest = Contest.find_by_id(params[:contest_id]) if params[:contest_id]
-    @contest ||= Contest.find(:first)
+    #@contest ||= Contest.find(:first)
   end
 
   def set_mailer_base_url

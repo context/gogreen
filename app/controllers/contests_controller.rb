@@ -3,6 +3,10 @@ class ContestsController < ApplicationController
     actions :show
   end
   def index
-    redirect_to contest_path( Contest.first )
+    unless Contest.active.empty?
+      redirect_to contest_path( Contest.active.first )
+    else
+      redirect_to contest_path( Contest.first )
+    end
   end
 end
