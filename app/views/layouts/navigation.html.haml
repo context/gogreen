@@ -1,5 +1,5 @@
 #navigation.span-7
-  - if current_user.superuser?
+  - if logged_in? && current_user.superuser?
     %ul.admin_menu
       %h4 Administration
       %li
