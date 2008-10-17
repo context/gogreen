@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
     before :new do
       if (previous_week? && @pledge.previous_report) || (!previous_week? && @pledge.current_report)
         flash[:notice] = 'You already reported for that week'
-        redirect_to team_path(@pledge.team )
+        redirect_to contest_team_path(@pledge.team.contest, @pledge.team )
       end
       @report.start = previous_week? ? 1.week.ago.utc.beginning_of_week : Time.now.utc.beginning_of_week
     end
@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
       elsif @report.report_actions.any? {|action| !action.errors.empty?}
         flash[:notice] = 'You can only report on actions taken this or last week'
       end
-      redirect_to team_path( @pledge.team )
+      redirect_to contest_team_path( @pledge.team.contest, @pledge.team )
     end
     response_for :create do
       flash[:notice] = "Thanks for pitching in"
