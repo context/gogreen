@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_filter :login_required
   make_resourceful do
     belongs_to :pledge
     actions :new, :create, :index

@@ -48,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :pledges, :has_many => :report_reminders
+    admin.resources :users
   end
 
   map.connect '/admin', :controller => 'admin/pledges'

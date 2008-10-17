@@ -9,4 +9,11 @@
 .toolbar
   - form_for 'send_reminder', :url => admin_pledge_report_reminders_path( pledge) do |f|
     = f.submit "Send Login", :class => 'email button'
-  = link_to 'disable account', "disable_button", :class => 'disable button', :onclick => "alert('Account was disabled'); return false;"
+  - form_for pledge.user, :url => admin_user_path(pledge.user) do |f|
+    = f.hidden_field 'disabled', :value => pledge.user.disabled? ? '0' : '1'
+    = f.submit "#{pledge.user.disabled? ? 'Enable' : 'Disable'} Account", :class => 'disable button'
+  - form_for pledge.user, :url => admin_user_path(pledge.user) do |f|
+    = f.hidden_field 'receive_email', :value => pledge.user.receive_email ? '0' : '1'
+    = f.submit "#{pledge.user.receive_email? ? 'Block' : 'Enable'} Emails", :class => 'optout button'
+
+.clear

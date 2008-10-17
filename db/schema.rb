@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081016235420) do
+ActiveRecord::Schema.define(:version => 20081017001947) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20081016235420) do
     t.boolean  "receive_email"
     t.string   "opt_out_code"
     t.boolean  "superuser"
+    t.boolean  "disabled"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
