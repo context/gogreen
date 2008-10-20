@@ -3,6 +3,7 @@ class ContestsController < ApplicationController
     actions :show
   end
   def index
+    flash.keep
     unless Contest.active.empty?
       redirect_to contest_path( Contest.active.first )
     else
