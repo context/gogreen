@@ -57,7 +57,7 @@
                     = "#{day} days"
           %tr
             %td
-              = f.label :public_transit, "Take the bus or train"
+              = f.label :public_transit, "Take the bus"
             %td.mode_of_transport
               - 0.upto(5) do |day|
                 %span.pledge_size_container
@@ -84,9 +84,18 @@
             Green-tastic!
         .clear-pledge.js-only
           = link_to 'clear pledge', '', :id => 'clear_pledge_button'
+
+  %fieldset
+    %legend Carpool (if you said carpool)
     %p
       = f.label :carpool_participants, "How many other people are usually in your carpool?"
       = f.select :carpool_participants, (1...6).to_a
+    %p
+      = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
+      = f.select :carpool_car_type, car_type_options
+    %p
+      = f.label :carpool_distance, "How many miles is your carpool route?"
+      = f.select :carpool_distance, (1..29).to_a + [['30+', 40]]
 
   = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
 

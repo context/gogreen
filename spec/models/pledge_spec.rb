@@ -51,10 +51,49 @@ describe Pledge do
     before do
       @pledge = create_pledge
     end
-    it "total impact is correct" do
+    it "total impact is positive" do
       @pledge.reports << create_report
       @pledge.reports.first.report_actions << new_report_action(:mode_of_transport => 'walk_bike')
       @pledge.total_impact.should > 0.0
     end
+    describe "carpool output" do
+      it "works for small cars" do
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'small', :carpool_participants => 3)
+        tenths(p.pounds_used_by_carpool).should == 2.9
+      end
+      it "works for pickups" do
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_participants => 3)
+        tenths(p.pounds_used_by_carpool).should == 5.0
+      end
+      it "increases for pickups when you subtract people" do
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_participants => 2)
+        tenths(p.pounds_used_by_carpool).should > 2.5
+      end
+    end
+    describe "when taking the bus" do
+      it "is about a quarter of the distance in miles" do
+        p = new_pledge(:distance_to_destination => 5)
+        tenths(p.pounds_used_by_bus).should == 2.5
+      end
+    end
+    describe "when taking the large car" do
+      it "uses 1 gallon every 20 miles" do
+        p = new_pledge(:distance_to_destination => 10, :car_type => :large )
+        tenths(p.pounds_used_by_driving).should == tenths( Pledge::BASELINE_IMPACT_PER_GALLON )
+      end
+      it "uses 2 gallons every 40 miles" do
+        p = new_pledge(:distance_to_destination => 20, :car_type => :large )
+        tenths(p.pounds_used_by_driving).should == tenths( 2 * Pledge::BASELINE_IMPACT_PER_GALLON )
+      end
+    end
+    describe "when staying home" do
+      it "is no pounds" do
+        p = new_pledge(:distance_to_destination => 20, :car_type => :large )
+        tenths(p.pounds_used_by_none).should == 0
+      end
+    end
+  end
+  def tenths( num ) 
+     (num * 10).round.to_f / 10
   end
 end
