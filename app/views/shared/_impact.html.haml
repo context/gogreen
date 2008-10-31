@@ -5,7 +5,7 @@
     .bar
       .pledge-data{ :style => "background-position: #{ (source.weekly_commitment_impact.to_i/3)}px 0; padding-left: #{ 8 + (source.weekly_commitment_impact.to_i/3)}px;" }
         Weekly commitment:
-        = source.weekly_commitment_impact.round_to(1)
+        = source.weekly_commitment_impact.to_f.round_to(1)
         lbs of CO2
   .clear
   - contest = source.is_a?( Contest ) ? source : source.contest
@@ -16,7 +16,7 @@
           Week of 
           = week_start.strftime( "%b %d")
           \:
-        - weekly_impact = source.impact_for_week_starting(week_start).round_to(1)
+        - weekly_impact = ( source.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1)
 
         .bar{ :style => "background-position: #{ -512 + (weekly_impact.to_i/3)}px 0;" }
           .pledge-data{ :style => "background-position: #{ (source.weekly_commitment_impact.to_i/3)}px 0;" }

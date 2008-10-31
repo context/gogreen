@@ -24,7 +24,7 @@ class Pledge < ActiveRecord::Base
   MPG = HashWithIndifferentAccess.new(
     :hybrid => 40,
     :small  => 29,
-    :mid    => 26,
+    :med    => 26,
     :not_sure => 26,
     :large  => 20,
     :truck  => 17  )

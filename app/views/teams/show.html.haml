@@ -13,13 +13,13 @@
     ==Instead of driving #{pledge.destination_round_trip.round} miles every day by yourself
   %p
     Saving
-    = pledge.weekly_commitment_impact.round_to(1)
+    = pledge.weekly_commitment_impact.to_f.round_to(1)
     lbs of CO2
 
   %h2
     Your impact:
   %p
-    = pledge.total_impact.round_to(1)
+    = pledge.total_impact.to_f.round_to(1)
     lbs of CO2
     .freerange_marker
       = render :partial => 'shared/impact', :locals => { :source => pledge }
@@ -27,7 +27,7 @@
 %h2
   Team impact
 %p
-  = @team.total_impact.round_to(1)
+  = @team.total_impact.to_f.round_to(1)
   lbs of CO2
   .freerange_marker
     = render :partial => 'shared/impact', :locals => { :source => @team }
