@@ -88,8 +88,8 @@
   %fieldset
     %legend Carpool (if you said carpool)
     %p
-      = f.label :carpool_participants, "How many other people are usually in your carpool?"
-      = f.select :carpool_participants, (1...6).to_a
+      = f.label :carpool_additional_passengers, "How many other people are usually in your carpool?"
+      = f.select :carpool_additional_passengers, (1...6).to_a
     %p
       = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
       = f.select :carpool_car_type, car_type_options

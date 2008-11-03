@@ -58,15 +58,15 @@ describe Pledge do
     end
     describe "carpool output" do
       it "works for small cars" do
-        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'small', :carpool_participants => 3)
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'small', :carpool_additional_passengers => 2)
         tenths(p.pounds_used_by_carpool).should == 2.9
       end
       it "works for pickups" do
-        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_participants => 3)
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_additional_passengers => 2)
         tenths(p.pounds_used_by_carpool).should == 5.0
       end
       it "increases for pickups when you subtract people" do
-        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_participants => 2)
+        p = new_pledge(:carpool_distance => 5, :carpool_car_type => 'truck', :carpool_additional_passengers => 2)
         tenths(p.pounds_used_by_carpool).should > 2.5
       end
     end
@@ -90,6 +90,44 @@ describe Pledge do
       it "is no pounds" do
         p = new_pledge(:distance_to_destination => 20, :car_type => :large )
         tenths(p.pounds_used_by_none).should == 0
+      end
+    end
+    describe "total pledged impact" do
+      describe "baseline" do
+        before do
+          @pledge = new_pledge( :distance_to_destination => 10, :car_type => 'truck' )
+        end
+        it "is standard" do
+          tenths( @pledge.pounds_used_by_driving ).should == 29.8
+        end
+      end
+      describe "pounds saved by 2 days of walking" do
+        before do
+          @days_walking = 1
+          @pledge = new_pledge :distance_to_destination => 10, :car_type => 'truck', :walk_bike => @days_walking
+        end
+        it "is the total output of yr car" do
+          @pledge.weekly_commitment_impact.should == @pledge.pounds_used_by_driving * @days_walking
+        end
+      end
+      describe "pounds saved by 2 days of carpooling" do
+        before do
+          @pledge = new_pledge :distance_to_destination => 10, :car_type => 'truck', :carpool_distance => 12, :carpool_car_type => 'truck', :carpool_additional_passengers => 1
+        end
+        it "is the difference between cars and routes" do
+          tenths(@pledge.pounds_used_by_carpool).should == 17.9
+        end
+      end
+    end
+    describe "carpooling 1 day" do
+      before do
+        @pledge = new_pledge :distance_to_destination => 5, :car_type => 'small', :carpool_distance => 10, :carpool_car_type => 'small', :carpool_additional_passengers => 1
+      end
+      it "exactly offsets driving" do
+        @pledge.pounds_used_by_driving.should == @pledge.pounds_used_by_carpool
+      end
+      it "" do
+        @pledge.calculate_impact([['carpool', 1]]).should == 0.0
       end
     end
   end

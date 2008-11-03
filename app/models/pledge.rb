@@ -29,6 +29,8 @@ class Pledge < ActiveRecord::Base
     :large  => 20,
     :truck  => 17  )
 
+  validates_inclusion_of :car_type, :in => MPG.keys
+
   def destination_round_trip
     distance_to_destination * 2
   end
@@ -91,6 +93,10 @@ class Pledge < ActiveRecord::Base
 
   def pounds_used_by_carpool
     carpool_round_trip / MPG[carpool_car_type] * BASELINE_IMPACT_PER_GALLON / carpool_participants
+  end
+
+  def carpool_participants
+    carpool_additional_passengers + 1
   end
 
   def pounds_used_by_bus
