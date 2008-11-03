@@ -130,6 +130,14 @@ describe Pledge do
         @pledge.calculate_impact([['carpool', 1]]).should == 0.0
       end
     end
+    describe "bus 2 days, carpool 1 day, walk/bike 2 days" do
+      before do
+        @pledge = new_pledge :distance_to_destination => 10, :car_type => 'truck', :carpool_distance => 8, :carpool_car_type => 'truck', :carpool_additional_passengers => 1, :carpool => 1, :public_transit => 2, :walk_bike => 2
+      end
+      it "exactly offsets driving" do
+        tenths(@pledge.weekly_commitment_impact).should == 127.1
+      end
+    end
   end
   def tenths( num ) 
      (num * 10).round.to_f / 10
