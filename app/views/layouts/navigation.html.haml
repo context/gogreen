@@ -41,16 +41,3 @@
           - contest.teams.each do |team|
             %li
               = link_to team.name, team_path( team )
-    %li.raise
-      = link_to 'Raise Your Voice', industries_path
-
-
-
-
-
-  -#.climate_counts_tool
-    = link_to 'companies dashboard', companies_path
-    |
-    = link_to 'company detail', company_path(1)
-    |
-    = link_to 'industry list', industries_path
