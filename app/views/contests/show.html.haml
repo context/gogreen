@@ -5,7 +5,7 @@
   = @contest.end.strftime( "%b %d, %Y")
 %h2 
   Total Impact:
-  = @contest.total_impact
+  = ( @contest.total_impact || 0.0 ).round_to(1)
   lbs of CO2 reduced!
 .freerange_marker
   Display total impact for the contest to date
