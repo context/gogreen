@@ -8,7 +8,7 @@ describe RecruitmentMailer do
   before do
     @contest = new_contest(:id => 1)
     @body = "Join up dog!"
-    @mail = RecruitmentMailer.create_tell_a_friend(:recipients => "dude@example.org", :body => @body, :contest => @contest)
+    @mail = RecruitmentMailer.create_tell_a_friend(:recipients => "dude@example.org", :body => @body, :contest => @contest, :user => new_user)
     @text = @mail.parts.detect {|p| p.sub_type == 'plain' }
     @html = @mail.parts.detect {|p| p.sub_type == 'html' }
   end

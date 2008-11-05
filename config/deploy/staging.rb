@@ -1,4 +1,4 @@
-set :deploy_to, "/home/#{application}"
+set :deploy_to, "/home/#{user}/#{application}"
 
 role :app,  "gogreen.staging.radicaldesigns.org"
 role :web,  "gogreen.staging.radicaldesigns.org"

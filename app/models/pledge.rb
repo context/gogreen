@@ -20,10 +20,31 @@ class Pledge < ActiveRecord::Base
 
   before_create :generate_report_code
 
-  BASELINE_IMPACT_PER_MILE = 20.0
+  BASELINE_IMPACT_PER_GALLON = 25.3371
+  MPG = HashWithIndifferentAccess.new(
+    :hybrid => 40,
+    :small  => 29,
+    :med    => 26,
+    :not_sure => 26,
+    :large  => 20,
+    :truck  => 17  )
+
+  validates_inclusion_of :car_type, :in => MPG.keys
+
+  def destination_round_trip
+    distance_to_destination * 2
+  end
+
+  def carpool_round_trip
+    carpool_distance * 2
+  end
+
+  def impact_per_mile
+    BASELINE_IMPACT_PER_GALLON * MPG[car_type]
+  end
   COMMITMENTS = [
       [ "Walking/Biking", 'walk_bike' ],
-      [ "Public Transit", 'public_transit' ],
+      [ "Taking the bus", 'public_transit' ],
       [ "Carpooling", 'carpool' ]
     ]
 
@@ -70,14 +91,34 @@ class Pledge < ActiveRecord::Base
     calculate_impact report_scope.count( :group => 'mode_of_transport' )
   end
 
+  def pounds_used_by_carpool
+    carpool_round_trip / MPG[carpool_car_type] * BASELINE_IMPACT_PER_GALLON / carpool_participants
+  end
+
+  def carpool_participants
+    carpool_additional_passengers + 1
+  end
+
+  def pounds_used_by_bus
+    destination_round_trip * 0.25
+  end
+  alias :pounds_used_by_public_transit :pounds_used_by_bus
+
+  def pounds_used_by_walk_bike
+    0
+  end
+
+  def pounds_used_by_none
+    0
+  end
+
+  def pounds_used_by_driving
+    destination_round_trip / MPG[car_type] * BASELINE_IMPACT_PER_GALLON
+  end
+
   def calculate_impact( action_totals )
     action_totals.inject( 0.0 ) do | total, ( mode_of_transport, qty )|
-      if mode_of_transport && mode_of_transport == 'carpool'
-        total += (( BASELINE_IMPACT_PER_MILE - ( ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] / ( ( carpool_participants || 1 ) + 1 ) ) ) * distance_to_destination ) * qty
-      elsif mode_of_transport && ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ]
-        total += (( BASELINE_IMPACT_PER_MILE - ReportAction::CO2_IMPACT[ mode_of_transport.to_sym ] ) * distance_to_destination ) * qty
-      end
-      total
+      total + ( pounds_used_by_driving - send( "pounds_used_by_#{mode_of_transport}" )) * qty
     end
   end
 

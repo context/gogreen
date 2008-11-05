@@ -7,7 +7,7 @@ describe Contest do
       Contest.active.should include(contest)
     end
     it "does not find inactive contests" do
-      contest = create_contest :start => 2.weeks.ago, :end => 1.week.ago
+      contest = create_contest :start => 3.weeks.ago, :end => 2.week.ago
       Contest.active.should_not include(contest)
     end
   end

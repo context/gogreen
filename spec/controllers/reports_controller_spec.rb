@@ -72,9 +72,10 @@ describe ReportsController do
     before do
       @pledge = create_pledge
       controller.stub!(:current_user).and_return( @pledge.user )
+      @report_params = {:start => Time.now.utc.beginning_of_week}
     end
     def act!
-      post :create, :pledge_id => @pledge.to_param, :report => {:start => Time.now.utc.beginning_of_week}
+      post :create, :pledge_id => @pledge.to_param, :report => @report_params
     end
     describe "when a report for the week exists" do
       before do
@@ -85,6 +86,9 @@ describe ReportsController do
       end
       it_should_behave_like "redirects to summary page"
     end
-    it "should not create a report if we are outside the allowed reporting period"
+    it "should not create a report if we are outside the allowed reporting period" do
+        @report_params[:start] = 20.days.ago
+        lambda { act! }.should_not change(Report, :count)
+    end
   end
 end

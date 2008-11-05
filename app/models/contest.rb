@@ -1,13 +1,10 @@
 class Contest < ActiveRecord::Base
-  MPG_CARS = Hash[ *(1978...Time.now.year).to_a.map { |a| [ a, 25 ] }]
-  MPG_SUVS = Hash[ *(1978...Time.now.year).to_a.map { |a| [ a, 15 ] }]
-
   has_many :teams
   has_many :pledges, :through => :teams
   validates_presence_of :start
   validates_presence_of :end
 
-  named_scope :active, :conditions => ["start < :now AND end > :now", {:now => Time.now}]
+  named_scope :active, :conditions => ["start < ? AND end > ?", Time.now, 1.week.ago]
 
   def total_impact
     teams.inject(0) { |total, team| total += team.total_impact }

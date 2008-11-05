@@ -7,6 +7,13 @@ class Report < ActiveRecord::Base
   def normalize_start
     self.start = start.utc.beginning_of_week
   end
+
+  validate_on_create :timeliness_of_report
+  def timeliness_of_report
+    if self.start < GoGreen::Config.reporting_period.days.ago
+      errors.add_to_base "It is too late to report for that week"
+    end
+  end
   
   def actions_data=(values)
     values.map do |day_index, action_data|

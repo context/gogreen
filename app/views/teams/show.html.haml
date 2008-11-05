@@ -9,15 +9,21 @@
       = Pledge::COMMITMENTS.rassoc( commitment ).first
       = days 
       days a week
+    %p
+      saving
+      = pledge.calculate_impact( [[commitment,days]]).to_f.round_to(1)
+      lbs of CO2
+  %p
+    ==Instead of driving #{pledge.destination_round_trip.round} miles every day by yourself
   %p
     Saving
-    = pledge.weekly_commitment_impact
+    = pledge.weekly_commitment_impact.to_f.round_to(1)
     lbs of CO2
 
   %h2
     Your impact:
   %p
-    = pledge.total_impact
+    = pledge.total_impact.to_f.round_to(1)
     lbs of CO2
     .freerange_marker
       = render :partial => 'shared/impact', :locals => { :source => pledge }
@@ -25,7 +31,7 @@
 %h2
   Team impact
 %p
-  = @team.total_impact
+  = @team.total_impact.to_f.round_to(1)
   lbs of CO2
   .freerange_marker
     = render :partial => 'shared/impact', :locals => { :source => @team }

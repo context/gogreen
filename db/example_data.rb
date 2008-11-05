@@ -15,6 +15,7 @@ module FixtureReplacement
     a.walk_bike = 0
     a.public_transit = 0
     a.carpool = 0
+    a.car_type = 'small'
     a.distance_to_destination = 50
     a.report_code = '1234ABCD'
 	end
