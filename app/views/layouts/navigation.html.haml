@@ -1,13 +1,18 @@
 .rightcontent
   - if logged_in? && current_user.superuser?
-    %ul.admin_menu
-      %h4 Administration
-      %li
-        = link_to "pledges", admin_pledges_path
-      %li
-        = link_to "contests", admin_contests_path
-        = link_to "new team", new_admin_team_path, :class => 'new button'
-        = link_to "new contest", new_admin_contest_path, :class => 'new button'
+    .headerlink
+      %h2
+        Administration
+    .pledgebox
+      .sidebox 
+        %ul.nav
+          %li.active
+            %ul
+              %li
+                = link_to "pledges", admin_pledges_path
+                = link_to "contests", admin_contests_path
+                = link_to "new team", new_admin_team_path, :class => 'new button'
+                = link_to "new contest", new_admin_contest_path, :class => 'new button'
 
   - if @contest && !( logged_in? && @contest.pledges.find_by_user_id(current_user.id))
     = link_to "Pledge Now", new_contest_pledge_path(@contest), :class => 'pledge'
@@ -45,3 +50,13 @@
               - contest.teams.each do |team|
                 %li
                   = link_to team.name, team_path( team )
+
+- content_for :dom_ready do
+  :plain
+    $('ul.nav > li').click( function() { 
+      if( $(this).hasClass('active') ) {
+        return true;
+      }
+      $(this).toggleClass('active'); 
+      return false; 
+    } );

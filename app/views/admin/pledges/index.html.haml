@@ -1,7 +1,8 @@
-%h2 Pledges
+- content_for :header do
+  %h1 Pledges
+
+= link_to "export list", formatted_admin_pledges_path( :format => 'csv'), :class => 'export button'
 %ul
   - for pledge in @pledges
     %li
       = render :partial => 'pledge', :object => pledge
-
-= link_to "export list", formatted_admin_pledges_path( :format => 'csv'), :class => 'export button'
