@@ -16,7 +16,7 @@ fieldset{
 #container{
 	width:100%;
 	margin:-22px auto 0;	
-	background:url(/images/gogreen/containerbg.jpg);	
+	background:url(../../images/gogreen/containerbg.jpg);	
 	padding:0 0 10px;
 	min-width:1300px;
 }
@@ -24,7 +24,7 @@ fieldset{
 #header{
 	width:100%;
 	overflow:hidden;
-	background:url(/images/gogreen/headerbg.jpg) repeat-x;
+	background:url(../../images/gogreen/headerbg.jpg) repeat-x;
 	height:116px;
 	min-width:1300px;
 }
@@ -40,7 +40,7 @@ a.logo{
 	position:absolute;
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/logo.png) no-repeat;
+	background:url(../../images/gogreen/logo.png) no-repeat;
 	width:256px;
 	height:115px;
 	top:0;
@@ -68,21 +68,21 @@ a.logo{
 	text-indent:-9999px;
 }
 .mainnav a.about{
-	background:url(/images/gogreen/aboutusbutton.jpg) no-repeat;
+	background:url(../../images/gogreen/aboutusbutton.jpg) no-repeat;
 	width:96px;
 	margin:0 10px 0 0;
 }
 .mainnav a.planet{
-	background:url(/images/gogreen/planet.jpg) no-repeat;
+	background:url(../../images/gogreen/planet.jpg) no-repeat;
 	width:142px;
 	margin:0 2px 0 0;
 }
 .mainnav a.parents{
-	background:url(/images/gogreen/parentsbutton.jpg) no-repeat;
+	background:url(../../images/gogreen/parentsbutton.jpg) no-repeat;
 	width:111px;
 }
 .mainnav a.contact{
-	background:url(/images/gogreen/contactbutton.jpg) no-repeat;
+	background:url(../../images/gogreen/contactbutton.jpg) no-repeat;
 	width:109px;
 }
 .mainnav a:hover,
@@ -91,7 +91,7 @@ a.logo{
 }
 .newsletter{
 	float:right;
-	background:url(/images/gogreen/newsletterbg.jpg) no-repeat;
+	background:url(../../images/gogreen/newsletterbg.jpg) no-repeat;
 	width:224px;
 	height:75px;
 	overflow:hidden;
@@ -100,7 +100,7 @@ a.logo{
 .newsletter h2{
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/newsletterh2.gif) no-repeat;
+	background:url(../../images/gogreen/newsletterh2.gif) no-repeat;
 	width:195px;
 	height:22px;
 	margin:12px 0 0 10px;
@@ -135,7 +135,7 @@ a.logo{
 }	
 .maincontainer{
 	width:100%;	
-	background:url(/images/gogreen/maincontainerbg.jpg) no-repeat 50% 0;
+	background:url(../../images/gogreen/maincontainerbg.jpg) no-repeat 50% 0;
 	min-width:1300px;
 }
 #main{
@@ -156,7 +156,7 @@ a.logo{
 .textbox h1{	
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/goinggreen.gif) no-repeat;
+	background:url(../../images/gogreen/goinggreen.gif) no-repeat;
 	width:348px;
 	height:39px;
 	margin:40px 0 0 2px;	
@@ -165,7 +165,7 @@ a.logo{
 	width:316px;
 	overflow:hidden;
 	padding:0 0 14px 13px;
-	background:url(/images/gogreen/leafbg.jpg) no-repeat 0 100%;	
+	background:url(../../images/gogreen/leafbg.jpg) no-repeat 0 100%;	
 	position:relative;	
 }
 .textcontent p{
@@ -177,7 +177,7 @@ a.logo{
 .learn{
 	overflow:hidden;
 	float:right;
-	background:url(/images/gogreen/learnmore.png) no-repeat;
+	background:url(../../images/gogreen/learnmore.png) no-repeat;
 	width:198px;
 	height:23px;
 	text-indent:-9999px;
@@ -188,24 +188,24 @@ a.logo{
 .latestnews{
 	width:100%;
 	overflow:hidden;
-	background:url(/images/gogreen/path.jpg) no-repeat 12px 0;
+	background:url(../../images/gogreen/path.jpg) no-repeat 12px 0;
 }
 .latestnews h2{
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/latestnewsh2.gif) no-repeat;
+	background:url(../../images/gogreen/latestnewsh2.gif) no-repeat;
 	width:239px;
 	height:30px;
 	margin:14px 0 0 19px;
 }
 .latestnews ul{
 	margin:6px 0 0 2px;
-	background:url(/images/gogreen/greenpath.jpg) no-repeat 10px 100%;
+	background:url(../../images/gogreen/greenpath.jpg) no-repeat 10px 100%;
 	padding:0 0 22px;
 	list-style:none;
 }
 .latestnews li{
-	background:url(/images/gogreen/arrow.jpg) no-repeat 0 3px;
+	background:url(../../images/gogreen/arrow.jpg) no-repeat 0 3px;
 	padding:0 0 0 23px;
 	width:250px;
 	font-weight:bold;
@@ -215,7 +215,7 @@ a.logo{
 }
 .imagebox{
 	float:right;
-	background:url(/images/gogreen/imagebox.jpg) no-repeat;
+	background:url(../../images/gogreen/imagebox.jpg) no-repeat;
 	width:712px;
 	overflow:hidden;
 	height:448px;
@@ -226,7 +226,7 @@ a.logo{
 span.change{
 	display:block;
 	overflow:hidden;
-	background:url(/images/gogreen/inyourhands.gif) no-repeat;
+	background:url(../../images/gogreen/inyourhands.gif) no-repeat;
 	width:686px;
 	height:175px;
 	margin:261px 0 0 16px;
@@ -235,7 +235,7 @@ span.change{
 .leaf{
 	position:absolute;
 	overflow:hidden;
-	background:url(/images/gogreen/leafgif.png) no-repeat;
+	background:url(../../images/gogreen/leafgif.png) no-repeat;
 	width:200px;
 	height:129px;
 	top:300px;
@@ -249,14 +249,14 @@ span.change{
 }
 .contentbox{
 	overflow:hidden;
-	background:url(/images/gogreen/contentboxbg.png) no-repeat;
+	background:url(../../images/gogreen/contentboxbg.png) no-repeat;
 	width:315px;
 	height:266px;
 	float:left;	
 	margin:0 20px 0 0;
 }
 .contentbox a{
-	background:url(/images/gogreen/seehow.gif) no-repeat;
+	background:url(../../images/gogreen/seehow.gif) no-repeat;
 	width:139px;
 	height:88px;
 	margin:116px 0 0 30px;
@@ -266,7 +266,7 @@ span.change{
 .contentbox h2{
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/space.gif) no-repeat;
+	background:url(../../images/gogreen/space.gif) no-repeat;
 	width:224px;
 	height:15px;
 	margin:11px 0 0 22px;
@@ -276,22 +276,22 @@ span.change{
 	width:290px;
 	height:226px;
 	overflow:hidden;
-	background:url(/images/gogreen/spaceimage.jpg) no-repeat;
+	background:url(../../images/gogreen/spaceimage.jpg) no-repeat;
 }
 .contentbox.second h2{
-	background:url(/images/gogreen/science.gif) no-repeat;
+	background:url(../../images/gogreen/science.gif) no-repeat;
 	width:264px;
 	height:16px;
 }
 .contentbox.second .imagetext{
-	background:url(/images/gogreen/scienceimage.jpg) no-repeat;
+	background:url(../../images/gogreen/scienceimage.jpg) no-repeat;
 	padding:0 3px 0 0;
 	width:287px;
 }
 .contentbox.second .imagetext a{
 	float:right;
 	overflow:hidden;
-	background:url(/images/gogreen/learnhow.gif) no-repeat;
+	background:url(../../images/gogreen/learnhow.gif) no-repeat;
 	width:109px;
 	height:90px;
 	margin:118px 0 0;
@@ -299,19 +299,19 @@ span.change{
 	position:relative;
 }
 .contentbox.third h2{
-	background:url(/images/gogreen/howkids.gif) no-repeat;
+	background:url(../../images/gogreen/howkids.gif) no-repeat;
 	width:250px;
 	height:16px;
 }
 .contentbox.third .imagetext{
-	background:url(/images/gogreen/getinvolved.jpg) no-repeat;
+	background:url(../../images/gogreen/getinvolved.jpg) no-repeat;
 	padding:0 0 0 30px;
 	width:260px;
 }
 .contentbox.third .imagetext a{
 	float:left;
 	overflow:hidden;
-	background:url(/images/gogreen/getnow.gif) no-repeat;
+	background:url(../../images/gogreen/getnow.gif) no-repeat;
 	width:92px;
 	height:81px;
 	margin:122px 0 0;
@@ -335,14 +335,14 @@ span.change{
 }
 .spareplanet{
 	overflow:hidden;
-	background:url(/images/gogreen/spareplanet.jpg) no-repeat;
+	background:url(../../images/gogreen/spareplanet.jpg) no-repeat;
 	width:629px;
 	height:178px;
 }
 .spareplanet h2{
 	overflow:hidden;
 	text-indent:-9999px;
-	background:url(/images/gogreen/spareplanetheading.gif) no-repeat;
+	background:url(../../images/gogreen/spareplanetheading.gif) no-repeat;
 	width:467px;
 	height:119px;
 	margin:55px 0 0 4px;
@@ -362,13 +362,13 @@ span.change{
 .statboxtopbg{
 	width:625px;
 	overflow:hidden;
-	background:url(/images/gogreen/statboxtopbg.png) no-repeat;
+	background:url(../../images/gogreen/statboxtopbg.png) no-repeat;
 	height:35px;
 }
 .statboxtopbg.other h2{
 	text-indent:-9999px;
 	overflow:hidden;
-	background:url(/images/gogreen/topteams.gif) no-repeat;
+	background:url(../../images/gogreen/topteams.gif) no-repeat;
 	width:117px;
 	height:21px;
 	margin-top:6px;
@@ -376,17 +376,17 @@ span.change{
 .statcontent{
 	width:625px;
 	overflow:hidden;
-	background:url(/images/gogreen/statcontentstrip.png) repeat-y;
+	background:url(../../images/gogreen/statcontentstrip.png) repeat-y;
 }
 .statcontenttopbg{
 	width:625px;
 	overflow:hidden;
-	background:url(/images/gogreen/statcontenttopbg.jpg) no-repeat;	
+	background:url(../../images/gogreen/statcontenttopbg.jpg) no-repeat;	
 }
 .statcontentbottombg{
 	width:592px;
 	overflow:hidden;
-	background:url(/images/gogreen/statcontentbottombg.jpg) no-repeat 0 100%;	
+	background:url(../../images/gogreen/statcontentbottombg.jpg) no-repeat 0 100%;	
 	padding:11px 0 19px 33px;	
 }
 .statcontentbottombg.team{
@@ -410,14 +410,14 @@ span.change{
 	color:#feb60a;
 }
 .stattext.franc p{
-	background:url(/images/gogreen/cont5.jpg) no-repeat !important;
+	background:url(../../images/gogreen/cont5.jpg) no-repeat !important;
 	padding-right:148px !important;
 }
 .stattext.two{
 	background:none !important;
 }
 .stattext.two p{
-	background:url(/images/gogreen/cont1.gif) no-repeat !important;
+	background:url(../../images/gogreen/cont1.gif) no-repeat !important;
 }
 .stattext{
 	background:#f5f5f5;
@@ -428,17 +428,17 @@ span.change{
 	line-height:31px;
 }
 .stattext.three p{
-	background:url(/images/gogreen/cont6.jpg) no-repeat !important;
+	background:url(../../images/gogreen/cont6.jpg) no-repeat !important;
 }
 .stattext.alt{
 	background:none !important;
 }
 .stattext.alt p{
-	background:url(/images/gogreen/cont2.gif) no-repeat !important;
+	background:url(../../images/gogreen/cont2.gif) no-repeat !important;
 	padding-right:68px !important;
 }
 .stattext.alter p{
-	background:url(/images/gogreen/cont3.gif) no-repeat !important;
+	background:url(../../images/gogreen/cont3.gif) no-repeat !important;
 }
 .stattext span{
 	float:left;
@@ -454,14 +454,14 @@ span.change{
 	font-size:16px;
 	font-weight:bold;
 	height:17px;
-	background:url(/images/gogreen/cont1.gif) no-repeat;
+	background:url(../../images/gogreen/cont1.gif) no-repeat;
 	padding:3px 0 0 17px;
 }
 .stattext.either{
 	background:none;
 }
 .stattext.either p{
-	background:url(/images/gogreen/cont4.gif) no-repeat !important;
+	background:url(../../images/gogreen/cont4.gif) no-repeat !important;
 }
 .stattext.lastone{
 	background:none ;
@@ -486,7 +486,7 @@ span.change{
 	color: white;
 }
 .headerlink h2#contests{	
-	background:url(/images/gogreen/contests.gif) no-repeat;
+	background:url(../../images/gogreen/contests.gif) no-repeat;
 	text-indent:-9999px;
 	height:19px;
 	width:95px;
@@ -494,7 +494,7 @@ span.change{
 a.login{
 	float:right;
 	overflow:hidden;
-	background:url(/images/gogreen/login.jpg) no-repeat;
+	background:url(../../images/gogreen/login.jpg) no-repeat;
 	width:58px;
 	height:26px;
 	text-indent:-9999px;
@@ -504,7 +504,7 @@ a.login:hover{
 }
 .pledge{
 	display:block;
-	background:url(/images/gogreen/pledgenow.jpg) no-repeat;
+	background:url(../../images/gogreen/pledgenow.jpg) no-repeat;
 	overflow:hidden;
 	width:239px;
 	height:79px;
@@ -518,13 +518,13 @@ a.login:hover{
 	margin:-19px 0 0;
 }
 .contestbox{
-	background:url(/images/gogreen/contestbox.png) no-repeat;
+	background:url(../../images/gogreen/contestbox.png) no-repeat;
 	width:259px;
 	height:323px;
 	padding:20px 0 0;
 }
 .pledgebox{
-	background:url(/images/gogreen/contestbox.png) no-repeat 0px -200px;
+	background:url(../../images/gogreen/contestbox.png) no-repeat 0px -200px;
 	width:259px;
 	height:123px;
 	padding:20px 0 0;
@@ -545,7 +545,7 @@ a.login:hover{
 .nav a{
 	float:left;
 	color:#fff;
-	background:url(/images/gogreen/greenarrowhover.png) no-repeat 0 3px;
+	background:url(../../images/gogreen/greenarrowhover.png) no-repeat 0 3px;
 	height:19px;	
 	padding:0 0 0 21px;
 	text-decoration:none;
@@ -557,7 +557,7 @@ a.login:hover{
 	color:#ffb91b;
 }
 .nav li.active a{
-	background:url(/images/gogreen/greenarrow.png) no-repeat;
+	background:url(../../images/gogreen/greenarrow.png) no-repeat;
 	outline:none;
 }
 .nav ul{
@@ -573,7 +573,7 @@ a.login:hover{
 .nav ul a,
 .nav li ul a,
 .nav li.active ul a{
-	background:url(/images/gogreen/greenmarker.jpg) no-repeat 0 7px !important; 
+	background:url(../../images/gogreen/greenmarker.jpg) no-repeat 0 7px !important; 
 	padding:0 0 0 11px ;
 	width:159px;
 	outline:none;
@@ -591,12 +591,12 @@ a.login:hover{
 }
 .topstyletopbg{
 	overflow:hidden;
-	background:url(/images/gogreen/topstyletopbg.png) no-repeat;
+	background:url(../../images/gogreen/topstyletopbg.png) no-repeat;
 	width:625px;
 	height:44px;
 }
 .maincontainer.topstyle .statcontenttopbg{
-	background:url(/images/gogreen/topstylebg.jpg) no-repeat;
+	background:url(../../images/gogreen/topstylebg.jpg) no-repeat;
 }
 .maincontainer.topstyle .leftcontent{
 	margin:24px 0 0;
@@ -650,14 +650,14 @@ a.rollover{
 #footer{	
 	width:100%;
 	overflow:hidden;
-	background:url(/images/gogreen/footerbg.jpg) repeat-x;
+	background:url(../../images/gogreen/footerbg.jpg) repeat-x;
 	height:65px;
 	min-width:1300px;
 }
 .footercontent{
 	width:990px;
 	overflow:hidden;
-	background:url(/images/gogreen/footercontentbg.jpg) no-repeat;
+	background:url(../../images/gogreen/footercontentbg.jpg) no-repeat;
 	margin:0 auto;
 	height:45px;
 	padding:20px 5px 0 5px;
@@ -675,7 +675,7 @@ a.rollover{
 	list-style:none;
 }
 .footerul li{
-	background:url(/images/gogreen/footerseparator.jpg) no-repeat 0 50%;
+	background:url(../../images/gogreen/footerseparator.jpg) no-repeat 0 50%;
 	font-size:11px;
 	font-weight:bold;
 	display:inline;
