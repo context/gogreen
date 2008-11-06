@@ -18,15 +18,16 @@
         YOUR PLEDGE
       = link_to "Logout", logout_path, :class => 'logout'
     .pledgebox
-      %ul.nav
-        - current_user.pledges.active.each do |pledge|
-          %li.active
-            = link_to "#{pledge.contest.name} &mdash; #{pledge.team.name}", team_path( pledge.team )
-            %ul
-              %li
-                = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
-              %li
-                = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
+      .sidebox
+        %ul.nav
+          - current_user.pledges.active.each do |pledge|
+            %li.active
+              = link_to "#{pledge.contest.name} &mdash; #{pledge.team.name}", team_path( pledge.team )
+              %ul
+                %li
+                  = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
+                %li
+                  = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
 
   .headerlink
     %h2#contests
@@ -35,11 +36,12 @@
       = link_to 'login', login_path, :class => 'login'
 
   .contestbox
-    %ul.nav
-      - Contest.all.each do |contest|
-        %li{ :class => ( 'active' if @contest && @contest.id == contest.id ) }
-          = link_to contest.name, contest_path( contest )
-          %ul
-            - contest.teams.each do |team|
-              %li
-                = link_to team.name, team_path( team )
+    .sidebox
+      %ul.nav
+        - Contest.all.each do |contest|
+          %li{ :class => ( 'active' if @contest && @contest.id == contest.id ) }
+            = link_to contest.name, contest_path( contest )
+            %ul
+              - contest.teams.each do |team|
+                %li
+                  = link_to team.name, team_path( team )

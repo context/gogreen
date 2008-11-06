@@ -378,6 +378,9 @@ span.change{
 	overflow:hidden;
 	background:url(../../images/gogreen/statcontentstrip.png) repeat-y;
 }
+.statcontent p, .statcontent textarea, .statcontent input{
+    color: #5B3D30;
+}
 .statcontenttopbg{
 	width:625px;
 	overflow:hidden;
@@ -409,6 +412,7 @@ span.change{
 .statboxtopbg h2 span{
 	color:#feb60a;
 }
+/*
 .stattext.franc p{
 	background:url(../../images/gogreen/cont5.jpg) no-repeat !important;
 	padding-right:148px !important;
@@ -419,33 +423,34 @@ span.change{
 .stattext.two p{
 	background:url(../../images/gogreen/cont1.gif) no-repeat !important;
 }
+  */
 .stattext{
 	background:#f5f5f5;
-	height:31px;
+	min-height:31px;
 	overflow:hidden;
 	width:546px;
 	padding:0 0 0 10px;
 	line-height:31px;
 }
-.stattext.three p{
-	background:url(../../images/gogreen/cont6.jpg) no-repeat !important;
-}
 .stattext.alt{
 	background:none !important;
 }
 .stattext.alt p{
+  /*
 	background:url(../../images/gogreen/cont2.gif) no-repeat !important;
 	padding-right:68px !important;
+    */
 }
-.stattext.alter p{
-	background:url(../../images/gogreen/cont3.gif) no-repeat !important;
-}
-.stattext span{
+.stattext span, .stattext span a{
 	float:left;
+    text-decoration: none;
 	color:#5b3d30;
 	font-size:16px;
 	font-weight:bold;	
 	width:197px;
+}
+.stattext span a{
+	line-height:normal;
 }
 .stattext p{
 	float:left;
@@ -454,8 +459,29 @@ span.change{
 	font-size:16px;
 	font-weight:bold;
 	height:17px;
+	padding:3px 0 0 0;
+    width: 318px;
+	background:url(../../images/gogreen/bar-full.png) no-repeat;
+}
+.stattext .base{
+    width: 12px;
+    height: 17px;
+	padding:3px 0 0;
+	margin:5px 0 0;
+	background:url(../../images/gogreen/bar-start.png) no-repeat;
+}
+.stattext .zero .base{
 	background:url(../../images/gogreen/cont1.gif) no-repeat;
-	padding:3px 0 0 17px;
+}
+.stattext .zero p{
+	background:none;
+}
+/*
+.stattext.three p{
+	background:url(../../images/gogreen/cont6.jpg) no-repeat !important;
+}
+.stattext.alter p{
+	background:url(../../images/gogreen/cont3.gif) no-repeat !important;
 }
 .stattext.either{
 	background:none;
@@ -466,6 +492,7 @@ span.change{
 .stattext.lastone{
 	background:none ;
 }
+*/
 /* rightcontent */
 .rightcontent{
 	float:right;
@@ -518,16 +545,26 @@ a.login:hover{
 	margin:-19px 0 0;
 }
 .contestbox{
-	background:url(../../images/gogreen/contestbox.png) no-repeat;
-	width:259px;
-	height:323px;
-	padding:20px 0 0;
+	/*background:url(../../images/gogreen/contestbox.png) no-repeat;
+	width:259px; */
+    margin-top: 10px;
+	background:url(../../images/gogreen/navbg2.png);
+    border: 2px solid #6da628;
+	padding:15px 10px 0 0;
+}
+.sidebox {
+	background:url(../../images/gogreen/plantbg2.png) no-repeat;
+    background-position: 100% 100%;
+    padding: 0 10px 20px 0;
+    height: 100%;
+    width: 100%;
 }
 .pledgebox{
-	background:url(../../images/gogreen/contestbox.png) no-repeat 0px -200px;
-	width:259px;
-	height:123px;
-	padding:20px 0 0;
+	background:url(../../images/gogreen/navbg2.png);
+	width:242px;
+    border: 2px solid #6da628;
+    margin-top: 10px;
+	padding:15px 10px 0px 0;
 }
 .nav{
 	margin:-8px 0 0 12px;
@@ -546,7 +583,7 @@ a.login:hover{
 	float:left;
 	color:#fff;
 	background:url(../../images/gogreen/greenarrowhover.png) no-repeat 0 3px;
-	height:19px;	
+	/*height:19px;	 */
 	padding:0 0 0 21px;
 	text-decoration:none;
 	outline:none;

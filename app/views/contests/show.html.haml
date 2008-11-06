@@ -14,7 +14,10 @@
   .statcontent
     .statcontenttopbg
       .statcontentbottombg
-        = render :partial => 'shared/impact', :locals => { :source => @contest, :contest => @contest }
+        - week_impacts = Hash[ *@contest.weeks.map { |week_start| [ week_start, ( @contest.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1) ] }.flatten ]
+        - team_impacts = Hash[ *@contest.teams.map { |t| [ t.id, ( t.total_impact.to_f || 0.0 ).round_to(1) ] }.flatten ]
+        - max_impact = ( week_impacts.values + team_impacts.values ).max
+        = render :partial => 'shared/impact', :locals => { :source => @contest, :contest => @contest, :max_impact => max_impact }
 
 .statbox
   .statboxtopbg.other
@@ -27,7 +30,9 @@
           .stattext{ :class => cycle( 'alt', '' ) }
             %span
               = link_to team.name, team_path( team )
-            %p
-              - team_impact = ( team.total_impact || 0.0 ).round_to(1)
-              = team_impact
-              pounds of CO2
+            %div{ :class => ('zero' if team_impacts[team.id] <= 0 ) }
+              %span.base
+              - bar_offset = (( team_impacts[team.id]/ max_impact ) * bar_size  ).to_i if max_impact > 0
+              %p{ :style => ( "background-position: #{ bar_offset - bar_size }px 0;" if max_impact > 0 ) }
+                = team_impacts[ team.id ]
+                pounds of CO2

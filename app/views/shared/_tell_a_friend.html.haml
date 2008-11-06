@@ -1,12 +1,18 @@
 - if logged_in?
-  %h2 Tell Your Friends
-  Tell a friend about this program and get them to make a pledge.
-  - form_tag tell_a_friend_path do
-    = hidden_field_tag 'contest_id', source.contest.id
-    %p
-      = label_tag 'Recipients'
-      = text_field_tag :recipients
-    %p
-      = label_tag 'body'
-      = text_area_tag :body, source.contest.tell_a_friend_default
-    = submit_tag 'Send'
+  .statbox
+    .statboxtopbg
+      %h2 TELL YOUR FRIENDS
+    .statcontent
+      .statcontenttopbg
+        .statcontentbottombg
+          %p
+            Tell a friend about this program and get them to make a pledge.
+          - form_tag tell_a_friend_path do
+            = hidden_field_tag 'contest_id', source.contest.id
+            %p
+              = label_tag 'Recipients'
+              = text_field_tag :recipients
+            %p
+              = label_tag 'body'
+              = text_area_tag :body, source.contest.tell_a_friend_default
+            = submit_tag 'Send'

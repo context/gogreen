@@ -6,6 +6,6 @@ end
 #who am i to argue with ducks?
 class Fixnum
   def round_to(x)
-    self
+    self.to_f.round_to(x)
   end
 end

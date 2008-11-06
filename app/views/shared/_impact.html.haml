@@ -1,12 +1,15 @@
+- impacts = Hash[ *contest.weeks.map { |week_start| [ week_start, ( source.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1) ] }.flatten ]
+- max_impact ||= impacts.values.max
 - contest.weeks.each do |week_start|
+  - week_impact = impacts[ week_start ]
   .stattext{ :class => cycle( 'alt', '' ) }
     %span 
       Week of 
       = week_start.strftime( "%b %d, %Y")
-    %p 
-      - weekly_impact = ( source.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1)
-
-      -#.bar{ :style => "background-position: #{ -512 + (weekly_impact.to_i/3)}px 0;" }
-      = weekly_impact
-      pounds of CO2
+    %div{ :class => ( 'zero' if week_impact <= 0 ) }
+      %span.base
+      - bar_offset = (( week_impact / max_impact ) * bar_size  ).to_i if max_impact > 0
+      %p{ :style => ( "background-position: #{ bar_offset - bar_size }px 0;" if max_impact > 0 ) }
+        = week_impact
+        pounds of CO2
 

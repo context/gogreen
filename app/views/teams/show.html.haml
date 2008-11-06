@@ -1,39 +1,49 @@
-%h1
-  = @team.name
+.statbox
+  %h1
+    = @team.name
 
 - if logged_in? && pledge = @team.pledges.find_by_user_id( current_user.id )
-  %h2
-    Your pledge:
-  - pledge.commitments.each do |commitment, days|
-    %p 
-      = Pledge::COMMITMENTS.rassoc( commitment ).first
-      = days 
-      days a week
+  .statbox
+    %h1
+      Your pledge:
+    - pledge.commitments.each do |commitment, days|
+      %p 
+        = Pledge::COMMITMENTS.rassoc( commitment ).first
+        = days 
+        days a week
+      -#%p
+        saving
+        = pledge.calculate_impact( [[commitment,days]]).to_f.round_to(1)
+        lbs of CO2
     %p
-      saving
-      = pledge.calculate_impact( [[commitment,days]]).to_f.round_to(1)
+      ==Instead of driving #{pledge.destination_round_trip.round} miles every day by yourself
+    %p
+      Saving
+      = pledge.weekly_commitment_impact.to_f.round_to(1)
       lbs of CO2
-  %p
-    ==Instead of driving #{pledge.destination_round_trip.round} miles every day by yourself
-  %p
-    Saving
-    = pledge.weekly_commitment_impact.to_f.round_to(1)
-    lbs of CO2
 
-  %h2
-    Your impact:
-  %p
-    = pledge.total_impact.to_f.round_to(1)
-    lbs of CO2
-    .freerange_marker
-      = render :partial => 'shared/impact', :locals => { :source => pledge, :contest => pledge.team.contest } 
+  .statbox
+    .statboxtopbg
+      %h2 
+        YOUR IMPACT:
+        %span
+          = ( pledge.total_impact || 0.0 ).round_to(1)
+        lbs of CO2 reduced!
+    .statcontent
+      .statcontenttopbg
+        .statcontentbottombg
+          = render :partial => 'shared/impact', :locals => { :source => pledge, :contest => pledge.team.contest } 
 
-%h2
-  Team impact
-%p
-  = @team.total_impact.to_f.round_to(1)
-  lbs of CO2
-  .freerange_marker
-    = render :partial => 'shared/impact', :locals => { :source => @team, :contest => @team.contest }
+.statbox
+  .statboxtopbg
+    %h2 
+      TEAM IMPACT:
+      %span
+        = ( @team.total_impact || 0.0 ).round_to(1)
+      lbs of CO2 reduced!
+  .statcontent
+    .statcontenttopbg
+      .statcontentbottombg
+        = render :partial => 'shared/impact', :locals => { :source => @team, :contest => @team.contest }
 
 = render :partial => 'shared/tell_a_friend', :locals => { :source => @team }
