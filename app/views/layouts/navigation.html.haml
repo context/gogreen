@@ -1,4 +1,4 @@
-#navigation.span-7
+.rightcontent
   - if logged_in? && current_user.superuser?
     %ul.admin_menu
       %h4 Administration
@@ -9,35 +9,37 @@
         = link_to "new team", new_admin_team_path, :class => 'new button'
         = link_to "new contest", new_admin_contest_path, :class => 'new button'
 
-  %ul.current_user
+  - if @contest && !( logged_in? && @contest.pledges.find_by_user_id(current_user.id))
+    = link_to "Pledge Now", new_contest_pledge_path(@contest), :class => 'pledge'
+
+  - if logged_in? && !current_user.pledges.active.empty?
+    .headerlink
+      %h2
+        YOUR PLEDGE
+      = link_to "Logout", logout_path, :class => 'logout'
+    .pledgebox
+      %ul.nav
+        - current_user.pledges.active.each do |pledge|
+          %li.active
+            = link_to "#{pledge.contest.name} &mdash; #{pledge.team.name}", team_path( pledge.team )
+            %ul
+              %li
+                = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
+              %li
+                = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
+
+  .headerlink
+    %h2#contests
+      CONTESTS
     - unless logged_in?
-      = link_to 'login', login_path
+      = link_to 'login', login_path, :class => 'login'
 
-    - if logged_in? && !current_user.pledges.active.empty?
-      %h4 Your pledges
-      - current_user.pledges.active.each do |pledge|
-        %li
-          = pledge.contest.name
-          %br
-          Your team:
-          = link_to pledge.team.name, team_path( pledge.team )
-          %br
-          = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
-          %br
-          = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
-
-
-    - if logged_in?
-      %li
-        = link_to 'logout', logout_path
-
-  %ul.contests
-    %h4 Contests
-    - Contest.all.each do |contest|
-      %li
-        = link_to contest.name, contest_path( contest )
-        = link_to 'pledge', new_contest_pledge_path( contest ) unless logged_in? && contest.pledges.find_by_user_id(current_user.id)
-        %ul
-          - contest.teams.each do |team|
-            %li
-              = link_to team.name, team_path( team )
+  .contestbox
+    %ul.nav
+      - Contest.all.each do |contest|
+        %li{ :class => ( 'active' if @contest && @contest.id == contest.id ) }
+          = link_to contest.name, contest_path( contest )
+          %ul
+            - contest.teams.each do |team|
+              %li
+                = link_to team.name, team_path( team )

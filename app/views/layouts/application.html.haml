@@ -2,19 +2,24 @@
 %html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %title
+      Go Green
+      &mdash;
       = controller.action_name.titleize
       &mdash;
       = controller.controller_name.titleize
     %meta{ :content => "text/xhtml; charset=utf-8", "http-equiv" => "content-type" }/
     %meta{ :content => "no", "http-equiv" => "imagetoolbar" }/
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }/
     %meta{ :name => "distribution", :content => "all" }/
     %meta{ :name => "robots", :content => "all" }/
     %meta{ :name => "resource-type", :content => "document" }/
     %meta{ :name => "MSSmartTagsPreventParsing", :content => "true" }/
     = stylesheet_link_tag 'blueprint/print', :media => 'print'
     = stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection'
+    = stylesheet_link_tag 'gogreen/all'
     <!--[if IE]>
     = stylesheet_link_tag 'blueprint/ie'
+    = stylesheet_link_tag 'gogreen/ie'
     <![endif]-->
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'reports'
@@ -22,18 +27,40 @@
   %body
     #outer-container
       #header.container
-      #main.container
-        #content.span-16
-          .content-padding 
-            - unless flash[:notice].blank?
-              .flash-notice
-                = flash[:notice]
-            - unless flash[:error].blank?
-              .flash-error
-                = flash[:error]
-            = yield
-        = render 'layouts/navigation'
+        .headercontent
+          %a.logo{ :href => "#" }
+            Go Green Foundation
+          = render 'layouts/menu'
+      #container
+        .maincontainer
+          #main.planet
+            .contentholder
+              .leftcontent
+                .spareplanet
+                  %h2
+                    Take the challenge Spare our Planet
+                - unless flash[:notice].blank?
+                  .flash-notice
+                    = flash[:notice]
+                - unless flash[:error].blank?
+                  .flash-error
+                    = flash[:error]
+                = yield
+              = render 'layouts/navigation'
       #footer.container
+        .footercontent
+          %span
+            &copy; 2008 Go Green Foundation. All rights reserved.
+          %ul.footerul
+            %li.first
+              %a{ :href => "#" }
+                Privacy Policy
+            %li
+              %a{ :href => "#" }
+                Newsletter Signup
+            %li
+              %a{ :href => "#" }
+                Contact Us
 
     = javascript_include_tag 'jquery/jquery-1.2.6.min.js'
     = javascript_include_tag 'application'

@@ -113,7 +113,8 @@ class Pledge < ActiveRecord::Base
   end
 
   def pounds_used_by_driving
-    destination_round_trip / MPG[car_type] * BASELINE_IMPACT_PER_GALLON
+    return 0 if car_type.blank?
+    ( destination_round_trip || 0 ) / MPG[car_type] * BASELINE_IMPACT_PER_GALLON
   end
 
   def calculate_impact( action_totals )

@@ -1,0 +1,45 @@
+a.logo{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/logo.png',sizingmethod='scale');
+	background-position:0 -1000px;
+	cursor:pointer;
+}
+a.learn{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/learnmore.png',sizingmethod='scale');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+.contentbox{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contentboxbg.png',sizingmethod='crop');
+	background:none;
+}
+.statboxtopbg{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statboxtopbg.png',sizingmethod='crop');
+	background:none;
+}
+.statcontent{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statcontentstrip.png',sizingmethod='scale');
+	background:none;
+}
+.contestbox{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contestbox.png',sizingmethod='scale');
+	background:none;
+}
+#nav a{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/learnmore.png',sizingmethod='scale');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+#nav a{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrowhover.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+#nav li.active a{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrow.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+.topstyletopbg{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/topstyletopbg.png',sizingmethod='scale');
+	background:none;
+}
