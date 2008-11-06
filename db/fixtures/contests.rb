@@ -12,4 +12,7 @@ BODY
   c.email_text = <<EMAIL
 Hey, your team at Go Green wants to know how you got to school last week.  Did you meet your pledge?
 EMAIL
+  c.intro_text = <<INTRO
+Our objective is to promote personal behavior alternatives to carbon-intense consumption and lifestyle habits, and empower young people to play a significant role in developing climate change solutions. These initiatives will serve as case studies for a new, innovative and progressive public policy toward managing, slowing and ultimately reversing the effects of climate change.
+INTRO
 end

@@ -26,7 +26,7 @@
     = pledge.total_impact.to_f.round_to(1)
     lbs of CO2
     .freerange_marker
-      = render :partial => 'shared/impact', :locals => { :source => pledge }
+      = render :partial => 'shared/impact', :locals => { :source => pledge, :contest => pledge.team.contest } 
 
 %h2
   Team impact
@@ -34,6 +34,6 @@
   = @team.total_impact.to_f.round_to(1)
   lbs of CO2
   .freerange_marker
-    = render :partial => 'shared/impact', :locals => { :source => @team }
+    = render :partial => 'shared/impact', :locals => { :source => @team, :contest => @team.contest }
 
 = render :partial => 'shared/tell_a_friend', :locals => { :source => @team }
