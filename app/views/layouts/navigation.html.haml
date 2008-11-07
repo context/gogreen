@@ -40,16 +40,18 @@
     - unless logged_in?
       = link_to 'login', login_path, :class => 'login'
 
-  .contestbox
-    .sidebox
-      %ul.nav
-        - Contest.all.each do |contest|
-          %li{ :class => ( 'active' if @contest && @contest.id == contest.id ) }
-            = link_to contest.name, contest_path( contest )
-            %ul
-              - contest.teams.each do |team|
-                %li
-                  = link_to team.name, team_path( team )
+  .navboxtopbg
+    .navboxbottombg
+      .contestbox
+        .sidebox
+          %ul.nav
+            - Contest.all.each do |contest|
+              %li{ :class => ( 'active' if @contest && @contest.id == contest.id ) }
+                = link_to contest.name, contest_path( contest )
+                %ul
+                  - contest.teams.each do |team|
+                    %li
+                      = link_to team.name, team_path( team )
 
 - content_for :dom_ready do
   :plain

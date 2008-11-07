@@ -1,0 +1,7 @@
+.spareplanet.contest_header{ :style => ( "background-image: url( #{( image_folder || '..' ) + contest.public_path});" if contest.has_image_file? ) }
+  %h2
+    Take the challenge
+    = contest.name
+%p
+  = contest.intro_text
+

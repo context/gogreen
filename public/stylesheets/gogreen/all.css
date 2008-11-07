@@ -554,6 +554,10 @@ a.login:hover{
     margin-top: 10px;
 	background:url(../../images/gogreen/navbg2.png);
     border: 2px solid #6da628;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    width: 234px;
+    margin-left: 4px;
 	padding:15px 10px 0 0;
 }
 .sidebox {
@@ -562,6 +566,15 @@ a.login:hover{
     padding: 0 10px 20px 0;
     height: 100%;
     width: 100%;
+}
+.navboxtopbg{
+	background:url(../../images/gogreen/navtopbg.png) no-repeat .5px 0;
+    padding-top:0.1px;
+
+}
+.navboxbottombg{
+	background: url(../../images/gogreen/navbottombg.png) no-repeat 0 100%;
+    padding-bottom:8px;
 }
 .pledgebox{
 	background:url(../../images/gogreen/navbg2.png);

@@ -1,9 +1,4 @@
-.spareplanet.contest_header{ :style => ( "background-image: url( ..#{@contest.public_path});" if @contest.has_image_file? ) }
-  %h2
-    Take the challenge
-    = @contest.name
-%p
-  = @contest.intro_text
+= render :partial => 'contests/header', :locals => { :contest => @contest, :image_folder => '..' }
 .statbox
   .statboxtopbg
     %h2 
