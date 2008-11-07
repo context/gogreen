@@ -334,17 +334,21 @@ span.change{
 	float:left;
 }
 .spareplanet{
-	overflow:hidden;
 	background:url(../../images/gogreen/spareplanet.jpg) no-repeat;
-	width:629px;
 	height:178px;
 }
 .spareplanet h2{
+	/*background:url(../../images/gogreen/spareplanetheading.gif) no-repeat;*/
+	height:119px;
+}
+.contest_header {
+	overflow:hidden;
+	width:629px;
+}
+.contest_header h2{
 	overflow:hidden;
 	text-indent:-9999px;
-	/*background:url(../../images/gogreen/spareplanetheading.gif) no-repeat;*/
 	width:467px;
-	height:119px;
 	margin:55px 0 0 4px;
 }
 .leftcontent p{
