@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081103202924) do
+ActiveRecord::Schema.define(:version => 20081106223649) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20081103202924) do
     t.text     "email_text"
     t.text     "intro_text"
     t.text     "tell_a_friend_default"
+    t.string   "has_image_file"
   end
 
   create_table "pledges", :force => true do |t|

@@ -1,6 +1,6 @@
 -content_for :header do
   %h1 Edit Contest
-- form_for @contest, :url => admin_contest_path(@contest) do |f|
+- form_for @contest, :url => admin_contest_path(@contest), :html => { :multipart => true } do |f|
   = render :partial => 'form', :locals => {:f => f }
   %p.submit
     = f.submit "Update"

@@ -1,6 +1,6 @@
 -content_for :header do
   %h1 New Contest
-- form_for @contest, :url => admin_contests_path do |f|
+- form_for @contest, :url => admin_contests_path, :html => { :multipart => true } do |f|
   = render :partial => 'form', :locals => {:f => f }
   %p.submit
     = f.submit "Create"
