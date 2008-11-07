@@ -151,7 +151,7 @@ module HasImage
 
     # Gets the extension to append to the image. Transforms "jpeg" to "jpg."
     def extension
-      options[:convert_to].to_s.downcase.gsub("jpeg", "jpg")
+      (options[:convert_to] || 'jpg').to_s.downcase.gsub("jpeg", "jpg")
     end
     
     private

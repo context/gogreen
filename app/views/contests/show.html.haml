@@ -1,4 +1,4 @@
-.spareplanet
+.spareplanet{ :style => ( "background-image: url(#{@contest.public_path});" unless @contest.public_path.blank? ) }
   %h2
     Take the challenge
     = @contest.name

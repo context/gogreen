@@ -6,6 +6,7 @@ Contest.seed(:name) do |c|
   c.start = Time.mktime(2008, 10, 1)
   c.end = Time.mktime(2008, 11, 15)
   c.distance_question_text = 'How many miles do you travel to get to school?'
+  c.image_data = File.open( "#{RAILS_ROOT}/public/images/gogreen/spare_our_planet.jpg" )
   c.tell_a_friend_default = <<-BODY
 Join me in reducing your carbon footprint by pledging to bike, walk, carpool, or ride public transportation to school.
 BODY

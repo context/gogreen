@@ -3,7 +3,7 @@ class Contest < ActiveRecord::Base
   has_many :pledges, :through => :teams
   validates_presence_of :start
   validates_presence_of :end
-  has_image
+  has_image :resize_to => nil, :output_quality => 100, :convert_to => nil
 
   named_scope :active, :conditions => ["start < ? AND end > ?", Time.now, 1.week.ago]
 
