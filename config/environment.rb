@@ -48,9 +48,16 @@ Rails::Initializer.run do |config|
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
+  secret_file = File.join(RAILS_ROOT, "config", "session_secret.txt")
+  if File.exist?(secret_file)
+    secret = File.read(secret_file)
+  else
+#    secret = ActiveSupport::SecureRandom.hex(64)
+    File.open(secret_file, 'w') { |f| f.write(secret) }
+  end
   config.action_controller.session = {
     :session_key => '_gogreen_session',
-    :secret      => 'b8e3f90b5732eaa88768e25e76ecfb09521ad1710e245988cd5ce541b114d13135622ede84c86e1cc1f02c5eb959b6a16e77d73bfd70fb8d0f1550684e63ba90'
+    :secret      => secret
   }
 
   # Use the database for sessions instead of the cookie-based default,
