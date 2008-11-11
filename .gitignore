@@ -9,3 +9,4 @@ db/*.sqlite3
 *.swp
 public/stylesheets/*.css
 config/session_secret.txt
+config/initializers/site_keys.rb

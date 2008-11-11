@@ -522,16 +522,30 @@ span.change{
 	height:19px;
 	width:95px;
 }
-a.login{
+.headerlink h2#your_pledge{	
+	background:url(../../images/gogreen/pledge_header.png) no-repeat;
+	text-indent:-9999px;
+	height:19px;
+	width:140px;
+}
+a.login_button{
 	float:right;
 	overflow:hidden;
-	background:url(../../images/gogreen/login.jpg) no-repeat;
+	text-indent:-9999px;
 	width:58px;
 	height:26px;
-	text-indent:-9999px;
+}
+a.login{
+	background:url(../../images/gogreen/login.jpg) no-repeat;
 }
 a.login:hover{
 	background-position:0 -26px;	
+}
+a.logout{
+	background:url(../../images/gogreen/logout.png) no-repeat;
+}
+a.logout:hover{
+	background-position: -59px 0px;	
 }
 .pledge{
 	display:block;
