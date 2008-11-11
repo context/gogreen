@@ -52,11 +52,16 @@ Rails::Initializer.run do |config|
   if File.exist?(secret_file)
     secret = File.read(secret_file)
   else
-#    secret = ActiveSupport::SecureRandom.hex(64)
+    if RAILS_GEM_VERSION > '2.2.0'
+      secret = ActiveSupport::SecureRandom.hex(64)
+    else
+      require 'rails_generator/secret_key_generator'  
+      secret = Rails::SecretKeyGenerator.new("radicaldesigns").generate_secret  
+    end
     File.open(secret_file, 'w') { |f| f.write(secret) }
   end
   config.action_controller.session = {
-    :session_key => '_gogreen_session',
+    :session_key => '_radicaldesigns_session',
     :secret      => secret
   }
 

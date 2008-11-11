@@ -30,10 +30,10 @@
                 = user.label :email
                 = user.text_field :email
               %p
-                = user.label :password
+                = user.label :password, "Password ( at least 6 letters )"
                 = user.password_field :password
               %p
-                = user.label :password_confirmation
+                = user.label :password_confirmation, "Please confirm your password" 
                 = user.password_field :password_confirmation
 
           %fieldset
