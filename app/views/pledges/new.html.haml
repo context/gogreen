@@ -1,52 +1,71 @@
 = render :partial => 'contests/header', :locals => { :contest => @contest, :image_folder => '../../..' }
 = error_messages_for :pledge
 = error_messages_for :user, :object => @pledge.user
-.statbox
-  .statboxtopbg
-    %h2 Your Pledge
-  .statcontent
-    .statcontenttopbg
-      .statcontentbottombg
-        - form_for [@contest, @pledge] do |f|
+- form_for [@contest, @pledge] do |f|
+  %fieldset.contact_info
+    .statbox
+      .statboxtopbg
+        %h2 
+          CONTACT INFO
+      .statcontent
+        .statcontenttopbg
+          .statcontentbottombg
+            .statcontentmidbg
 
-          %fieldset
-            %legend Contact Info 
-            %p.required
-              = f.label :team
-              = f.select :team_id, team_options(@contest), :include_blank => true
+              %p.required
+                = f.label :team
+                = f.select :team_id, team_options(@contest), :include_blank => true
 
-            - f.fields_for :user_attributes, @pledge.user do |user|
-              %p
-                = user.label :first_name
-                = user.text_field :first_name
-              %p
-                = user.label :last_name
-                = user.text_field :last_name
-              %p
-                .info
-                  If you are younger than 13 years of age please use your parent's email address in this space.
-                  For more information on how Go Green Foundation will use your contact info, see our
-                  = link_to 'privacy policy', '/privacy.html'
-                = user.label :email
-                = user.text_field :email
-              %p
-                = user.label :password, "Password ( at least 6 letters )"
-                = user.password_field :password
-              %p
-                = user.label :password_confirmation, "Please confirm your password" 
-                = user.password_field :password_confirmation
+              - f.fields_for :user_attributes, @pledge.user do |user|
+                .input_block
+                  %p
+                    = user.label :first_name
+                    = user.text_field :first_name, :size => 15
+                  %p
+                    = user.label :last_name
+                    = user.text_field :last_name, :size => 30
+                .clear
+                .input_block
+                  .label_block
+                    = user.label :email
+                    %p.info
+                      If you are younger than 13 years of age please use your parent's email address in this space.
+                      For more information on how Go Green Foundation will use your contact info, see our
+                      = link_to 'privacy policy', '/privacy.html'
+                      .clear
+                  = user.text_field :email, :size => 50
+                .input_block
+                  %p
+                    = user.label :password, "Password ( at least 6 letters )"
+                    = user.password_field :password
+                  %p
+                    = user.label :password_confirmation, "Please confirm password" 
+                  = user.password_field :password_confirmation
 
-          %fieldset
-            %legend Your Car
-            %p
-              = f.label :car_type, "What kind of car do you drive?"
-              = f.select :car_type, car_type_options
-            %p
-              = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
-              = f.select :distance_to_destination, (1..29).to_a + [['30+', 40]]
+  %fieldset.your_car
+    .statbox
+      .statboxtopbg
+        %h2 
+          YOUR CAR
+      .statcontent
+        .statcontenttopbg
+          .statcontentbottombg
+            .statcontentmidbg
+              %p
+                = f.label :car_type, "What kind of car do you drive?"
+                = f.select :car_type, car_type_options
+              %p
+                = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
+                = f.select :distance_to_destination, (1..29).to_a + [['30+', 40]]
 
-          %fieldset.freerange_marker
-            %legend Your Pledge
+  %fieldset
+    .statbox
+      .statboxtopbg
+        %h2 
+          YOUR PLEDGE
+      .statcontent
+        .statcontenttopbg
+          .statcontentbottombg
             .pledge_box
               Every week, out of 5 days of travel, I pledge to:
               %p
@@ -88,21 +107,28 @@
                   .score-greentastic.score{:'data-threshold' => 90}
                     Green-tastic!
                 .clear-pledge.js-only
-                  = link_to 'clear pledge', '', :id => 'clear_pledge_button'
+                  = link_to 'Reset Form', '', :id => 'clear_pledge_button'
 
-          %fieldset
-            %legend Carpool (if you said carpool)
-            %p
-              = f.label :carpool_additional_passengers, "How many other people are usually in your carpool?"
-              = f.select :carpool_additional_passengers, (1...6).to_a
-            %p
-              = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
-              = f.select :carpool_car_type, car_type_options
-            %p
-              = f.label :carpool_distance, "How many miles is your carpool route?"
-              = f.select :carpool_distance, (1..29).to_a + [['30+', 40]]
+  %fieldset.carpool
+    .statbox
+      .statboxtopbg
+        %h2 
+          CARPOOL
+      .statcontent
+        .statcontenttopbg
+          .statcontentbottombg
+            .statcontentmidbg
+              %p
+                = f.label :carpool_additional_passengers, "How many other people are usually in your carpool?"
+                = f.select :carpool_additional_passengers, (1...6).to_a
+              %p
+                = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
+                = f.select :carpool_car_type, car_type_options
+              %p
+                = f.label :carpool_distance, "How many miles is your carpool route?"
+                = f.select :carpool_distance, (1..29).to_a + [['30+', 40]]
 
-          = f.submit 'make pledge'#, :onclick => "alert('pledge will be created'); return false;"
+  = f.submit 'MAKE PLEDGE', :id => 'pledge_confirm_page'
 
 - content_for :dom_ready do
   :plain

@@ -382,8 +382,18 @@ span.change{
 	overflow:hidden;
 	background:url(../../images/gogreen/statcontentstrip.png) repeat-y;
 }
-.statcontent p, .statcontent textarea, .statcontent input{
+fieldset.your_car .statcontentmidbg {
+	background:url(../../images/gogreen/prius.png) no-repeat 85% 85%;
+}
+fieldset.contact_info .statcontentmidbg {
+	background:url(../../images/gogreen/iphone.png) no-repeat 85% 85%;
+}
+fieldset.carpool .statcontentmidbg {
+	background:url(../../images/gogreen/carpool.png) no-repeat 85% 85%;
+}
+.statcontent p, .statcontent textarea, .statcontent input, .statcontent label, .statcontent select{
     color: #5B3D30;
+    font-size: 14px;
 }
 .statcontenttopbg{
 	width:625px;
