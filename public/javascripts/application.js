@@ -3,13 +3,15 @@
 function pledge_awesomeness( total_points ) {
   var current_awesomeness_level;
   $('.awesomeness .score').hide().each( function() { 
+    $('.awesomeness .statcontentbottombg').removeClass( 'score-' + $(this).attr('data-level'));
     if( new Number( $(this).attr('data-threshold') ) <= total_points ) { 
-      current_awesomeness_level = this;
+      current_awesomeness_level = $(this).attr('data-level');
     }
   } );
 
   if ( current_awesomeness_level !== undefined ) {
-    $(current_awesomeness_level).show();
+    //$(current_awesomeness_level).show();
+    $('.awesomeness .statcontentbottombg').addClass( 'score-' + current_awesomeness_level );
   }
 }
 function pledge_scoring() {
