@@ -408,23 +408,23 @@ fieldset.carpool .statcontentmidbg {
 }
 .statcontentbottombg.score-good{
   background: url( ../../images/gogreen/good_start.png) no-repeat 0 100%;
-  padding-bottom:60px;
+  padding-bottom:100px;
 }
 .statcontentbottombg.score-progress{
   background: url( ../../images/gogreen/making_progress.png) no-repeat 0 100%;
-  padding-bottom:60px;
+  padding-bottom:100px;
 }
 .statcontentbottombg.score-goodwork{
   background: url( ../../images/gogreen/good_work.png) no-repeat 0 100%;
-  padding-bottom:60px;
+  padding-bottom:100px;
 }
 .statcontentbottombg.score-amazing{
   background: url( ../../images/gogreen/awesome.png) no-repeat 0 100%;
-  padding-bottom:60px;
+  padding-bottom:100px;
 }
 .statcontentbottombg.score-greentastic{
   background: url( ../../images/gogreen/greentastic.png) no-repeat 0 100%;
-  padding-bottom:60px;
+  padding-bottom:100px;
 }
 .statcontentbottombg.team{
 	padding-bottom:28px;
@@ -790,8 +790,11 @@ a.rollover{
 	text-decoration:underline;
 }
 .clear-pledge {
-  float: right;
   margin-right: 30px;
+}
+.clear-pledge-padding {
+  text-align: right;
+  width: 100%;
 }
 .clear-pledge a, .clear-pledge a:hover{
   color: #5B3D30;

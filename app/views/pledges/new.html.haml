@@ -100,8 +100,9 @@
                             = f.radio_button 'carpool', day, :class => 'pledge_size', :'data-points' => (day*5)
                             %label{ :for => "pledge_carpool_#{day}"}
                               = "#{day} Days"
-                  .clear-pledge.js-only
-                    = link_to 'Reset Form', '', :id => 'clear_pledge_button'
+                  .clear-pledge-padding
+                    .clear-pledge.js-only
+                      = link_to 'Reset Form', '', :id => 'clear_pledge_button'
                   .awesomeness
                     .score-good.score{:'data-threshold' => 5, :'data-level' => 'good'}
                     .score-better.score{:'data-threshold' => 25, :'data-level' => 'progress' }
