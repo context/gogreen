@@ -26,6 +26,15 @@ function pledge_scoring() {
 
       $('.mode_of_transport').each( function() {
         var row_value = $('.pledge_size:checked', this ).val() || 0;    
+        for( i = 0; i <= 5; i++ ) {
+          $('.days_block', this).removeClass('days_' + i );
+        }
+        $('.days_block', this).addClass('days_' + row_value);
+        if( row_value > 0 ) {
+          $('.days_block_start', this).addClass('days_block_start_active');
+        } else {
+          $('.days_block_start', this).removeClass('days_block_start_active');
+        }
         var limit = new Number( row_value ) + ( total );
 
         $('.pledge_size', this).each( function() { 

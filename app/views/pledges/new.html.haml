@@ -68,48 +68,52 @@
           .awesomeness
             .statcontentbottombg
               .pledge_box
-                Every week, out of 5 days of travel, I pledge to:
-                %p
-                  %table
-                    %tr
-                      %td.mode_label
-                        = f.label :walk_bike, "Walk/Bike"
-                      %td.mode_of_transport
-                        %span.days_block_start
-                        %p.days_block
-                          - 0.upto(5) do |day|
-                            %span.pledge_size_container
-                              = f.radio_button 'walk_bike', day, :class => 'pledge_size', :'data-points' => (day*20)
-                              %label{ :for => "pledge_walk_bike_#{day}"}
-                                = "#{day} Days"
-                    %tr
-                      %td.mode_label
-                        = f.label :public_transit, "Take the bus"
-                      %td.mode_of_transport
+                %p.intro
+                  Every week, out of 5 days of travel, I pledge to:
+                %table
+                  %tr
+                    %td.mode_label
+                      = f.label :walk_bike, "Walk/Bike"
+                    %td.mode_of_transport
+                      %span.days_block_start
+                      %p.days_block
+                        - 0.upto(5) do |day|
+                          %span.pledge_size_container
+                            = f.radio_button 'walk_bike', day, :class => 'pledge_size', :'data-points' => (day*20)
+                            %label{ :for => "pledge_walk_bike_#{day}"}
+                              = "#{day} Days"
+                  %tr
+                    %td.mode_label
+                      = f.label :public_transit, "Take the bus"
+                    %td.mode_of_transport
+                      %span.days_block_start
+                      %p.days_block
                         - 0.upto(5) do |day|
                           %span.pledge_size_container
                             = f.radio_button 'public_transit', day, :class => 'pledge_size', :'data-points' => (day*10)
                             %label{ :for => "pledge_public_transit_#{day}"}
                               = "#{day} Days"
-                    %tr
-                      %td.mode_label
-                        = f.label :carpool
-                      %td.mode_of_transport
+                  %tr
+                    %td.mode_label
+                      = f.label :carpool
+                    %td.mode_of_transport
+                      %span.days_block_start
+                      %p.days_block
                         - 0.upto(5) do |day|
                           %span.pledge_size_container
                             = f.radio_button 'carpool', day, :class => 'pledge_size', :'data-points' => (day*5)
                             %label{ :for => "pledge_carpool_#{day}"}
                               = "#{day} Days"
-                  .clear-pledge-padding
-                    .clear-pledge.js-only
-                      = link_to 'Reset Form', '', :id => 'clear_pledge_button'
-                  .awesomeness
-                    .score-good.score{:'data-threshold' => 5, :'data-level' => 'good'}
-                    .score-better.score{:'data-threshold' => 25, :'data-level' => 'progress' }
-                    .score-goodwork.score{:'data-threshold' => 50, :'data-level' => 'goodwork' }
-                    .score-amazing.score{:'data-threshold' => 75, :'data-level' => 'amazing' }
-                    .score-greentastic.score{:'data-threshold' => 90, :'data-level' => 'greentastic' }
-                      Green-tastic!
+                .clear-pledge-padding
+                  .clear-pledge.js-only
+                    = link_to 'Reset Form', '', :id => 'clear_pledge_button'
+                .awesomeness
+                  .score-good.score{:'data-threshold' => 5, :'data-level' => 'good'}
+                  .score-better.score{:'data-threshold' => 25, :'data-level' => 'progress' }
+                  .score-goodwork.score{:'data-threshold' => 50, :'data-level' => 'goodwork' }
+                  .score-amazing.score{:'data-threshold' => 75, :'data-level' => 'amazing' }
+                  .score-greentastic.score{:'data-threshold' => 90, :'data-level' => 'greentastic' }
+                    Green-tastic!
 
   %fieldset.carpool
     .statbox

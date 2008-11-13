@@ -804,6 +804,45 @@ p.submit {
   text-align:center;
 }
 
-.score-good {
-} 
+p.intro {
+  text-align: left;
+  font-weight:bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
 
+p.days_block, span.days_block_start {
+  margin: 0;
+}
+span.days_block_start {
+  height: 20px;
+  width: 12px;
+  display: block;
+  float:left;
+}
+span.days_block_start_active {
+  background: url(../../images/gogreen/bar-start.png) no-repeat;
+}
+p.days_block {
+  float: left;
+  background: url(../../images/gogreen/bar-long.png) no-repeat;
+  height: 20px;
+}
+.mode_of_transport .days_5 {
+  background-position: 0 0;
+}
+.mode_of_transport .days_4 {
+  background-position: -60px 0;
+}
+.mode_of_transport .days_3 {
+  background-position: -130px 0;
+}
+.mode_of_transport .days_2 {
+  background-position: -205px 0;
+}
+.mode_of_transport .days_1 {
+  background-position: -280px 0;
+}
+.mode_of_transport .days_0 {
+  background-position: -450px 0;
+}
