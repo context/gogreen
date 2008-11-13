@@ -68,15 +68,22 @@
 .flash-notice
   :padding 5px
   :margin 10px
-  :background-color #59fe5f
-  :border 2px solid green
+  :background-color #78593a
+  :border-color #6c9d29
+  :border-width 4px 0 4px 0
+  :color #ffffff
+  :border-style solid
   :text-align center
   :font-size 16px
 .flash-error
+  :color #ffffff
+  :font-weight bold
   :padding 5px
   :margin 10px
-  :background-color #fe595f
-  :border 2px solid red
+  :background-color #e1a215
+  :border-color #78593a
+  :border-width 4px 0 4px 0
+  :border-style solid
   :text-align center
   :font-size 16px
 
@@ -116,3 +123,15 @@ label
   .info
     :margin-top 0
 
+#errorExplanation 
+  :margin-top 10px
+  h2
+    :color #e1a215
+  li
+    :color #ffffff
+    :font-size 14px
+
+.fieldWithErrors
+  :background-color #f6c733
+  :padding-top 2px
+  :padding-bottom 2px
