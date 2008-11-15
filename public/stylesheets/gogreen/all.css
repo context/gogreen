@@ -590,20 +590,21 @@ a.logout:hover{
 .pledge:hover{
 	background-position:0 -79px;
 }
+/*
 * html .contestbox{
 	margin:-19px 0 0;
 }
+  */
 .contestbox{
 	/*background:url(../../images/gogreen/contestbox.png) no-repeat;
 	width:259px; */
     margin-top: 10px;
-	background:url(../../images/gogreen/navbg2.png);
+	  background:url(../../images/gogreen/navbg2.png) 0 30px;
     border: 2px solid #6da628;
-    border-top-width: 0;
     border-bottom-width: 0;
     width: 234px;
     margin-left: 4px;
-	padding:15px 10px 0 0;
+	  padding:15px 10px 0 0;
 }
 .sidebox {
 	background:url(../../images/gogreen/plantbg2.png) no-repeat;
@@ -611,11 +612,6 @@ a.logout:hover{
     padding: 0 10px 20px 0;
     height: 100%;
     width: 100%;
-}
-.navboxtopbg{
-	background:url(../../images/gogreen/navtopbg.png) no-repeat .5px 0;
-    padding-top:0.1px;
-
 }
 .navboxbottombg{
 	background: url(../../images/gogreen/navbottombg.png) no-repeat 0 100%;
