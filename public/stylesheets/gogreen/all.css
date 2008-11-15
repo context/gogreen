@@ -372,7 +372,7 @@ span.change{
 .statboxtopbg.other h2{
 	text-indent:-9999px;
 	overflow:hidden;
-	background:url(../../images/gogreen/topteams.gif) no-repeat;
+	background:transparent url(../../images/gogreen/topteams.gif) no-repeat;
 	width:117px;
 	height:21px;
 	margin-top:6px;
@@ -380,7 +380,8 @@ span.change{
 .statcontent{
 	width:625px;
 	overflow:hidden;
-	background:url(../../images/gogreen/statcontentstrip.png) repeat-y;
+	background:transparent url(../../images/gogreen/statcontentstrip.png) repeat-y;
+    position: relative;
 }
 fieldset.your_car .statcontentmidbg {
 	background:url(../../images/gogreen/prius.png) no-repeat 85% 85%;
@@ -398,12 +399,12 @@ fieldset.carpool .statcontentmidbg {
 .statcontenttopbg{
 	width:625px;
 	overflow:hidden;
-	background:url(../../images/gogreen/statcontenttopbg.jpg) no-repeat;	
+	background:transparent url(../../images/gogreen/statcontenttopbg.jpg) no-repeat;
 }
 .statcontentbottombg{
 	width:592px;
 	overflow:hidden;
-	background:url(../../images/gogreen/statcontentbottombg.jpg) no-repeat 0 100%;	
+	background:transparent url(../../images/gogreen/statcontentbottombg.jpg) no-repeat 0 100%;	
 	padding:11px 0 19px 33px;	
 }
 .statcontentbottombg.score-good{

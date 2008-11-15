@@ -1,0 +1,142 @@
+%fieldset.contact_info
+  .statbox
+    .statboxtopbg
+      %h2 
+        CONTACT INFO
+    .statcontent
+      .statcontenttopbg
+        .statcontentbottombg
+          .statcontentmidbg
+
+            %p.required
+              = f.label :team
+              = f.select :team_id, team_options(@contest), :include_blank => true
+
+            - f.fields_for :user_attributes, @pledge.user do |user|
+              .input_block
+                %p
+                  = user.label :first_name
+                  = user.text_field :first_name, :size => 15
+                %p
+                  = user.label :last_name
+                  = user.text_field :last_name, :size => 30
+              .clear
+              .input_block
+                .label_block
+                  = user.label :email
+                  %p.info
+                    If you are younger than 13 years of age please use your parent's email address in this space.
+                    For more information on how Go Green Foundation will use your contact info, see our
+                    = link_to 'privacy policy', '/privacy.html'
+                    .clear
+                = user.text_field :email, :size => 50
+              .input_block
+                %p
+                  = user.label :password, "Password ( at least 6 letters )"
+                  = user.password_field :password
+                %p
+                  = user.label :password_confirmation, "Please confirm password" 
+                = user.password_field :password_confirmation
+
+%fieldset.your_car
+  .statbox
+    .statboxtopbg
+      %h2 
+        YOUR CAR
+    .statcontent
+      .statcontenttopbg
+        .statcontentbottombg
+          .statcontentmidbg
+            %p
+              = f.label :car_type, "What kind of car do you drive?"
+              = f.select :car_type, car_type_options
+            %p
+              = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
+              = f.select :distance_to_destination, (1..29).to_a + [['30+', 40]]
+
+%fieldset
+  .statbox
+    .statboxtopbg
+      %h2 
+        YOUR PLEDGE
+    .statcontent
+      .statcontenttopbg
+        .awesomeness
+          .statcontentbottombg
+            .pledge_box
+              %p.intro
+                Every week, out of 5 days of travel, I pledge to:
+              %table
+                %tr
+                  %td.mode_label
+                    = f.label :walk_bike, "Walk/Bike"
+                  %td.mode_of_transport
+                    %span.days_block_start
+                    %p.days_block
+                      - 0.upto(5) do |day|
+                        %span.pledge_size_container
+                          = f.radio_button 'walk_bike', day, :class => 'pledge_size', :'data-points' => (day*20)
+                          %label{ :for => "pledge_walk_bike_#{day}"}
+                            = "#{day} Days"
+                %tr
+                  %td.mode_label
+                    = f.label :public_transit, "Take the bus"
+                  %td.mode_of_transport
+                    %span.days_block_start
+                    %p.days_block
+                      - 0.upto(5) do |day|
+                        %span.pledge_size_container
+                          = f.radio_button 'public_transit', day, :class => 'pledge_size', :'data-points' => (day*10)
+                          %label{ :for => "pledge_public_transit_#{day}"}
+                            = "#{day} Days"
+                %tr
+                  %td.mode_label
+                    = f.label :carpool
+                  %td.mode_of_transport
+                    %span.days_block_start
+                    %p.days_block
+                      - 0.upto(5) do |day|
+                        %span.pledge_size_container
+                          = f.radio_button 'carpool', day, :class => 'pledge_size', :'data-points' => (day*5)
+                          %label{ :for => "pledge_carpool_#{day}"}
+                            = "#{day} Days"
+              .clear-pledge-padding
+                .clear-pledge.js-only
+                  = link_to 'Reset Form', '', :id => 'clear_pledge_button'
+              .awesomeness
+                .score-good.score{:'data-threshold' => 5, :'data-level' => 'good'}
+                .score-better.score{:'data-threshold' => 25, :'data-level' => 'progress' }
+                .score-goodwork.score{:'data-threshold' => 50, :'data-level' => 'goodwork' }
+                .score-amazing.score{:'data-threshold' => 75, :'data-level' => 'amazing' }
+                .score-greentastic.score{:'data-threshold' => 90, :'data-level' => 'greentastic' }
+                  Green-tastic!
+
+%fieldset.carpool
+  .statbox
+    .statboxtopbg
+      %h2 
+        CARPOOL
+    .statcontent
+      .statcontenttopbg
+        .statcontentbottombg
+          .statcontentmidbg
+            %p
+              = f.label :carpool_additional_passengers, "How many other people are usually in your carpool?"
+              = f.select :carpool_additional_passengers, (1...6).to_a
+            %p
+              = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
+              = f.select :carpool_car_type, car_type_options
+            %p
+              = f.label :carpool_distance, "How many miles is your carpool route?"
+              = f.select :carpool_distance, (1..29).to_a + [['30+', 40]]
+
+
+- content_for :dom_ready do
+  :plain
+    pledge_scoring();
+    $('.mode_of_transport .pledge_size').click( pledge_scoring );
+    $('#clear_pledge_button').click( function() { 
+      $('.mode_of_transport .pledge_size[value=0]').click();
+      return false;
+    });
+

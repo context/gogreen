@@ -16,6 +16,8 @@ class Pledge < ActiveRecord::Base
   validates_numericality_of :distance_to_destination
   validates_presence_of :team_id
 
+  attr_accessor :awaiting_confirmation, :pledge_details_confirmed
+
   named_scope :active, :include => :team, :conditions => ["teams.contest_id IN (?)", Contest.active.map {|c| c.id}]
 
   before_create :generate_report_code
@@ -147,5 +149,9 @@ class Pledge < ActiveRecord::Base
 
   def contest
     team.contest
+  end
+
+  def awaiting_confirmation?
+    awaiting_confirmation == true
   end
 end

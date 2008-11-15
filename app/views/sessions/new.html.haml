@@ -1,17 +1,21 @@
-%h2 Login
-- form_tag session_path do
-  %fieldset
-    %legend
-      Your Details
-    %p
-      = label_tag 'login', 'Email'
-      = text_field_tag 'login', @login
-    %p
-      = label_tag 'password'
-      = password_field_tag 'password', nil
-    %p.checkbox
-      = check_box_tag 'remember_me', '1', @remember_me
-      = label_tag 'remember_me', 'Remember me'
-  .buttons
-    = submit_tag 'Login'
-    = link_to 'Forgotten Password', forgot_password_path
+.statbox
+  .statboxtopbg
+    %h2 Login
+  .statcontent
+    .statcontenttopbg
+      .statcontentbottombg
+        - form_tag session_path do
+          %fieldset
+            %legend
+              Your Details
+            %p
+              = label_tag 'login', 'Email'
+              = text_field_tag 'login', @login
+            %p
+              = label_tag 'password'
+              = password_field_tag 'password', nil
+            %p.checkbox
+              = check_box_tag 'remember_me', '1', @remember_me
+              = label_tag 'remember_me', 'Remember me'
+          .buttons
+            = submit_tag 'Login'

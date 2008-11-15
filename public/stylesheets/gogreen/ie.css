@@ -1,45 +1,68 @@
 a.logo{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/logo.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/logo.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/logo.png',sizingmethod='scale');
 	background-position:0 -1000px;
 	cursor:pointer;
 }
 a.learn{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/learnmore.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/learnmore.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/learnmore.png',sizingmethod='scale');
 	background-position:0 -1000px;
 	cursor:pointer;	
 }
 .contentbox{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contentboxbg.png',sizingmethod='crop');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/contentboxbg.png',sizingmethod='crop');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/contentbox.png',sizingmethod='crop');
 	background:none;
 }
 .statboxtopbg{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statboxtopbg.png',sizingmethod='crop');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/statboxtopbg.png',sizingmethod='crop');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/statboxtopbg.png',sizingmethod='crop');
 	background:none;
 }
 .statcontent{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statcontentstrip.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/statcontentstrip.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/statcontentstrip.png',sizingmethod='scale');
 	background:none;
+}
+.statcontentmidbg {
+  background: none !important;
 }
 .contestbox{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contestbox.png',sizingmethod='scale');
+  background:none;
+  border-width: 0 0 0 2px;
+}
+.sidebox {
 	background:none;
 }
-#nav a{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/learnmore.png',sizingmethod='scale');
-	background-position:0 -1000px;
+.navboxbottombg, .navboxtopbg {
+	background:none;
+}
+.nav a{
+	background-position:0 -1000px !important;
+	background:none !important;
 	cursor:pointer;	
 }
-#nav a{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrowhover.png',sizingmethod='crop');
-	background-position:0 -1000px;
-	cursor:pointer;	
-}
-#nav li.active a{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrow.png',sizingmethod='crop');
-	background-position:0 -1000px;
+.nav li.active a{
+	background-position:0 -1000px !important;
+	background:none !important;
 	cursor:pointer;	
 }
 .topstyletopbg{
-	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/topstyletopbg.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/spare_our_planet/images/gogreen/topstyletopbg.png',sizingmethod='scale');
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/topstyletopbg.png',sizingmethod='scale');
 	background:none;
+}
+.pledgebox {
+  background:none;
+  border-width: 0 0 0 2px;
+}
+
+#your_pledge {
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/pledge_header.png',sizingmethod='crop');
+	background-position:0 -1000px !important;
+}
+.logout {
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='/images/gogreen/logout.png',sizingmethod='crop');
+	background-position:0 -1000px !important;
 }
