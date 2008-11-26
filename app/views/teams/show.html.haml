@@ -17,7 +17,7 @@
           = pledge.calculate_impact( [[commitment,days]]).to_f.round_to(1)
           lbs of CO2
       %p
-        ==Instead of driving #{pledge.destination_round_trip.round} miles every day by yourself
+        ==Instead of driving #{pledge.destination_round_trip.round} miles every day round trip
       %p
         Saving
         = pledge.weekly_commitment_impact.to_f.round_to(1)

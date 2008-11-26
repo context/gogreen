@@ -1,8 +1,8 @@
 Contest.seed(:name) do |c|
   c.name = 'Spare Our Planet'
   c.permalink = 'spare-our-planet'
-  c.start = Time.mktime(2008, 11, 1)
-  c.end = Time.mktime(2008, 12, 15)
+  c.start = Time.mktime(2008, 12, 8)
+  c.end = Time.mktime(2008, 1, 15)
   c.distance_question_text = 'How many miles do you travel to get to school?'
   c.image_data = File.open( "#{RAILS_ROOT}/public/images/gogreen/spare_our_planet.jpg" )
   c.tell_a_friend_default = <<-BODY

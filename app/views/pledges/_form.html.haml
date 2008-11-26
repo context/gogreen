@@ -51,7 +51,7 @@
               = f.label :car_type, "What kind of car do you drive?"
               = f.select :car_type, car_type_options
             %p
-              = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles?" )
+              = f.label :distance_to_destination, ( @contest && @contest.distance_question_text || "How far away are you from your school in miles? ( one-way )" )
               = f.select :distance_to_destination, (1..29).to_a + [['30+', 40]]
 
 %fieldset
@@ -127,7 +127,7 @@
               = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
               = f.select :carpool_car_type, car_type_options
             %p
-              = f.label :carpool_distance, "How many miles is your carpool route?"
+              = f.label :carpool_distance, "How many miles is your carpool route? ( one-way )"
               = f.select :carpool_distance, (1..29).to_a + [['30+', 40]]
 
 
