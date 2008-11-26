@@ -7,7 +7,7 @@
   .pledge_confirmation_block
     = f.check_box :pledge_details_confirmed
   %p.submit
-    = image_submit_tag '../../../images/gogreen/pledgenow.png', :id => 'pledge_confirm_page', :alt => 'make pledge'
+    = image_submit_tag 'gogreen/pledgenow.png', :id => 'pledge_confirm_page', :alt => 'make pledge'
 - content_for :dom_ready do
   - if @pledge.awaiting_confirmation?
     $('.pledge_confirmation_block').show();
