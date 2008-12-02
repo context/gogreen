@@ -6,6 +6,8 @@
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
+ENV["GEM_HOME"]="/home/radicaldesigns/.gems"
+ENV["GEM_PATH"]="/home/radicaldesigns/.gems:/usr/lib/ruby/gems/1.8"
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
