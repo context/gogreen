@@ -124,7 +124,7 @@ module ActiveSupport
         "Kathmandu"                    => "Asia/Katmandu",
         "Astana"                       => "Asia/Dhaka",
         "Dhaka"                        => "Asia/Dhaka",
-        "Sri Jayawardenepura"          => "Asia/Colombo",
+        "Sri Jayawardenepura"          => "Asia/Dhaka",
         "Almaty"                       => "Asia/Almaty",
         "Novosibirsk"                  => "Asia/Novosibirsk",
         "Rangoon"                      => "Asia/Rangoon",
@@ -199,12 +199,6 @@ module ActiveSupport
       result = (utc_offset <=> zone.utc_offset)
       result = (name <=> zone.name) if result == 0
       result
-    end
-
-    # Compare #name and TZInfo identifier to a supplied regexp, returning true
-    # if a match is found.
-    def =~(re)
-      return true if name =~ re || MAPPING[name] =~ re
     end
 
     # Returns a textual representation of this time zone.
@@ -304,8 +298,7 @@ module ActiveSupport
                  "Mexico City", "Monterrey", "Central America" ],
        [-18_000, "Eastern Time (US & Canada)", "Indiana (East)", "Bogota",
                  "Lima", "Quito" ],
-       [-16_200, "Caracas" ],
-       [-14_400, "Atlantic Time (Canada)", "La Paz", "Santiago" ],
+       [-14_400, "Atlantic Time (Canada)", "Caracas", "La Paz", "Santiago" ],
        [-12_600, "Newfoundland" ],
        [-10_800, "Brasilia", "Buenos Aires", "Georgetown", "Greenland" ],
        [ -7_200, "Mid-Atlantic" ],
@@ -326,9 +319,9 @@ module ActiveSupport
        [ 14_400, "Abu Dhabi", "Muscat", "Baku", "Tbilisi", "Yerevan" ],
        [ 16_200, "Kabul" ],
        [ 18_000, "Ekaterinburg", "Islamabad", "Karachi", "Tashkent" ],
-       [ 19_800, "Chennai", "Kolkata", "Mumbai", "New Delhi", "Sri Jayawardenepura" ],
+       [ 19_800, "Chennai", "Kolkata", "Mumbai", "New Delhi" ],
        [ 20_700, "Kathmandu" ],
-       [ 21_600, "Astana", "Dhaka", "Almaty",
+       [ 21_600, "Astana", "Dhaka", "Sri Jayawardenepura", "Almaty",
                  "Novosibirsk" ],
        [ 23_400, "Rangoon" ],
        [ 25_200, "Bangkok", "Hanoi", "Jakarta", "Krasnoyarsk" ],

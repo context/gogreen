@@ -1,3 +1,4 @@
+
 class Object
   def to_param
     to_s
@@ -25,10 +26,6 @@ end
 class Regexp #:nodoc:
   def number_of_captures
     Regexp.new("|#{source}").match('').captures.length
-  end
-
-  def multiline?
-    options & MULTILINE == MULTILINE
   end
 
   class << self

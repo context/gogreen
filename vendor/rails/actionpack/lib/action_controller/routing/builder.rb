@@ -1,16 +1,23 @@
 module ActionController
   module Routing
     class RouteBuilder #:nodoc:
-      attr_reader :separators, :optional_separators
-      attr_reader :separator_regexp, :nonseparator_regexp, :interval_regexp
+      attr_accessor :separators, :optional_separators
 
       def initialize
-        @separators = Routing::SEPARATORS
-        @optional_separators = %w( / )
+        self.separators = Routing::SEPARATORS
+        self.optional_separators = %w( / )
+      end
 
-        @separator_regexp = /[#{Regexp.escape(separators.join)}]/
-        @nonseparator_regexp = /\A([^#{Regexp.escape(separators.join)}]+)/
-        @interval_regexp = /(.*?)(#{separator_regexp}|$)/
+      def separator_pattern(inverted = false)
+        "[#{'^' if inverted}#{Regexp.escape(separators.join)}]"
+      end
+
+      def interval_regexp
+        Regexp.new "(.*?)(#{separators.source}|$)"
+      end
+
+      def multiline_regexp?(expression)
+        expression.options & Regexp::MULTILINE == Regexp::MULTILINE
       end
 
       # Accepts a "route path" (a string defining a route), and returns the array
@@ -23,7 +30,7 @@ module ActionController
         rest, segments = path, []
 
         until rest.empty?
-          segment, rest = segment_for(rest)
+          segment, rest = segment_for rest
           segments << segment
         end
         segments
@@ -32,20 +39,24 @@ module ActionController
       # A factory method that returns a new segment instance appropriate for the
       # format of the given string.
       def segment_for(string)
-        segment =
-          case string
-            when /\A:(\w+)/
-              key = $1.to_sym
-              key == :controller ? ControllerSegment.new(key) : DynamicSegment.new(key)
-            when /\A\*(\w+)/
-              PathSegment.new($1.to_sym, :optional => true)
-            when /\A\?(.*?)\?/
-              StaticSegment.new($1, :optional => true)
-            when nonseparator_regexp
-              StaticSegment.new($1)
-            when separator_regexp
-              DividerSegment.new($&, :optional => optional_separators.include?($&))
-          end
+        segment = case string
+          when /\A:(\w+)/
+            key = $1.to_sym
+            case key
+              when :controller then ControllerSegment.new(key)
+              else DynamicSegment.new key
+            end
+          when /\A\*(\w+)/ then PathSegment.new($1.to_sym, :optional => true)
+          when /\A\?(.*?)\?/
+            returning segment = StaticSegment.new($1) do
+              segment.is_optional = true
+            end
+          when /\A(#{separator_pattern(:inverted)}+)/ then StaticSegment.new($1)
+          when Regexp.new(separator_pattern) then
+            returning segment = DividerSegment.new($&) do
+              segment.is_optional = (optional_separators.include? $&)
+            end
+        end
         [segment, $~.post_match]
       end
 
@@ -53,17 +64,17 @@ module ActionController
       # segments are passed alongside in order to distinguish between default values
       # and requirements.
       def divide_route_options(segments, options)
-        options = options.except(:path_prefix, :name_prefix)
+        options = options.dup
 
         if options[:namespace]
           options[:controller] = "#{options.delete(:namespace).sub(/\/$/, '')}/#{options[:controller]}"
+          options.delete(:path_prefix)
+          options.delete(:name_prefix)
         end
 
         requirements = (options.delete(:requirements) || {}).dup
         defaults     = (options.delete(:defaults)     || {}).dup
         conditions   = (options.delete(:conditions)   || {}).dup
-
-        validate_route_conditions(conditions)
 
         path_keys = segments.collect { |segment| segment.key if segment.respond_to?(:key) }.compact
         options.each do |key, value|
@@ -91,7 +102,7 @@ module ActionController
             if requirement.source =~ %r{\A(\\A|\^)|(\\Z|\\z|\$)\Z}
               raise ArgumentError, "Regexp anchor characters are not allowed in routing requirements: #{requirement.inspect}"
             end
-            if requirement.multiline?
+            if multiline_regexp?(requirement)
               raise ArgumentError, "Regexp multiline option not allowed in routing requirements: #{requirement.inspect}"
             end
             segment.regexp = requirement
@@ -163,32 +174,30 @@ module ActionController
         defaults, requirements, conditions = divide_route_options(segments, options)
         requirements = assign_route_options(segments, defaults, requirements)
 
-        # TODO: Segments should be frozen on initialize
-        segments.each { |segment| segment.freeze }
+        route = Route.new
 
-        route = Route.new(segments, requirements, conditions)
+        route.segments = segments
+        route.requirements = requirements
+        route.conditions = conditions
+
+        if !route.significant_keys.include?(:action) && !route.requirements[:action]
+          route.requirements[:action] = "index"
+          route.significant_keys << :action
+        end
+
+        # Routes cannot use the current string interpolation method
+        # if there are user-supplied <tt>:requirements</tt> as the interpolation
+        # code won't raise RoutingErrors when generating
+        if options.key?(:requirements) || route.requirements.keys.to_set != Routing::ALLOWED_REQUIREMENTS_FOR_OPTIMISATION
+          route.optimise = false
+        end
 
         if !route.significant_keys.include?(:controller)
           raise ArgumentError, "Illegal route: the :controller must be specified!"
         end
 
-        route.freeze
+        route
       end
-
-      private
-        def validate_route_conditions(conditions)
-          if method = conditions[:method]
-            [method].flatten.each do |m|
-              if m == :head
-                raise ArgumentError, "HTTP method HEAD is invalid in route conditions. Rails processes HEAD requests the same as GETs, returning just the response headers"
-              end
-
-              unless HTTP_METHODS.include?(m.to_sym)
-                raise ArgumentError, "Invalid HTTP method specified in route conditions: #{conditions.inspect}"
-              end
-            end
-          end
-        end
     end
   end
 end
