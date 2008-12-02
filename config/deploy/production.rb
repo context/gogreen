@@ -1,5 +1,5 @@
-set :deploy_to, "/home/#{user}/#{application}"
 set :user, "radicaldesigns"
+set :deploy_to, "/home/#{user}/#{application}"
 
 role :app,  "gogreen.dreamhosters.com"
 role :web,  "gogreen.dreamhosters.com"
