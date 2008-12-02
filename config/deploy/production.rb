@@ -1,5 +1,6 @@
 set :user, "radicaldesigns"
 set :deploy_to, "/home/#{user}/#{application}"
+set :use_sudo, false
 
 role :app,  "gogreen.dreamhosters.com"
 role :web,  "gogreen.dreamhosters.com"

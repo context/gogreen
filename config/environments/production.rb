@@ -3,6 +3,8 @@
 # The production environment is meant for finished, "live" apps.
 # Code is not reloaded between requests
 config.cache_classes = true
+ENV["GEM_HOME"]="/home/radicaldesigns/.gems"
+ENV["GEM_PATH"]="/home/radicaldesigns/.gems:/usr/lib/ruby/gems/1.8"
 
 # Use a different logger for distributed setups
 # config.logger = SyslogLogger.new
