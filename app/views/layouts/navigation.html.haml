@@ -29,9 +29,9 @@
               = link_to "#{pledge.contest.name} &mdash; #{pledge.team.name}", team_path( pledge.team )
               %ul
                 %li
-                  = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report # || last week is outside teh scope
+                  = link_to "report last week's action", new_pledge_report_path( pledge, :week => 'previous' ) unless pledge.previous_report || pledge.contest.started_this_week?
                 %li
-                  = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report
+                  = link_to "report action", new_pledge_report_path( pledge ) unless pledge.current_report || pledge.contest.ended_last_week?
 
   .headerlink
     %h2#contests

@@ -27,4 +27,11 @@ class Contest < ActiveRecord::Base
     ( 0...length_in_weeks ).to_a.map { |week_index| ( start + week_index.weeks ).beginning_of_week }
   end
 
+  def started_this_week?
+    self.start >= ( Time.now.beginning_of_week - 2.days )
+  end
+
+  def ended_last_week?
+    self.end <= Time.now.beginning_of_week
+  end
 end

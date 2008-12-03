@@ -1,13 +1,21 @@
-- unless @pledge.previous_report || previous_week?
-  %p
-    = link_to 'enter a report for last week', new_pledge_report_path(@pledge, :week => 'previous')
-%p
-  = "Hi #{@pledge.user.first_name},"
+.statbox
+  .statboxtopbg
+    %h2 Weekly Report
+  .statcontent
+    .statcontenttopbg
+      .statcontentbottombg
+        %p
+          = "Hi #{@pledge.user.first_name},"
 
-%p
-  How did you get to school this week?
+        %p
+          How did you get to school this week?
 
-- form_for @report, :url => pledge_reports_path( @pledge ) do |f|
-  = render :partial => 'form', :locals => { :f => f }
-  %p.submit
-    = f.submit 'make report'
+        - form_for @report, :url => pledge_reports_path( @pledge ) do |f|
+          = render :partial => 'form', :locals => { :f => f }
+          %p.submit
+            = f.submit 'make report'
+
+        - unless @pledge.previous_report || previous_week? || @pledge.contest.started_this_week?
+          %p
+            = link_to 'enter a report for last week', new_pledge_report_path(@pledge, :week => 'previous')
+
