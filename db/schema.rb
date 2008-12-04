@@ -9,7 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081106223649) do
+ActiveRecord::Schema.define(:version => 20081204233605) do
+
+  create_table "contest_breaks", :force => true do |t|
+    t.integer  "contest_id"
+    t.datetime "start"
+  end
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -21,20 +26,22 @@ ActiveRecord::Schema.define(:version => 20081106223649) do
     t.text     "intro_text"
     t.text     "tell_a_friend_default"
     t.string   "has_image_file"
+    t.string   "derived_weeks"
   end
 
   create_table "pledges", :force => true do |t|
-    t.integer "user_id"
-    t.integer "team_id"
-    t.integer "carpool_additional_passengers"
-    t.float   "distance_to_destination"
-    t.integer "walk_bike",                     :default => 0
-    t.integer "public_transit",                :default => 0
-    t.integer "carpool",                       :default => 0
-    t.string  "car_type"
-    t.string  "report_code"
-    t.string  "carpool_car_type"
-    t.float   "carpool_distance"
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.integer  "carpool_additional_passengers"
+    t.float    "distance_to_destination"
+    t.integer  "walk_bike",                     :default => 0
+    t.integer  "public_transit",                :default => 0
+    t.integer  "carpool",                       :default => 0
+    t.string   "car_type"
+    t.string   "report_code"
+    t.string   "carpool_car_type"
+    t.float    "carpool_distance"
+    t.datetime "last_reminded_at"
   end
 
   create_table "report_actions", :force => true do |t|
