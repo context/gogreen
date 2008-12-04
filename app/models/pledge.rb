@@ -20,7 +20,7 @@ class Pledge < ActiveRecord::Base
 
   named_scope :active, :include => :team, :conditions => ["teams.contest_id IN (?)", Contest.active.map {|c| c.id}]
 
-  named_scope :remindable, :conditions => ['last_reminded_at < ?', Time.now.beginning_of_week ]
+  named_scope :remindable, :conditions => ['last_reminded_at < ? or last_reminded_at is ?', Time.now.beginning_of_week, nil ]
 
   before_create :generate_report_code
 
