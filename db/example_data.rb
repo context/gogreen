@@ -21,7 +21,7 @@ module FixtureReplacement
 	end
 
   attributes_for :report do |a|
-    a.start = Time.mktime(2008, 11, 1)
+    a.start = Time.now.beginning_of_week
     
 	end
 
