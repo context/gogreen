@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :passwords
   map.resource :session
+  map.resources :newsletter_subscriptions
 
   map.resources :contests do |contest|
     contest.resources :pledges

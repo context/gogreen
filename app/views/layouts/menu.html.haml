@@ -14,9 +14,8 @@
   .newsletter
     %h2
       Newsletter Signup
-    %form{ :action => "#" }
+    - form_for :newsletter_subscription, :url => newsletter_subscriptions_path, :html => { :method => :post } do |f|
       %fieldset
-        %input.text{ :type => "text", :value => "your email address" }/
+        = f.text_field :email, :value => "your email address", :class => 'text'
         = image_submit_tag "gogreen/submit.jpg"
-        -#%input.image{ :src => "images/submit.jpg", :type => "image" }/
 
