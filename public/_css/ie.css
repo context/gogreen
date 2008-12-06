@@ -1,0 +1,96 @@
+
+
+/* -------- PNG FIX --------*/
+
+img, div, a, h1 {
+	 behavior: url(../css/js/iepngfix.htc)
+}
+ 
+
+/* ----------- IE6 FIXES -----------  */
+
+
+#container {
+	position: relative;
+	background: transparent;
+	margin: -22px auto 0 ;
+	}
+	
+
+.maincontainer {
+	padding: 94px 0 60px 0;
+}
+
+	
+/*#main {
+	position: relative;
+}
+
+.topcontent {
+	position: relative;
+}
+	
+
+#header {
+	position: static;
+}*/
+
+
+/* -------- NON-FUNCTIONAL PSD-to-HTML PNG FIXES -------- */
+
+/* 
+a.logo{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/logo.png',sizingmethod='scale');
+	background-position:0 -1000px;
+	cursor:pointer;
+}
+a.learn{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/learn.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+a.imageleaf{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/leaf.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+.contentbox{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contentboxbg.png',sizingmethod='crop');
+	background:none;
+}
+.statboxtopbg{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statboxtopbg.png',sizingmethod='crop');
+	background:none;
+}
+.statcontent{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/statcontentstrip.png',sizingmethod='scale');
+	background:none;
+}
+.contestbox{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/contestbox.png',sizingmethod='scale');
+	background:none;
+}
+
+#nav a{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrowhover.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+#nav li.active a{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/greenarrow.png',sizingmethod='crop');
+	background-position:0 -1000px;
+	cursor:pointer;	
+}
+.latestnews h2{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/latestnewsh2.png',sizingmethod='scale');
+	background:none;
+}
+.textbox h1{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/textboxh1.png',sizingmethod='scale');
+	background:none;
+}
+#nav li.active ul a{background:url(../images/greenmarker.jpg) no-repeat 0 7px !important; filter:none;}
+.topstyletopbg{
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/topstyletopbg.png',sizingmethod='scale');
+	background:none;
+} */
