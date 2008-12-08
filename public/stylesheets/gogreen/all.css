@@ -51,77 +51,87 @@ a.logo{
 	overflow:hidden;
 	width:711px;
 }
+@charset "UTF-8";
+/* Header Nav CSS */
+
 /* mainnav */
 .mainnav{
-	float:left;
-	margin:3px 0 0;
-	padding:0;
-	list-style:none;
+        position:absolute;
+        margin:3px 0 0;
+        padding:0;
+        list-style:none;
 }
 .mainnav li{
-	float:left;
+        float:left;
 }
 .mainnav a{
-	display:block;
-	overflow:hidden;
-	height:72px;
-	text-indent:-9999px;
+        display:block;
+        overflow:hidden;
+        height:72px;
+        text-indent:-9999px;
 }
 .mainnav a.about{
-	background:url(../../images/gogreen/aboutusbutton.jpg) no-repeat;
-	width:96px;
-	margin:0 10px 0 0;
+        background:url(../../_images/aboutusbutton.jpg) no-repeat;
+        width:96px;
+        margin:0 10px 0 0;
 }
 .mainnav a.planet{
-	background:url(../../images/gogreen/planet.jpg) no-repeat;
-	width:142px;
-	margin:0 2px 0 0;
+        background:url(../../_images/planet.jpg) no-repeat;
+        width:142px;
+        margin:0 2px 0 0;
 }
-.mainnav a.parents{
-	background:url(../../images/gogreen/parentsbutton.jpg) no-repeat;
-	width:111px;
+.mainnav a.sponsor{
+        background:url(../../_images/sponsor_button.jpg) no-repeat;
+        width:111px;
 }
 .mainnav a.contact{
-	background:url(../../images/gogreen/contactbutton.jpg) no-repeat;
-	width:109px;
+        background:url(../../_images/contactbutton.jpg) no-repeat;
+        width:109px;
 }
 .mainnav a:hover,
 .mainnav li.active a{
-	background-position:0 -72px;
+        background-position:0 -72px;
 }
 .newsletter{
-	float:right;
-	background:url(../../images/gogreen/newsletterbg.jpg) no-repeat;
-	width:224px;
-	height:75px;
-	overflow:hidden;
-	padding:0 0 20px 15px;
+        float:right;
+        background:url(../../_images/newsletterbg.jpg) no-repeat;
+        width:224px;
+        height:75px;
+        overflow:hidden;
+        padding:0 0 20px 15px;
 }
 .newsletter h2{
-	overflow:hidden;
-	text-indent:-9999px;
-	background:url(../../images/gogreen/newsletterh2.gif) no-repeat;
-	width:195px;
-	height:22px;
-	margin:12px 0 0 10px;
+        overflow:hidden;
+        text-indent:-9999px;
+        background:url(../../_images/newsletterh2.gif) no-repeat;
+        width:195px;
+        height:22px;
+        margin:12px 0 0 10px;
 }
-.newsletter fieldset{	
-	width:198px;
-	overflow:hidden;
-	margin:6px 0 0;	
+.newsletter fieldset{   
+        width:198px;
+        overflow:hidden;
+        margin:6px 0 0; 
 }
 .newsletter input.text{
-	font:11px "Trebuchet MS", sans-serif;
-	color:#333;
-	border:1px solid #5c3f30;
-	float:left;
-	width:121px;
-	padding:1px 3px 0 5px;
-	height:16px;
-	margin:1px 0 0;
+        font:11px "Trebuchet MS", sans-serif;
+        color:#333;
+        border:1px solid #5c3f30;
+        float:left;
+        width:121px;
+        padding:1px 3px 0 5px;
+        height:16px;
+        margin:1px 0 0;
 }
-.newsletter input.image{
-	float:right;
+a.submit{
+        float:right;
+        background:url(../../_images/submit.jpg) no-repeat;
+        width:58px;
+        height:27px;
+        text-indent:-9999px;
+}
+a.submit:hover{
+        background-position:0 -27px;
 }
 /* main home */
 #container:after,
