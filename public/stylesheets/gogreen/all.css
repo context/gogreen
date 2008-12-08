@@ -752,20 +752,26 @@ a.rollover{
 	text-decoration:underline;
 }
 /* footer */
-#footer{	
+@charset "UTF-8";
+
+/* footer */
+#footer{
+	position:absolute;
+	bottom: 0;	
 	width:100%;
 	overflow:hidden;
-	background:url(../../images/gogreen/footerbg.jpg) repeat-x;
+	background:url(../../_images/footerbg.jpg) repeat-x;
 	height:65px;
-	min-width:1300px;
+	z-index: 3;	
 }
 .footercontent{
 	width:990px;
 	overflow:hidden;
-	background:url(../../images/gogreen/footercontentbg.jpg) no-repeat;
+	background:url(../../_images/footercontentbg.jpg) no-repeat;
 	margin:0 auto;
 	height:45px;
 	padding:20px 5px 0 5px;
+	line-height: 12pt;
 }
 .footercontent span{
 	float:left;
@@ -773,14 +779,29 @@ a.rollover{
 	font-size:11px;
 	font-weight:bold;
 }
+
+#footer_right {
+	float: right;
+	text-align: right;
+	
+}
+
+#footer_right a {
+	color: #FFFFFF;
+}
+
+.footer_right span{
+	float: right
+}
+
 .footerul{
-	float:right;
+	float:left;
 	margin:0;
 	padding:0;
 	list-style:none;
 }
 .footerul li{
-	background:url(../../images/gogreen/footerseparator.jpg) no-repeat 0 50%;
+	background:url(../../_images/footerseparator.jpg) no-repeat 0 50%;
 	font-size:11px;
 	font-weight:bold;
 	display:inline;

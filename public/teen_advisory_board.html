@@ -27,16 +27,21 @@
 					<li><a href="our_sponsors.html" class="sponsor">OUR SPONSORS</a></li>
 					<li><a href="contact_us.html" class="contact">CONTACT US</a></li>                    
 				</ul>
-				<!--newsletter-->
+				
+				<!-- NEWSLETTER -->
 				<div class="newsletter">
 					<h2>Newsletter Signup</h2>
-					<form action="#">
-						<fieldset>
-							<input type="text" class="text" value="your email address"  />
-							<a href="#" class="submit">Submit</a>
-						</fieldset>
-					</form>
+					<form action="/newsletter_subscriptions" method="post">
+                    	<div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="25a94ddb40a347eb625f2fca0ce360fa5307b2bf" />
+                    	</div>
+               			 <fieldset>
+                              <input class="text" id="newsletter_subscription_email" name="newsletter_subscription[email]" size="30" type="text" value="your email address" />
+                              <input src="/images/gogreen/submit.jpg?1228755726" type="image" />
+             			 </fieldset>
+				    </form>
 				</div>
+                <!-- EMD NEWSLETTER -->
+                
 			</div>
         </div>
 	</div>	 
@@ -119,26 +124,28 @@
 					</div>
 					<!--rightcontent-->
 					<div class="rightcontent">
-						<a href="#" class="pledge">Pledge Now</a>
+						<a href="contests/1/pledges/new" class="pledge">Pledge Now</a>
 						<div class="headerlink">
 							<h2>CONTESTS</h2>
-							<a href="#" class="login">Login</a>						</div>
+							<a href="login" class="login">Login</a>						
+                        </div>
 						<!--contestbox-->	
 						<div class="contestbox">
 							<ul id="nav">
 								<li class="active"><a href="#">Spare Our Planet</a>
 									<ul>
-										<li><a href="teams/1">The Urban School of San Francisco - Class of 2009</a></li>
-										<li><a href="teams/2">The Urban School of San Francisco - Class of 2010</a></li>
-										<li><a href="teams/3">The Urban School of San Francisco - Class of 2011</a></li>
-										<li><a href="teams/4">The Urban School of San Francisco - Class of 2012</a></li>
-                                        
+										<li><a href="teams/1.html">The Urban School of San Francisco - Class of 2009</a></li>
+										<li><a href="teams/2.html">The Urban School of San Francisco - Class of 2010</a></li>
+										<li><a href="teams/3.html">The Urban School of San Francisco - Class of 2011</a></li>
+										<li><a href="teams/4.html">The Urban School of San Francisco - Class of 2012</a></li>
 									</ul>
 								</li>
 								
 							</ul>
 						</div>
 					</div>
+                    
+                    
 				</div>
 			</div>
 		</div>

@@ -47,18 +47,22 @@
       #footer.container
         .footercontent
           %span
-            &copy; 2008 Go Green Foundation. All rights reserved.
-          %ul.footerul
-            %li.first
-              %a{ :href => "#" }
-                Privacy Policy
-            %li
-              %a{ :href => "#" }
-                Newsletter Signup
-            %li
-              %a{ :href => "#" }
-                Contact Us
-
+            %ul.footerul
+              %li.first
+                %a{ :href => "privacy_policy.html" }
+                  Privacy Policy
+              %li
+                %a{ :href => "terms_of_service.html" }
+                  Terms of Service
+              %li
+                %a{ :href => "contact_us.html" }
+                  Contact Us
+            %br
+            &ensp; &copy; 2008 Go Green Foundation. All rights reserved.
+          #footer_right
+            %span.footer_right
+              Site designed by <a href="http://www.freerangestudios.com/">Free Range Studios</a><br />
+              Site developed by <a href="http://www.radicaldesigns.org/">Radical Designs</a>      	
     = javascript_include_tag 'jquery/jquery-1.2.6.min.js'
     = javascript_include_tag 'application'
     - javascript_tag do

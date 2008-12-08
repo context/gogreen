@@ -1,4 +1,5 @@
 class NewsletterSubscriptionsController < ApplicationController
+  protect_from_forgery :except => :create
   make_resourceful do
     actions :create
     response_for :create do
