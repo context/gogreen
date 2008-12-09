@@ -17,7 +17,6 @@ fieldset{
 	width:100%;
 	margin:-22px auto 0;	
 	background:url(../../images/gogreen/containerbg.jpg);	
-	padding:0 0 10px;
 	min-width:1300px;
 }
 /* header */
@@ -147,6 +146,7 @@ a.submit:hover{
 	width:100%;	
 	background:url(../../images/gogreen/maincontainerbg.jpg) no-repeat 50% 0;
 	min-width:1300px;
+	padding-bottom: 30px;
 }
 #main{
 	width:1000px;	
@@ -756,7 +756,6 @@ a.rollover{
 
 /* footer */
 #footer{
-	position:absolute;
 	bottom: 0;	
 	width:100%;
 	overflow:hidden;
