@@ -303,7 +303,6 @@ a.imageleaf{
 }
 .contentbox a{
 	float: right;
-	background:url(../_images/seehow.gif) no-repeat;
 	margin:114px 9px 0 0;
 	text-indent:-9999px;
 	display:block;
@@ -321,10 +320,10 @@ a.imageleaf{
 }
 .imagetext{	
 	margin:8px 0 0 15px;
-	width:290px;
-	height:226px;
+	width:288px;
+	height:224px;
 	overflow:hidden;
-	background:url(../_images/crossing_street.jpg) no-repeat;
+	background:url(../_images/riding_bikes.jpg) no-repeat;
 }
 .contentbox.second h2{
 	background:url(../_images/science.gif) no-repeat;
@@ -332,15 +331,14 @@ a.imageleaf{
 	height:16px;
 }
 .contentbox.second .imagetext{
-	background:url(../_images/scienceimage.jpg) no-repeat;
+	background:url(../_images/burning_planet.jpg) no-repeat;
 	padding:0 3px 0 0;
-	width:287px;
+	width:288px;
 }
 .contentbox.second .imagetext a{
 	float: left	;
 	overflow:hidden;
-	background:url(../_images/learnhow.gif) no-repeat;
-	width:109px;
+	width:67;
 	height:90px;
 	margin:110px 0 0 30px;
 	text-indent:-9999px;
@@ -352,14 +350,13 @@ a.imageleaf{
 	height:16px;
 }
 .contentbox.third .imagetext{
-	background:url(../_images/getinvolved.jpg) no-repeat;
+	background:url(../_images/boardroom_kids.jpg) no-repeat;
 	padding:0 0 0 30px;
-	width:260px;
+	width:288px;
 }
 .contentbox.third .imagetext a{
 	float: right;
 	overflow:hidden;
-	background:url(../_images/getnow.gif) no-repeat;
 	margin:115px 0 0 0;
 	text-indent:-9999px;
 	position:relative;
