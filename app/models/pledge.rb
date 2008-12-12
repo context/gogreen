@@ -100,7 +100,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def carpool_participants
-    carpool_additional_passengers + 1
+    (carpool_additional_passengers || 0) + 1
   end
 
   def pounds_used_by_bus
