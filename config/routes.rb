@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :companies
   map.resources :industries
   # Home Page
-  map.root :contests
+  map.named_route('root', '/contests', :controller => 'contests')
 
   map.namespace :admin do |admin|
     admin.resources :pledges, :has_many => :report_reminders
