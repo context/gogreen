@@ -4,7 +4,7 @@ quentin:
   login:                     quentin@example.com
   email:                     quentin@example.com
   salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password:          1b437a184e9514571d9c29753f0ab5c6c7f55d0a # 'monkey'
+  crypted_password:          02bf73f31c42b3555a39f2a8a7ea6f4a66d81117 # 'monkey'
   created_at:                <%= 5.days.ago.to_s :db  %>
   remember_token_expires_at: <%= 1.days.from_now.to_s %>
   remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
