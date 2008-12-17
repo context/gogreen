@@ -136,14 +136,14 @@ class Pledge < ActiveRecord::Base
   end
 
   CSV_HEADERS = [
-    "First Name", "Last Name", "Email", 
+    "User Created At", "First Name", "Last Name", "Email", 
     "Team Name", "Contest", "Reports Received", "Total Impact",
     "Days Walk/Bike", "Public Transit Days", "Carpool Days", 
     "Carpool Size", "Car Type", "Daily Distance"
   ]
 
   def to_csv
-    [ user.first_name, user.last_name, user.email,
+    [ user.created_at, user.first_name, user.last_name, user.email,
     team.name, team.contest.name, reports.size, total_impact,
     walk_bike, public_transit, carpool,
     carpool_participants, car_type, distance_to_destination ]
