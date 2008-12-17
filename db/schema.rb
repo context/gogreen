@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081205091005) do
+ActiveRecord::Schema.define(:version => 20081217021330) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20081205091005) do
     t.text     "tell_a_friend_default"
     t.string   "has_image_file"
   end
+
+  add_index "contests", ["start"], :name => "index_on_start"
 
   create_table "newsletter_subscriptions", :force => true do |t|
     t.string   "email"
@@ -44,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20081205091005) do
     t.datetime "last_reminded_at"
   end
 
+  add_index "pledges", ["team_id"], :name => "index_on_team_id"
+  add_index "pledges", ["user_id"], :name => "index_on_user_id"
+
   create_table "report_actions", :force => true do |t|
     t.datetime "action_date"
     t.string   "mode_of_transport", :limit => 20
@@ -51,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20081205091005) do
     t.integer  "report_id"
     t.integer  "position"
   end
+
+  add_index "report_actions", ["position"], :name => "index_on_position"
+  add_index "report_actions", ["report_id"], :name => "index_on_report_id"
 
   create_table "reports", :force => true do |t|
     t.datetime "start"
@@ -60,10 +68,14 @@ ActiveRecord::Schema.define(:version => 20081205091005) do
     t.datetime "updated_at"
   end
 
+  add_index "reports", ["pledge_id"], :name => "index_on_pledge_id"
+
   create_table "teams", :force => true do |t|
     t.string  "name"
     t.integer "contest_id"
   end
+
+  add_index "teams", ["contest_id"], :name => "index_on_contest_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 100
