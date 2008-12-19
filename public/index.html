@@ -2,34 +2,157 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Go Green</title>
-    <!--[if lt IE 7]><script type="text/javascript"> <!-- alert ("This site is best viewed using Internet Explorer 7.0 or higher, Mozilla Firefox 3.0 or higher, or Safari 3.0 or higher. Please upgrade to one of these browsers for optimum performance.")
-     
-			</script> 
-           <![endif]-->
-           <link href="_css/index.css" media="all" type="text/css" rel="stylesheet" />
-    <!--[if lt IE 7]><link href="css/ie.css" rel="stylesheet" type="text/css" media="all"/><![endif]-->
+	<title>Go Green Foundation</title>
     
+    
+<!-- RSS FEED GRABBER -->
+    
+	<script type="text/javascript" src="http://www.google.com/jsapi">
+	</script>
+    
+  <script type="text/javascript">
+  google.load("feeds", "1");
 
 
+	<!-- ENN RSS FEED -->  
+    function initialize() {
+      var feed = new google.feeds.Feed("http://feeds.enn.com/EnvironmentalNewsNetwork");
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById("enn_feed");
+          for (var i = 0; i < 1; i++) {
+            var entry = result.feed.entries[i];
+            var div = document.createElement("span");
+            div.appendChild(document.createTextNode(entry.title));
+            container.appendChild(div);
+          }
+        }
+      });
+ 
+   
+
+  <!-- REUTERS RSS FEED -->
+  
+
+		var feed = new google.feeds.Feed("http://feeds.reuters.com/reuters/environment");
+		feed.load(function(result) {
+		 if (!result.error) {
+			var container = document.getElementById("reuters_feed");
+			for (var i = 0; i < 1; i++) {
+			  var entry = result.feed.entries[i];
+			  var div = document.createElement("span");
+			  div.appendChild(document.createTextNode(entry.title));
+			  container.appendChild(div);
+    }
+  }
+});
+
+	<!-- GRIST RSS FEED -->
+  
+
+		var feed = new google.feeds.Feed("http://feeds.grist.org/grist/daily_grist");
+		feed.load(function(result) {
+		 if (!result.error) {
+			var container = document.getElementById("grist_feed");
+			for (var i = 0; i < 1; i++) {
+			  var entry = result.feed.entries[i];
+			  var div = document.createElement("span");
+			  div.appendChild(document.createTextNode(entry.title));
+			  container.appendChild(div);
+    }
+  }
+});
+
+	<!-- DAILY GREEN RSS FEED -->
+  
+
+		var feed = new google.feeds.Feed("http://www.thedailygreen.com/environmental-news/rss");
+		feed.load(function(result) {
+		 if (!result.error) {
+			var container = document.getElementById("dailygreen_feed");
+			for (var i = 0; i < 1; i++) {
+			  var entry = result.feed.entries[i];
+			  var div = document.createElement("span");
+			  div.appendChild(document.createTextNode(entry.title));
+			  container.appendChild(div);
+    }
+  }
+});
+
+	<!-- YAHOO RSS FEED -->
+  
+
+		var feed = new google.feeds.Feed("http://news.search.yahoo.com/news/rss?p=Environment");
+		feed.load(function(result) {
+		 if (!result.error) {
+			var container = document.getElementById("yahoo_feed");
+			for (var i = 0; i < 1; i++) {
+			  var entry = result.feed.entries[i];
+			  var div = document.createElement("span");
+			  div.appendChild(document.createTextNode(entry.title));
+			  container.appendChild(div);
+    }
+  }
+});
+
+
+}
+  
+   google.setOnLoadCallback(initialize);
+   
+  </script>
+		
+<!-- END RSS FEED GRABBER -->
+  
+ 
+</script> 
+           <link href="_css/index.css" media="all" type="text/css" rel="stylesheet" />
+    <!--[if lt IE 7]><link href="_css/ie.css" rel="stylesheet" type="text/css" media="all"/><![endif]-->
 </head>					
-<body>
-
-<!--container-->
-<div id="container"> 
+        <body>
+        
+        <!--container-->
+        <div id="container"> 
 
 		<div class="maincontainer">
 			<div id="main">
-			  <div class="topcontent">
+				<div class="topcontent">
 					<div class="textbox">
 						<div class="textcontent">
 							<h1>We're going green</h1>
 							<p>A growing scientific consensus indicates that humanity is consuming nature’s resources faster than they are being regenerated, and that if this trend continues, by 2050 global ecosystems and economies will have begun to collapse...</p>	
 							<a href="climate_change.html" class="learn">Learn more</a>						
                         </div>
-						<!--latestnews-->
-						<div class="latestnews">
-							<h2>Latest News</h2>
+						
+								                                
+                       <!--latestnews-->        
+						
+                       <!-- RSS FEEDS FOR LATEST NEWS SECTION -->
+                       
+                       	   <div id="latestnews" class="latestnews">
+								<h2>Latest News</h2>
+                                <div id="rss_container">
+                                  <div id="enn_feed">
+                                  		<strong><a href="http://www.enn.com/">ENN</a> - </strong>
+                                  </div>
+                                  <div id="reuters_feed">
+                                  		<strong><a href="http://www.reuters.com/news/environment">REUTERS</a> - </strong>
+                                  </div>
+                                  <div id="grist_feed">
+                                  		<strong><a href="http://www.grist.org/">GRIST</a> - </strong>
+                                  </div>
+                                  <div id="dailygreen_feed">
+                                  		<strong><a href="http://www.dailygreen.com/">DAILY GREEN</a> - </strong>
+                                  </div>
+                                 <!--
+                                  <div id="yahoo_feed">
+                                  		<strong><a href="http://news.yahoo.com/i/2736">YAHOO!</a> - </strong>
+                                  </div>
+                                  -->
+						   </div>
+								
+                            <!-- STATIC LINKS FOR LATEST NEWS SECTION -->
+                            <!-- <h2>Latest News</h2>
 							<ul>
 								<li><a href="http://www.reuters.com/news/environment">Reuters</a></li>
 								<li><a href="http://www.enn.com">ENN</a></li>
@@ -37,8 +160,9 @@
 								<li><a href="http://www.thedailygreen.com/">The Daily Green </a></li>
                                 <li><a href="http://news.yahoo.com/i/2736">Yahoo</a></li>
 
-							</ul>
-						</div>
+							</ul> -->
+                            
+					  </div>
 					</div>
 					<div class="imagebox">
 					</div>
@@ -96,7 +220,9 @@
 			 <div id="footer_right">
              	<span class="footer_right">
              		Site designed by <a href="http://www.freerangestudios.com/">Free Range Studios</a><br />
-             		Site developed by <a href="http://www.radicaldesigns.org/">Radical Designs</a>             	</span>			 </div>
+             		Site developed by <a href="http://www.radicaldesigns.org/">Radical Designs</a>             	
+                </span>			 
+             </div>
 		</div>
       </div>
       <!-- END FOOTER -->
@@ -109,7 +235,7 @@
 				<!--mainnav-->
 				<ul class="mainnav">
 					<li><a href="about_us.html" class="about">ABOUT US</a></li>
-					<li><a href="http://gogreenfoundation.com/contests/1" class="planet">SPARE OUR PLANET</a></li>
+					<li><a href="contests/1" class="planet">SPARE OUR PLANET</a></li>
 					<li><a href="our_sponsors.html" class="sponsor">OUR SPONSORS</a></li>
 					<li><a href="contact_us.html" class="contact">CONTACT US</a></li>
 				</ul>

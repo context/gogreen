@@ -2,7 +2,7 @@
 
 /* -------- PNG FIX --------*/
 
-img, div, a, h1 {
+img, div, a, {
 	 behavior: url(../css/js/iepngfix.htc)
 }
  
@@ -20,6 +20,11 @@ img, div, a, h1 {
 .maincontainer {
 	padding: 94px 0 60px 0;
 }
+
+.raiseyourvoice_text {
+	display: inline;
+}
+
 
 	
 /*#main {

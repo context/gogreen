@@ -79,6 +79,7 @@ a.logo{
 }
 .mainnav li{
 	float:left;
+	list-style-type: none;
 }
 .mainnav a{
 	display:block;
@@ -97,7 +98,7 @@ a.logo{
 	margin:0 6px 0 0;
 }
 .mainnav a.sponsor{
-	background:url(../_images/sponsor_button.jpg) no-repeat;
+	background:url(../_images/sponsor_button.gif) no-repeat;
 	width:114px;
 }
 .mainnav a.contact{
@@ -137,7 +138,7 @@ a.logo{
 	width:121px;
 	padding:1px 3px 0 5px;
 	height:16px;
-	margin:1px 0 0;
+	margin:1px 6px 0 0;
 }
 a.submit{
 	float:right;
@@ -217,11 +218,26 @@ a.submit:hover{
 	background-position: 0 -26px;
 }
 
+#latestnews {
+}
+
+#latestnews a {
+	color:#FEB60A;
+	text-decoration: none;
+	
+}
+
 .latestnews{
-	width:100%;
 	overflow:hidden;
 	background:url(../_images/path.jpg) no-repeat 12px 0;
 }
+
+#rss_container{
+	color: #FFFFFF;
+	width: 250px;
+	margin: 10px 0 0 14px;
+}
+
 .latestnews h2{
 	overflow:hidden;
 	text-indent:-9999px;
@@ -597,6 +613,6 @@ a.rollover{
 /* -------- PNG FIX --------*/
 
 img, div, a,  {
-	 behavior: url(js/iepngfix.htc)
+	 behavior: url(_js/iepngfix.htc)
 }
  

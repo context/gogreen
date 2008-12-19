@@ -37,6 +37,12 @@ fieldset{
 	min-height: 100%;
 }
 
+li {
+	
+	list-style-type: disc;
+	list-style-position: inside;
+
+}
 
 /* header */
 #header{
@@ -82,6 +88,7 @@ a.logo{
 }
 .mainnav li{
 	float:left;
+	list-style-type: none;
 }
 .mainnav a{
 	display:block;
@@ -100,7 +107,7 @@ a.logo{
 	margin:0 2px 0 0;
 }
 .mainnav a.sponsor{
-	background:url(../_images/sponsor_button.jpg) no-repeat;
+	background:url(../_images/sponsor_button.gif) no-repeat;
 	width:111px;
 }
 .mainnav a.contact{
@@ -140,7 +147,7 @@ a.logo{
 	width:121px;
 	padding:1px 3px 0 5px;
 	height:16px;
-	margin:1px 0 0;
+	margin:1px 6px 0 0;
 }
 a.submit{
 	float:right;
@@ -539,7 +546,7 @@ a.login:hover{
 }
 .pledge{
 	display:block;
-	background:url(../_images/pledgenow_blur.png) no-repeat;
+	background:url(../_images/pledgenow.jpg) no-repeat;
 	overflow:hidden;
 	width:239px;
 	height:79px;
@@ -566,7 +573,8 @@ a.login:hover{
 	width:100%;
 	float:left;
 	margin:21px 0 0;	
-	line-height:14px;	
+	line-height:14px;
+	list-style-type: none;	
 }
 #nav a{
 	float:left;
@@ -594,7 +602,8 @@ a.login:hover{
 }
 #nav ul li{
 	margin:16px 0 0 !important;
-	line-height:17px;	
+	line-height:17px;
+	list-style-type: none;	
 }
 #nav ul a,
 #nav li ul a,
@@ -614,6 +623,8 @@ a.login:hover{
 	margin:0 0 0 17px;
 	color:#fff;
 	font-size:30px;
+	text-transform: capitalizel;
+	font-variant: small-caps;
 }
 .topstyletopbg{
 	overflow:hidden;
@@ -655,7 +666,7 @@ a.login:hover{
 	margin:0;
 	color:#1f1f1f;
 	margin:15px 0 0;
-	width:547px;
+	/*width:547px;*/
 	line-height:15px;
 	font-size:12px;
 }
@@ -738,6 +749,312 @@ a.rollover{
 .footerul a:hover{
 	text-decoration:underline;
 }
+
+
+/* -------- RAISE YOUR VOICE (RYV) PAGES ----------------- */
+
+#main.spare {
+	padding:15px 39px 0 0;
+	width:961px;
+}
+
+.header_img {
+	height: 183px;
+	width: 625px;
+	background: url(../_images/_ryv_icons/raise_your_voice_header.png) no-repeat;
+}
+
+.subheader_text {
+	font-weight: bold;
+	margin: 15px 0px 30px 8px;
+}
+
+.subheader_text h4 {
+	color: #FFFFFF;
+	font-size: 18px;
+	margin: 10px 0;
+	padding: 0;
+}
+
+.industry_nav {
+	margin: 15px 0 0 0;
+	height: 260px;
+}
+
+.industry_nav_item {
+	clear: both;
+	margin: 10px 0;
+	
+}
+
+
+.industry_nav_left_col {
+	float: left;
+	width: 50%
+}
+
+.industry_nav_right_col {
+	float: right;
+	width: 50%;
+}
+
+.industry_nav_item h2 {
+	margin: 15px 0 0 0;
+	padding: 6px 0 0 0;
+	text-decoration: none;
+}
+
+.industry_nav_item a{
+	text-decoration: none;
+}
+
+.industry_nav_item img {
+	float: left;
+	margin: 0 15px 0 0;
+	border: none;
+}
+
+.statcontentbottombg_ryv {
+	width:592px;
+	overflow:hidden;
+	background:url(../_images/statcontentbottombg.jpg) no-repeat 0 100%;	
+	padding:11px 0 19px 25px;
+}
+
+#ryv_imagecol_left {
+	float:left;
+	margin: 0;
+	padding: 0;
+	background: url(../_images/_ryv_icons/media.jpg) no-repeat;
+	height: 32px;
+	width: 32px;
+}
+
+.topstylecontent_ryv {
+	overflow:hidden;
+	padding:0 0 20px 0px;
+	width:548px;
+	margin:-11px 0 0;
+	background: url(../_images/_ryv_icons/media.jpg) no-repeat 0px 10px;
+}
+
+.raiseyourvoice_text {
+	width: 510px;
+ 	color: #492D21;
+	font-weight: normal;
+	margin: 5px 15px 0 15px;
+	display: block;
+}
+
+.raiseyourvoice_text p {
+	width: 510px;
+	color: #492D21;
+}
+
+.raiseyourvoice_text_l2 {
+	width: 510px;
+ 	color: #492D21;
+	font-weight: normal;
+	margin: 5px 15px 0 43px;
+	display: block;
+}
+
+.raiseyourvoice_text_l2 p {
+	width: 510px;
+	color: #492D21;	
+}
+
+#ryv_backlink {
+	float: right;
+	margin: 18px 40px 0 0;
+}
+
+#ryv_backlink a{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#ryv_backlink a:hover {
+	color: #FEB60A;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#col_container {
+	margin: 15px 0 15px 0;
+}
+
+.left_col {
+	width: 50%;
+	float: left;
+}
+
+.right_col {
+	width: 50%;
+	float: right;
+}
+
+.company_number {
+	float: right;
+	font-size: 16px;
+}
+
+.company_green,
+.company_yellow,
+.company_red {
+	height: 21px;
+	/*width: 195px;*/
+	padding: 8px 43px 8px 8px;
+	margin: 0 5px 10px 5px;
+}
+
+.company_green {
+	background: #EEEEEE url(../_images/_ryv_icons/symbol_green.gif) no-repeat right; 
+}
+
+.company_green a {
+	color: #6DA628;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+
+.company_yellow {
+	background: #EEEEEE url(../_images/_ryv_icons/symbol_yellow.gif) no-repeat right;
+}
+
+.company_yellow a {
+	color: #FEB60A;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.company_red {
+	background: #EEEEEE url(../_images/_ryv_icons/symbol_red.gif) no-repeat right;
+}
+
+.company_red a {
+	color: #B52D35;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+	/* ------- RAISE YOUR VOICE: COMPANY SCORECARD page - "raise_your_voice_l3.html" ------- */
+
+#ryv_company_scorecard p{
+	color: #492D21;
+}
+
+
+#ryv_company_scorecard_topleft_container {
+	margin: 0 0 0 35px;
+}
+
+
+#ryv_company_scorecard_topleft {
+	width: 425px;
+	height: 300px;
+	padding: 0px 0px 0px 0px;
+	margin: 15px 0px 0px 35px;
+	display: inline;
+}
+
+#ryv_company_scorecard_topleft p{
+	font-weight: bold;
+	font-size: 14px;
+	color: #492D21;
+}
+
+#ryv_company_scorecard_topright_container {
+	float: right;
+	height: 300px;
+	width: 166px;
+}
+	
+#ryv_company_scorecard_topright {	
+	height: 300px;
+	width: 158px;
+	margin: 0px 0px 0 0;
+	background: transparent url(../_images/_ryv_icons/ryv_topright_bg.png) no-repeat 0 0;
+}
+
+.ryv_write_now_button {
+	position: relative;
+	margin: 0px 0 0 25px;
+	top: 251px;
+}
+
+.ryv_write_now_button a {
+	display: block;
+	overflow: hidden;
+	text-indent: -9999px;
+	height: 30px;
+	width: 111px;
+	background: url(../_images/_ryv_icons/write_now_button.gif) no-repeat;
+}
+
+.ryv_write_now_button a:hover {
+	background-position: 0 -30px;
+}
+
+.ryv_company_scorecard_row {
+	margin: 0 0 0 7px;
+	clear: left;
+}
+
+.ryv_company_scorecard_row_2 {
+	margin: 0 0 0 7px;
+	clear: left;
+	height: 80px;
+}
+
+.ryv_company_scorecard_col1 {
+	width: 215px;
+	float: left;
+	height: auto;
+}
+
+.ryv_company_scorecard_col2 {
+	width: 135px;
+	float: left;	
+}
+
+.ryv_company_scorecard_col2_toprow {
+	width: 135px;
+	float: left;
+	margin: 0 -20px 0 20px;	
+}
+
+
+.ryv_company_scorecard_col3 {
+	width: 40px;
+	float: left;
+}
+
+.ryv_company_scorecard_score {
+	margin: 20px 0 0 0;
+	font-size: 30px;
+	font-weight: bold;
+	color: #492D21;
+}
+
+.ryv_company_scorecard_rating_explanation {
+	background: url(../_images/_ryv_icons/symbol_yellow.gif) no-repeat 0 0;
+	margin: 10px 0 0 0;
+	padding: 0 0 0 35px;
+	width: 350px;
+}
+
+.ryv_company_scorecard_rating_explanation p{
+	line-height: 20px;
+	margin: 0;
+	padding: 0;
+}
+
 
 /* -------- SPARE OUR PLANET ERROR PAGE ------------- */
 
@@ -874,6 +1191,6 @@ a.rollover{
 /* -------- PNG FIX --------*/
 
 img, div, a,  {
-	 behavior: url(js/iepngfix.htc)
+	 behavior: url(_js/iepngfix.htc)
 }
  
