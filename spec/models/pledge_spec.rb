@@ -139,6 +139,16 @@ describe Pledge do
       end
     end
   end
+
+  describe "disabled users" do
+    it "should not appear in the enabled group" do
+      Pledge.delete_all
+      @pledge = create_pledge
+      @pledge.user = create_user :disabled => true
+      @pledge.save
+      Pledge.enabled.should be_empty
+    end
+  end
   def tenths( num ) 
      (num * 10).round.to_f / 10
   end

@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20081217021330) do
     t.datetime "last_reminded_at"
   end
 
-  add_index "pledges", ["team_id"], :name => "index_on_team_id"
   add_index "pledges", ["user_id"], :name => "index_on_user_id"
+  add_index "pledges", ["team_id"], :name => "index_on_team_id"
 
   create_table "report_actions", :force => true do |t|
     t.datetime "action_date"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20081217021330) do
     t.integer  "position"
   end
 
-  add_index "report_actions", ["position"], :name => "index_on_position"
   add_index "report_actions", ["report_id"], :name => "index_on_report_id"
+  add_index "report_actions", ["position"], :name => "index_on_position"
 
   create_table "reports", :force => true do |t|
     t.datetime "start"

@@ -9,7 +9,7 @@ class Contest < ActiveRecord::Base
 
   def total_impact
     #teams.inject(0) { |total, team| total += team.total_impact }
-    pledges = teams.collect {|team| team.pledges}.flatten
+    pledges = teams.collect {|team| team.pledges.enabled }.flatten
     pledges.inject(0) do |pledge_total, p| 
       pledge_total + p.reports.inject(0) do |report_total, r|
         report_total + p.calculate_impact(r.report_actions.inject({}) do |grouped, action| 
@@ -22,7 +22,7 @@ class Contest < ActiveRecord::Base
   end
 
   def impact_for_week_starting(week_start)
-    pledges = teams.collect {|team| team.pledges}.flatten
+    pledges = teams.collect {|team| team.pledges.enabled}.flatten
     pledges.inject(0) do |total, pledge| 
       if report = pledge.reports.detect {|r| r.start == week_start }
         total += pledge.calculate_impact(report.report_actions.inject({}) do |grouped, action| 

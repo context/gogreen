@@ -92,7 +92,7 @@
                 %tr
                   %td.mode_label
                     = f.label :carpool
-                  %td.mode_of_transport
+                  %td.mode_of_transport.carpool_mode
                     %span.days_block_start
                     %p.days_block
                       - 0.upto(5) do |day|
@@ -111,7 +111,7 @@
                 .score-greentastic.score{:'data-threshold' => 90, :'data-level' => 'greentastic' }
                   Green-tastic!
 
-%fieldset.carpool
+%fieldset.carpool.js-hide
   .statbox
     .statboxtopbg
       %h2 
@@ -121,7 +121,7 @@
         .statcontentbottombg
           .statcontentmidbg
             %p
-              = f.label :carpool_additional_passengers, "How many other people are usually in your carpool?"
+              = f.label :carpool_additional_passengers, "How many <strong>other</strong> people are usually in your carpool?"
               = f.select :carpool_additional_passengers, (1...6).to_a
             %p
               = f.label :carpool_car_type, "What kind of car is most common in your carpool?"
@@ -138,5 +138,12 @@
     $('#clear_pledge_button').click( function() { 
       $('.mode_of_transport .pledge_size[value=0]').click();
       return false;
+    });
+    $('.mode_of_transport.carpool_mode .pledge_size').click( function() {
+      if( $(this).val() > 0 ) {
+        $( 'fieldset.carpool' ).show( 'slow' );
+      } else {
+        $( 'fieldset.carpool' ).hide( 'slow' );
+      }
     });
 

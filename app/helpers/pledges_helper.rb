@@ -4,7 +4,7 @@ module PledgesHelper
   end
 
   def car_type_options 
-    [ ['Not sure', 'not_sure'], ["Small (2-door)", 'small'], ["Medium (4-door)", 'med'], ["Large (wagon/minivan)", 'large'], ["Pickup/SUV", 'truck' ]]
+    [ ['Not sure', 'not_sure'], ["Small (2-door)", 'small'], ["Medium (4-door)", 'med'], ["Large (wagon/minivan)", 'large'], ["Pickup/SUV", 'truck' ], ["Hybrid", 'hybrid'] ]
   end
 
   def pledge_options

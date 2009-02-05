@@ -16,6 +16,8 @@ describe Contest do
       @contest = create_contest
       @team = create_team(:contest => @contest)
       @pledge = create_pledge(:team => @team)
+      @pledge.user = create_user #:disabled => false
+      @pledge.save
       @report = create_report(:pledge => @pledge, :start => @contest.start.utc.beginning_of_week )
       @report_action = create_report_action(:report => @report, :mode_of_transport => 'walk_bike', :action_date => @report.start + 2.days)
       @week = @report.start

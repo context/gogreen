@@ -18,6 +18,8 @@ class Pledge < ActiveRecord::Base
 
   attr_accessor :awaiting_confirmation, :pledge_details_confirmed
 
+  named_scope :enabled, :include => :user, :conditions => [ 'users.disabled != ? OR users.disabled IS ?', true, nil ]
+
   named_scope :active, :include => :team, :conditions => ["teams.contest_id IN (?)", Contest.active.map {|c| c.id}]
 
   named_scope :remindable, :conditions => ['last_reminded_at < ? or last_reminded_at is ?', Time.now.beginning_of_week, nil ]
@@ -139,14 +141,14 @@ class Pledge < ActiveRecord::Base
     "User Created At", "First Name", "Last Name", "Email", 
     "Team Name", "Contest", "Reports Received", "Total Impact",
     "Days Walk/Bike", "Public Transit Days", "Carpool Days", 
-    "Carpool Size", "Car Type", "Daily Distance"
+    "Carpool Size", "Car Type", "Daily Distance", "Active"
   ]
 
   def to_csv
     [ user.created_at, user.first_name, user.last_name, user.email,
     team.name, team.contest.name, reports.size, total_impact,
     walk_bike, public_transit, carpool,
-    carpool_participants, car_type, distance_to_destination ]
+    carpool_participants, car_type, distance_to_destination, !user.disabled? ]
   end
 
   def contest
