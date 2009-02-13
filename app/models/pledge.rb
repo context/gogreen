@@ -19,7 +19,7 @@ class Pledge < ActiveRecord::Base
   attr_accessor :awaiting_confirmation, :pledge_details_confirmed
 
   named_scope :enabled, :include => :user, :conditions => [ 'users.disabled != ? OR users.disabled IS ?', true, nil ]
-
+  named_scope :with_reports, :include => { :reports => :report_actions }
   named_scope :active, :include => :team, :conditions => ["teams.contest_id IN (?)", Contest.active.map {|c| c.id}]
 
   named_scope :remindable, :conditions => ['last_reminded_at < ? or last_reminded_at is ?', Time.now.beginning_of_week, nil ]

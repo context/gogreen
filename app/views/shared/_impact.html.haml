@@ -1,4 +1,4 @@
-- impacts = Hash[ *contest.weeks.map { |week_start| [ week_start, ( source.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1) ] }.flatten ]
+- impacts ||= Hash[ *contest.weeks.map { |week_start| [ week_start, ( source.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1) ] }.flatten ]
 - max_impact ||= impacts.values.max
 - contest.weeks.each do |week_start|
   - week_impact = impacts[ week_start ]

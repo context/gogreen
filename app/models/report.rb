@@ -38,4 +38,11 @@ class Report < ActiveRecord::Base
   def save_actions
     report_actions.each {|a| a.save! if a.changed?}
   end
+
+  def tally_actions
+    report_actions.inject( Hash.new(0) ) do |grouped, action|
+      grouped[action.mode_of_transport] += 1
+      grouped
+    end
+  end
 end

@@ -9,8 +9,8 @@ class Contest < ActiveRecord::Base
 
   def total_impact
     #teams.inject(0) { |total, team| total += team.total_impact }
-    pledges = teams.collect {|team| team.pledges.enabled }.flatten
-    pledges.inject(0) do |pledge_total, p| 
+    #pledges = teams.collect {|team| team.pledges.enabled }.flatten
+    pledges.enabled.with_reports.inject(0) do |pledge_total, p| 
       pledge_total + p.reports.inject(0) do |report_total, r|
         report_total + p.calculate_impact(r.report_actions.inject({}) do |grouped, action| 
           grouped[action.mode_of_transport] ||= 0
@@ -20,10 +20,23 @@ class Contest < ActiveRecord::Base
       end
     end
   end
-
+  
+  def impacts_by_week_and_team
+    week_totals = Hash.new(0)
+    team_totals = Hash.new(0)
+    pledges.enabled.with_reports.each do |pledge|
+      pledge.reports.each do |report|
+        report_impact = pledge.calculate_impact( report.tally_actions )
+        week_totals[report.start]   += report_impact
+        team_totals[pledge.team_id] += report_impact
+      end
+    end
+    { :weeks => Hash[ *week_totals.map { |key, value| [ key, value.to_f.round_to(1) ] }.flatten ],
+      :teams => Hash[ *team_totals.map { |key, value| [ key, value.to_f.round_to(1) ] }.flatten ] }
+  end
+ 
   def impact_for_week_starting(week_start)
-    pledges = teams.collect {|team| team.pledges.enabled}.flatten
-    pledges.inject(0) do |total, pledge| 
+    pledges.enabled.with_reports.inject(0) do |total, pledge| 
       if report = pledge.reports.detect {|r| r.start == week_start }
         total += pledge.calculate_impact(report.report_actions.inject({}) do |grouped, action| 
           grouped[action.mode_of_transport] ||= 0
@@ -33,7 +46,6 @@ class Contest < ActiveRecord::Base
       end
       total
     end
-#    teams.inject(0) { |total, team| total += team.impact_for_week_starting( week_start ) }
   end
 
   def weekly_commitment_impact

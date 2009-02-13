@@ -11,6 +11,6 @@ class ContestsController < ApplicationController
     end
   end
   def current_object
-    current_model.find(params[:id], :include => {:teams => {:pledges => {:reports => :report_actions}}})
+    current_model.find(params[:id])#, :include => {:teams => {:pledges => {:reports => :report_actions}}})
   end
 end

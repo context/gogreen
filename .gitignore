@@ -11,3 +11,5 @@ public/stylesheets/*.css
 config/session_secret.txt
 config/initializers/site_keys.rb
 config/initializers/hoptoad.rb
+public/contests
+.#*
