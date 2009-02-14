@@ -27,7 +27,7 @@ module FixtureReplacement
 
   attributes_for :report_action do |a|
     a.action_date = Time.now.utc.beginning_of_day
-      
+    a.position = 0
   end
 
   attributes_for :user do |a|

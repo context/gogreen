@@ -2,7 +2,8 @@ class Report < ActiveRecord::Base
   belongs_to :pledge
   has_many :report_actions, :order => 'position ASC'
   validates_uniqueness_of :start, :scope => :pledge_id
-
+  
+  named_scope :valid, :include => { :pledge => :user }, :conditions => Pledge.enabled.proxy_options[:conditions] || {}
   before_validation :normalize_start
   def normalize_start
     self.start = start.utc.beginning_of_week
@@ -34,15 +35,21 @@ class Report < ActiveRecord::Base
     report_actions.each {|r| r.action_date = start + r.position.days}
   end
 
-  before_save :save_actions
+  before_save :save_actions, :store_impact
   def save_actions
     report_actions.each {|a| a.save! if a.changed?}
   end
+  def store_impact
+    self.impact = impact
+  end
 
   def tally_actions
-    report_actions.inject( Hash.new(0) ) do |grouped, action|
-      grouped[action.mode_of_transport] += 1
-      grouped
-    end
+    report_actions.count :group => :mode_of_transport
+  end
+
+  def impact
+    stored_impact = read_attribute(:impact)
+    return stored_impact if stored_impact && stored_impact > 0 && report_actions.all? { |ra| !ra.changed? }
+    pledge.calculate_impact( tally_actions ) if pledge
   end
 end

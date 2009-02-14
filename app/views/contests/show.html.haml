@@ -1,22 +1,22 @@
 = render :partial => 'contests/header', :locals => { :contest => @contest, :image_folder => '..' }
-- all_impacts = @contest.impacts_by_week_and_team
+-# all_impacts = @contest.impacts_by_week_and_team
 .statbox
   .statboxtopbg
     %h2 
       TOTAL IMPACT:
       %span
-        -#= ( @contest.total_impact || 0.0 ).round_to(1)
-        = all_impacts[:weeks].values.sum
+        = @contest.total_impact
+        -#= all_impacts[:weeks].values.sum
       lbs of CO2 reduced!
   .statcontent
     .statcontenttopbg
       .statcontentbottombg
-        - week_impacts = all_impacts[:weeks]
+        - week_impacts = @contest.week_impacts
         -# week_impacts = Hash[ *@contest.weeks.map { |week_start| [ week_start, ( @contest.impact_for_week_starting(week_start) || 0.0 ).to_f.round_to(1) ] }.flatten ]
-        -# max_impact = ( week_impacts.values ).max
+        
         -# team_impacts = Hash[ *@contest.teams.map { |t| [ t.id, ( t.total_impact.to_f || 0.0 ).round_to(1) ] }.flatten ]
-        - team_impacts = all_impacts[:teams]
-        - max_impact = all_impacts.values.collect { |item| item.values }.flatten.max
+        - team_impacts = @contest.team_impacts
+        - max_impact = ( team_impacts.values + week_impacts.values ).max        
         = render :partial => 'shared/impact', :locals => { :source => @contest, :contest => @contest, :max_impact => max_impact, :impacts => week_impacts }
 
 .statbox

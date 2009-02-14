@@ -11,4 +11,7 @@ namespace :gogreen do
     end
 
   end
+  task :report_impacts do
+    Report.all.each { |r| r.save }
+  end
 end

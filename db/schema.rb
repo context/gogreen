@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081217021330) do
+ActiveRecord::Schema.define(:version => 20090214004723) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20081217021330) do
     t.string   "report_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "impact"
   end
 
   add_index "reports", ["pledge_id"], :name => "index_on_pledge_id"

@@ -15,11 +15,17 @@ describe Contest do
     before do
       @contest = create_contest
       @team = create_team(:contest => @contest)
+      @contest.teams << @team
       @pledge = create_pledge(:team => @team)
+      @team.pledges << @pledge
       @pledge.user = create_user #:disabled => false
       @pledge.save
       @report = create_report(:pledge => @pledge, :start => @contest.start.utc.beginning_of_week )
-      @report_action = create_report_action(:report => @report, :mode_of_transport => 'walk_bike', :action_date => @report.start + 2.days)
+      @pledge.reports << @report
+      @report_action = create_report_action(:report => @report, :mode_of_transport => 'walk_bike', :position => 2 ) #:action_date => @report.start + 2.days)
+      @report.report_actions << @report_action
+      @contest.save
+      @report.save
       @week = @report.start
     end
 
