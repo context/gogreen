@@ -51,7 +51,7 @@ describe ReportsController do
 
     describe "report for last week" do
       def act!
-        controller.get :new, :pledge_id => @pledge.to_param, :week => 'previous'
+        get :new, :pledge_id => @pledge.to_param, :week => 'previous'
       end
       describe "when a report already exists" do
         before do
