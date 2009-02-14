@@ -33,7 +33,7 @@
     .statcontent
       .statcontenttopbg
         .statcontentbottombg
-          = render :partial => 'shared/impact', :locals => { :source => pledge, :contest => pledge.team.contest } 
+          = render :partial => 'shared/impact', :locals => { :source => pledge, :contest => pledge.team.contest }
 
 .statbox
   .statboxtopbg
@@ -45,6 +45,6 @@
   .statcontent
     .statcontenttopbg
       .statcontentbottombg
-        = render :partial => 'shared/impact', :locals => { :source => @team, :contest => @team.contest }
+        = render :partial => 'shared/impact', :locals => { :source => @team, :contest => @team.contest, :impacts => @team.week_impacts }
 
 = render :partial => 'shared/tell_a_friend', :locals => { :source => @team }

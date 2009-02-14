@@ -15,6 +15,9 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def week_impacts
+    return round_values( reports.valid.sum(:impact, :group => 'start' ) )
+  end
   def impact_for_week_starting(week_start)
     pledges.enabled.with_reports.inject(0) do |total, pledge| 
       if report = pledge.reports.detect {|r| r.start == week_start }
@@ -31,4 +34,9 @@ class Team < ActiveRecord::Base
   def weekly_commitment_impact
     pledges.inject(0) { |total, pledge| total += pledge.weekly_commitment_impact }
   end
+
+  def round_values( hash_of_floats, decimal_points = 1 )
+    Hash[ *hash_of_floats.map { |key, value| [ key, value.to_f.round_to(decimal_points) ] }.flatten ]
+  end
+
 end
