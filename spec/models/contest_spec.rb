@@ -31,12 +31,12 @@ describe Contest do
 
     it do
       impact = @contest.impact_for_week_starting(@week)
-      impact.should == @pledge.impact_for_week_starting(@week)
+      impact.should == @pledge.impact_for_week_starting(@week).round_to(1)
     end
 
     it do
       impact = @contest.impact_for_week_starting(@week)
-      impact.round_to(4).should == 87.3693
+      impact.should == 87.4
     end
 
     it do

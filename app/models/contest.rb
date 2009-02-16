@@ -10,35 +10,16 @@ class Contest < ActiveRecord::Base
 
   def total_impact
     reports.valid.sum( :impact ).to_f.round_to(1)
-=begin
-    pledges.enabled.with_reports.inject(0) do |pledge_total, p| 
-      pledge_total + p.reports.inject(0) do |report_total, r|
-        report_total + p.calculate_impact(r.report_actions.inject({}) do |grouped, action| 
-          grouped[action.mode_of_transport] ||= 0
-          grouped[action.mode_of_transport] += 1
-          grouped 
-          end.to_a) 
-      end
-    end
-=end
   end
   
   def impacts_by_week_and_team
     { :weeks => week_impacts,
       :teams => team_impacts }
-=begin
-    pledges.enabled.with_reports.each do |pledge|
-      pledge.reports.each do |report|
-        report_impact = pledge.calculate_impact( report.tally_actions )
-        week_totals[report.start]   += report_impact
-        team_totals[pledge.team_id] += report_impact
-      end
-    end
-=end
-
   end
  
   def impact_for_week_starting(week_start)
+    reports.valid.sum( :impact, :conditions => [ 'start = ?', week_start ] ).to_f.round_to(1)
+=begin
     pledges.enabled.with_reports.inject(0) do |total, pledge| 
       if report = pledge.reports.detect {|r| r.start == week_start }
         total += pledge.calculate_impact(report.report_actions.inject({}) do |grouped, action| 
@@ -49,6 +30,7 @@ class Contest < ActiveRecord::Base
       end
       total
     end
+=end
   end
 
   def weekly_commitment_impact
