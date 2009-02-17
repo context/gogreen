@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20090214004723) do
   end
 
   add_index "pledges", ["team_id"], :name => "index_on_team_id"
+  add_index "pledges", ["team_id"], :name => "test3"
   add_index "pledges", ["user_id"], :name => "index_on_user_id"
 
   create_table "report_actions", :force => true do |t|
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20090214004723) do
   end
 
   add_index "reports", ["pledge_id"], :name => "index_on_pledge_id"
+  add_index "reports", ["start"], :name => "test1"
 
   create_table "teams", :force => true do |t|
     t.string  "name"
